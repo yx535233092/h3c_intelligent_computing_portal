@@ -56,7 +56,7 @@ export default function Footer() {
       </div>
 
       {/* 下侧 */}
-      <div className="flex justify-between border-t border-gray-500 pt-12 mt-12 text-secondary-text">
+      <div className="flex justify-between border-t border-gray-800 pt-12 mt-12 text-secondary-text">
         <span className="cursor-default">
           © 2024 新华三技术有限公司 保留所有权利
         </span>
