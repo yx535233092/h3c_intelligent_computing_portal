@@ -2,7 +2,7 @@
 
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 
-export default function Home() {
+export default function ContactUs() {
   useScrollToTop();
-  return <h1 className="h-200">内容</h1>;
+  return <div>ContactUs</div>;
 }
