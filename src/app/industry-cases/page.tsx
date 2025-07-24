@@ -1,49 +1,75 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { Breadcrumb, ConfigProvider, Tabs, Segmented } from 'antd';
-import type { TabsProps } from 'antd';
+import { ConfigProvider, Tabs } from 'antd';
 import React from 'react';
 import Image from 'next/image';
 import './page.css';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import CaseCarousel from '@/components/ui/CaseCarousel';
 
-const onChange = (key: string) => {
-  console.log(key);
-};
+import type { TabsProps } from 'antd';
 
 const items: TabsProps['items'] = [
   {
     key: '1',
     label: '政府',
-    children: <div></div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   },
   {
     key: '2',
     label: '企业',
-    children: <div></div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   },
   {
     key: '3',
     label: '运营商',
-    children: <div>123</div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   },
   {
     key: '4',
     label: '教育',
-    children: <div>123</div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   },
   {
     key: '5',
     label: '互联网',
-    children: <div>123</div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   },
   {
     key: '6',
     label: '交通',
-    children: <div>123</div>
+    children: (
+      <div>
+        <CaseCarousel></CaseCarousel>
+      </div>
+    )
   }
 ];
+
+const onChange = (key: string) => {
+  console.log(key);
+};
 
 export default function IndustryCasesPage() {
   useScrollToTop();
@@ -65,19 +91,7 @@ export default function IndustryCasesPage() {
               itemActiveColor: '#d32d26',
               itemHoverColor: '#d32d26',
               itemSelectedColor: '#d32d26',
-              fontSize: 16
-            },
-            Segmented: {
-              itemColor: '#666',
-              itemHoverColor: '#d32d26',
-              itemSelectedColor: '#d32d26',
-              itemHoverBg: 'rgba(0,0,0,0)',
-              itemActiveBg: 'rgba(0,0,0,0)',
-              fontSize: 24,
-              controlHeight: 60,
-              controlPaddingHorizontal: 40,
-              borderRadius: 30,
-              borderRadiusSM: 30
+              fontSize: 18
             }
           }
         }}
@@ -94,11 +108,10 @@ export default function IndustryCasesPage() {
               进，H3C都能应企业所需。
             </p>
 
-            <Segmented
-              style={{ marginBottom: '48px' }}
-              options={['选项1', '选项2']}
-            />
             <Tabs
+              style={{
+                width: '100%'
+              }}
               defaultActiveKey="1"
               items={items}
               onChange={onChange}

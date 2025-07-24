@@ -18,13 +18,13 @@ const pageConfigs: Record<string, PageConfig> = {
   '/about-us': {
     title: '关于我们',
     subtitle: 'About Us',
-    backgroundImage: '/2.jpg',
+    backgroundImage: '/6.jpg',
     breadcrumb: [{ title: '首页' }, { title: '关于我们' }]
   },
   '/contact-us': {
     title: '联系我们',
     subtitle: 'Contact Us',
-    backgroundImage: '/3.jpg',
+    backgroundImage: '/8.jpg',
     breadcrumb: [{ title: '首页' }, { title: '联系我们' }]
   },
   '/industry-cases': {
@@ -36,7 +36,7 @@ const pageConfigs: Record<string, PageConfig> = {
   '/pro-services/app-service': {
     title: '应用服务',
     subtitle: 'App Service',
-    backgroundImage: '/4.jpg',
+    backgroundImage: '/7.jpg',
     breadcrumb: [
       { title: '首页' },
       { title: '专业服务' },
@@ -46,7 +46,7 @@ const pageConfigs: Record<string, PageConfig> = {
   '/pro-services/data-service': {
     title: '数据服务',
     subtitle: 'Data Service',
-    backgroundImage: '/4.jpg',
+    backgroundImage: '/5.jpg',
     breadcrumb: [
       { title: '首页' },
       { title: '专业服务' },
@@ -97,7 +97,7 @@ export default function HeroSection() {
       <div
         className="w-full h-200 flex flex-col justify-center pl-36 gap-6"
         style={{
-          background: `linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.1)), url('${currentConfig.backgroundImage}') no-repeat center/cover`
+          background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${currentConfig.backgroundImage}') no-repeat center/cover`
         }}
       >
         <h1 className="text-white text-7xl font-medium tracking-wider">
@@ -124,7 +124,7 @@ export default function HeroSection() {
         <Breadcrumb
           className="border-b border-gray-200"
           style={{
-            paddingLeft: '8rem'
+            paddingLeft: '4rem'
           }}
           items={currentConfig.breadcrumb}
         />

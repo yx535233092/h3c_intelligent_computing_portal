@@ -1,3 +1,4 @@
+// ai生成
 'use client';
 
 import React, { useState, useMemo } from 'react';
@@ -20,6 +21,7 @@ import {
   RightOutlined
 } from '@ant-design/icons';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import './page.css';
 
 // 应用数据
 const applications = [
@@ -123,25 +125,6 @@ export default function AppService() {
   useScrollToTop();
   const [activeCategory, setActiveCategory] = useState('全部');
 
-  // 统计数据
-  const statistics = useMemo(() => {
-    const categoryCount = applications.reduce((acc, app) => {
-      acc[app.sceneCategory] = (acc[app.sceneCategory] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    const industryCount = applications.reduce((acc, app) => {
-      acc[app.industryTag] = (acc[app.industryTag] || 0) + 1;
-      return acc;
-    }, {} as Record<string, number>);
-
-    return {
-      total: applications.length,
-      categories: categoryCount,
-      industries: industryCount
-    };
-  }, []);
-
   // 筛选应用
   const filteredApps = useMemo(() => {
     if (activeCategory === '全部') {
@@ -165,301 +148,282 @@ export default function AppService() {
   };
 
   return (
-    <div
-      style={{
-        background: '#fafafa',
-        minHeight: '100vh',
-        padding: '40px 24px'
-      }}
-    >
-      {/* 顶部统计区域 - 水平卡片网格，行业分布集成在下方 */}
+    <div className="app-service-container">
+      {/* 顶部能力介绍区域 - 智能应用服务宣传模块 */}
       <div style={{ marginBottom: '40px' }}>
-        <Row gutter={[16, 16]}>
-          {/* 应用总数 */}
-          <Col xs={24} sm={12} md={6}>
-            <div
-              style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '24px',
-                border: '1px solid #f0f0f0',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '16px'
-                }}
-              >
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: '#fff',
-                    border: '2px solid #d32d26',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '12px'
-                  }}
-                >
-                  <AppstoreOutlined
-                    style={{ color: '#d32d26', fontSize: '22px' }}
-                  />
+        {/* 主标题区域 */}
+        <div className="main-title">
+          <h1>
+            <span className="title-normal">智能</span>
+            <span className="title-highlight">应用服务</span>
+            <span className="title-normal"> - </span>
+            <span className="title-normal">数字化转型的强力引擎</span>
+          </h1>
+          <p>
+            汇聚9大精品应用，覆盖智能办公、智能文档、智能问数三大核心场景，为政府、金融、医疗等行业提供全方位的智能化解决方案
+          </p>
+        </div>
+
+        {/* 核心能力展示 */}
+        <Row gutter={[24, 24]}>
+          {/* 智能办公场景 */}
+          <Col xs={24} md={8}>
+            <div className="capability-card">
+              <div className="capability-header">
+                <div className="capability-icon">
+                  <BuildOutlined />
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: '12px',
-                      color: '#8c8c8c',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    应用总数
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '24px',
-                      fontWeight: '700',
-                      color: '#262626'
-                    }}
-                  >
-                    {statistics.total}
-                  </div>
+                  <h3 className="capability-title">智能办公场景</h3>
+                  <p className="capability-subtitle">
+                    提升行政效率，优化内部管理
+                  </p>
                 </div>
+              </div>
+              <div style={{ marginBottom: '20px' }}>
+                <ul className="capability-list">
+                  <li>快捷请假系统：支持年假、事假、病假等多种类型</li>
+                  <li>会议室预定：线上线下无缝衔接，提升资源利用率</li>
+                  <li>访客申请：外部访客智能登记，加强安全管理</li>
+                  <li>出差申请：在线化出差申请流程，提高审批效率</li>
+                </ul>
               </div>
             </div>
           </Col>
 
-          {/* 智能办公 */}
-          <Col xs={24} sm={12} md={6}>
-            <div
-              style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '24px',
-                border: '1px solid #f0f0f0',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '16px'
-                }}
-              >
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: '#fff',
-                    border: '2px solid #d32d26',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '12px'
-                  }}
-                >
-                  <BuildOutlined
-                    style={{ color: '#d32d26', fontSize: '22px' }}
-                  />
+          {/* 智能文档场景 */}
+          <Col xs={24} md={8}>
+            <div className="capability-card">
+              <div className="capability-header">
+                <div className="capability-icon">
+                  <FileTextOutlined />
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: '12px',
-                      color: '#8c8c8c',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    智能办公
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '24px',
-                      fontWeight: '700',
-                      color: '#262626'
-                    }}
-                  >
-                    {statistics.categories['智能办公'] || 0}
-                  </div>
+                  <h3 className="capability-title">智能文档场景</h3>
+                  <p className="capability-subtitle">
+                    文档处理智能化，内容创作高效化
+                  </p>
                 </div>
+              </div>
+              <div style={{ marginBottom: '20px' }}>
+                <ul className="capability-list">
+                  <li>文章改写助手：基于B文章风格智能改写A文章</li>
+                  <li>金融贷款报告评估：智能生成企业贷款资质评估报告</li>
+                  <li>医疗诊断分析助手：根据病理、检查信息进行智能诊断分析</li>
+                  <li>图文问答助手：支持图文双重检索，快速获取精准信息</li>
+                </ul>
               </div>
             </div>
           </Col>
 
-          {/* 智能文档 */}
-          <Col xs={24} sm={12} md={6}>
-            <div
-              style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '24px',
-                border: '1px solid #f0f0f0',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '16px'
-                }}
-              >
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: '#fff',
-                    border: '2px solid #d32d26',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '12px'
-                  }}
-                >
-                  <FileTextOutlined
-                    style={{ color: '#d32d26', fontSize: '22px' }}
-                  />
+          {/* 智能问数场景 */}
+          <Col xs={24} md={8}>
+            <div className="capability-card">
+              <div className="capability-header">
+                <div className="capability-icon">
+                  <DatabaseOutlined />
                 </div>
                 <div>
-                  <div
-                    style={{
-                      fontSize: '12px',
-                      color: '#8c8c8c',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    智能文档
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '24px',
-                      fontWeight: '700',
-                      color: '#262626'
-                    }}
-                  >
-                    {statistics.categories['智能文档'] || 0}
-                  </div>
+                  <h3 className="capability-title">智能问数场景</h3>
+                  <p className="capability-subtitle">
+                    数据洞察智能化，决策支持精准化
+                  </p>
                 </div>
               </div>
-            </div>
-          </Col>
-
-          {/* 智能问数 */}
-          <Col xs={24} sm={12} md={6}>
-            <div
-              style={{
-                background: 'white',
-                borderRadius: '12px',
-                padding: '24px',
-                border: '1px solid #f0f0f0',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between'
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  marginBottom: '16px'
-                }}
-              >
-                <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: '#fff',
-                    border: '2px solid #d32d26',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginRight: '12px'
-                  }}
-                >
-                  <DatabaseOutlined
-                    style={{ color: '#d32d26', fontSize: '22px' }}
-                  />
-                </div>
-                <div>
-                  <div
-                    style={{
-                      fontSize: '12px',
-                      color: '#8c8c8c',
-                      marginBottom: '4px'
-                    }}
-                  >
-                    智能问数
-                  </div>
-                  <div
-                    style={{
-                      fontSize: '24px',
-                      fontWeight: '700',
-                      color: '#262626'
-                    }}
-                  >
-                    {statistics.categories['智能问数'] || 0}
-                  </div>
-                </div>
+              <div style={{ marginBottom: '20px' }}>
+                <ul className="capability-list">
+                  <li>人口库智能问数：人口数据、出生率、结婚率等多场景查询</li>
+                  <li>经济数据智能分析：GDP、CPI、就业率等宏观经济指标分析</li>
+                  <li>地理信息数据查询：行政区划、地理坐标、空间分析等</li>
+                  <li>行业数据洞察：各行业发展趋势、市场规模、竞争格局分析</li>
+                </ul>
               </div>
             </div>
           </Col>
         </Row>
+
+        {/* 价值创造与技术优势整合模块 */}
+        <div className="value-tech-module">
+          <div className="value-tech-container">
+            {/* 模块标题 */}
+            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+              <div className="module-badge">
+                <BarChartOutlined />
+                <span>核心优势</span>
+              </div>
+              <h2 className="module-title">价值创造与技术优势</h2>
+              <p className="module-description">
+                通过先进技术实现企业价值最大化，让智能化成为企业发展的核心驱动力
+              </p>
+            </div>
+
+            <Row gutter={[40, 40]}>
+              {/* 左侧：核心价值指标 */}
+              <Col xs={24} lg={14}>
+                <div className="value-section">
+                  <h3 className="value-section-title">
+                    <div className="value-section-icon">
+                      <BarChartOutlined />
+                    </div>
+                    核心价值指标
+                  </h3>
+
+                  {/* 主要指标 */}
+                  <Row gutter={[20, 20]}>
+                    <Col xs={12}>
+                      <div className="value-card">
+                        <div className="value-number">80%</div>
+                        <div className="value-label">效率提升</div>
+                        <div className="value-description">
+                          自动化流程处理，减少重复性工作
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={12}>
+                      <div className="value-card">
+                        <div className="value-number">60%</div>
+                        <div className="value-label">成本节约</div>
+                        <div className="value-description">
+                          减少人工成本，优化资源配置
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={12}>
+                      <div className="value-card">
+                        <div className="value-number">90%</div>
+                        <div className="value-label">决策效率</div>
+                        <div className="value-description">
+                          智能数据分析，快速生成报告
+                        </div>
+                      </div>
+                    </Col>
+                    <Col xs={12}>
+                      <div className="value-card">
+                        <div className="value-number">95%</div>
+                        <div className="value-label">客户满意度</div>
+                        <div className="value-description">
+                          7×24小时智能服务，快速响应
+                        </div>
+                      </div>
+                    </Col>
+                  </Row>
+
+                  {/* 额外价值指标 */}
+                  <div className="extra-value-section">
+                    <h4 className="extra-value-title">更多价值体现</h4>
+                    <Row gutter={[16, 12]}>
+                      <Col xs={12}>
+                        <div className="extra-value-item">
+                          <span className="extra-value-text">
+                            数据准确率提升至99.5%
+                          </span>
+                        </div>
+                      </Col>
+                      <Col xs={12}>
+                        <div className="extra-value-item">
+                          <span className="extra-value-text">
+                            响应时间缩短至秒级
+                          </span>
+                        </div>
+                      </Col>
+                      <Col xs={12}>
+                        <div className="extra-value-item">
+                          <span className="extra-value-text">
+                            业务流程标准化程度达95%
+                          </span>
+                        </div>
+                      </Col>
+                      <Col xs={12}>
+                        <div className="extra-value-item">
+                          <span className="extra-value-text">
+                            员工培训时间减少70%
+                          </span>
+                        </div>
+                      </Col>
+                    </Row>
+                  </div>
+                </div>
+              </Col>
+
+              {/* 右侧：技术优势 */}
+              <Col xs={24} lg={10}>
+                <div className="tech-section">
+                  <h3 className="tech-section-title">
+                    <div className="tech-section-icon">
+                      <AppstoreOutlined />
+                    </div>
+                    技术优势
+                  </h3>
+
+                  <div className="tech-container">
+                    <div className="tech-card">
+                      <div className="tech-card-content">
+                        <div className="tech-card-icon">
+                          <AppstoreOutlined />
+                        </div>
+                        <div className="tech-card-text">
+                          <div className="tech-card-title">场景化设计</div>
+                          <div className="tech-card-description">
+                            针对不同业务场景定制化开发，满足个性化需求
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="tech-card">
+                      <div className="tech-card-content">
+                        <div className="tech-card-icon">
+                          <BuildOutlined />
+                        </div>
+                        <div className="tech-card-text">
+                          <div className="tech-card-title">行业专业化</div>
+                          <div className="tech-card-description">
+                            深度理解行业需求，提供专业解决方案
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="tech-card">
+                      <div className="tech-card-content">
+                        <div className="tech-card-icon">
+                          <BarChartOutlined />
+                        </div>
+                        <div className="tech-card-text">
+                          <div className="tech-card-title">智能化程度高</div>
+                          <div className="tech-card-description">
+                            集成AI技术，实现智能分析和处理
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="tech-card">
+                      <div className="tech-card-content">
+                        <div className="tech-card-icon">
+                          <CustomerServiceOutlined />
+                        </div>
+                        <div className="tech-card-text">
+                          <div className="tech-card-title">易用性强</div>
+                          <div className="tech-card-description">
+                            界面友好，操作简单，快速上手
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+            </Row>
+          </div>
+        </div>
       </div>
 
       {/* 中部分类筛选区域 */}
-      <Card
-        style={{
-          marginBottom: '40px',
-          borderRadius: '12px',
-          border: '1px solid #f0f0f0',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-          background: 'white'
-        }}
-        styles={{ body: { padding: '32px' } }}
-      >
-        <div style={{ marginBottom: '24px' }}>
-          <h3
-            style={{
-              margin: 0,
-              fontSize: '18px',
-              fontWeight: '600',
-              color: '#262626'
-            }}
-          >
-            应用分类
-          </h3>
-          <p
-            style={{
-              margin: '4px 0 0 0',
-              color: '#8c8c8c',
-              fontSize: '14px'
-            }}
-          >
-            选择分类查看相关应用
-          </p>
+      <Card className="category-card">
+        <div className="category-header">
+          <h3 className="category-title">应用分类</h3>
+          <p className="category-subtitle">选择分类查看相关应用</p>
         </div>
         <Space wrap size={[12, 12]}>
           {categories.map((category) => (
@@ -469,21 +433,7 @@ export default function AppService() {
               icon={category.icon}
               onClick={() => setActiveCategory(category.key)}
               size="large"
-              style={{
-                borderRadius: '8px',
-                height: '40px',
-                padding: '0 16px',
-                fontWeight: '500',
-                border:
-                  activeCategory === category.key
-                    ? 'none'
-                    : '1px solid #d9d9d9',
-                background:
-                  activeCategory === category.key ? '#d32d26' : 'white',
-                color: activeCategory === category.key ? 'white' : '#595959',
-                boxShadow: 'none',
-                transition: 'all 0.2s ease'
-              }}
+              className="category-button"
             >
               {category.label}
             </Button>
@@ -494,171 +444,65 @@ export default function AppService() {
       {/* 底部应用展示区域 */}
       <Card
         title={
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between'
-            }}
-          >
-            <span
-              style={{
-                fontSize: '18px',
-                fontWeight: '600',
-                color: '#262626'
-              }}
-            >
-              {activeCategory}应用
-            </span>
-            <Badge
-              count={filteredApps.length}
-              style={{
-                backgroundColor: '#d32d26',
-                fontSize: '12px',
-                fontWeight: '500',
-                color: 'white'
-              }}
-            />
+          <div className="apps-header">
+            <span className="apps-title">{activeCategory}应用</span>
+            <Badge count={filteredApps.length} className="apps-badge" />
           </div>
         }
-        style={{
-          borderRadius: '12px',
-          border: '1px solid #f0f0f0',
-          boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
-          background: 'white'
-        }}
-        styles={{ body: { padding: '32px' } }}
+        className="apps-card"
       >
-        <Row gutter={[24, 24]}>
+        <Row gutter={[20, 20]}>
           {filteredApps.map((app) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={app.id}>
+            <Col xs={24} sm={12} md={8} lg={6} xl={6} key={app.id}>
               <Card
                 hoverable
                 onClick={() => handleAppClick(app.url)}
-                style={{
-                  height: '100%',
-                  borderRadius: '8px',
-                  border: '1px solid #f0f0f0',
-                  boxShadow: '0 1px 4px rgba(0,0,0,0.04)',
-                  transition: 'all 0.2s ease',
-                  cursor: 'pointer',
-                  background: 'white'
-                }}
-                styles={{
-                  body: {
-                    padding: '20px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: '100%'
-                  }
-                }}
                 className="app-card"
               >
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    marginBottom: '16px'
-                  }}
-                >
-                  <Avatar
-                    icon={iconMap[app.icon]}
-                    size={40}
-                    style={{
-                      backgroundColor: '#f5f5f5',
-                      color: '#595959',
-                      marginRight: '12px',
-                      flexShrink: 0
-                    }}
-                  />
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <h4
-                      style={{
-                        margin: '0 0 6px 0',
-                        fontSize: '16px',
-                        fontWeight: '600',
-                        color: '#262626',
-                        lineHeight: '24px'
-                      }}
-                    >
-                      {app.name}
-                    </h4>
-                    <span
-                      style={{
-                        fontSize: '12px',
-                        color: '#8c8c8c',
-                        background: '#f5f5f5',
-                        padding: '2px 8px',
-                        borderRadius: '4px',
-                        fontWeight: '400'
-                      }}
-                    >
-                      {app.industryTag}
-                    </span>
+                {/* 主题色竖条 */}
+                <div className="app-theme-bar" />
+
+                {/* 应用图标和标题区域 */}
+                <div className="app-header">
+                  <div className="app-icon-wrapper">
+                    <Avatar
+                      icon={iconMap[app.icon]}
+                      size={48}
+                      className="app-avatar"
+                    />
+                  </div>
+                  <div className="app-info">
+                    <h4 className="app-title">{app.name}</h4>
+                    <div className="app-meta">
+                      <span className="app-tag">{app.industryTag}</span>
+                      <span className="app-category">{app.sceneCategory}</span>
+                    </div>
                   </div>
                 </div>
-                <p
-                  style={{
-                    color: '#8c8c8c',
-                    fontSize: '14px',
-                    margin: 0,
-                    flex: 1,
-                    lineHeight: '20px'
-                  }}
-                >
-                  {app.description}
-                </p>
-                <div
-                  style={{
-                    marginTop: '16px',
-                    paddingTop: '12px',
-                    borderTop: '1px solid #f5f5f5',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between'
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: '12px',
-                      color: '#bfbfbf',
-                      fontWeight: '400'
-                    }}
-                  >
-                    点击使用
-                  </span>
-                  <RightOutlined
-                    style={{ color: '#bfbfbf', fontSize: '12px' }}
-                  />
+
+                {/* 应用描述 */}
+                <div className="app-description-wrapper">
+                  <p className="app-description">{app.description}</p>
+                </div>
+
+                {/* 底部操作区域 */}
+                <div className="app-footer">
+                  <div className="app-action">
+                    <span className="app-action-text">立即使用</span>
+                    <RightOutlined className="arrow-icon" />
+                  </div>
                 </div>
               </Card>
             </Col>
           ))}
         </Row>
         {filteredApps.length === 0 && (
-          <div
-            style={{
-              textAlign: 'center',
-              padding: '60px 20px',
-              color: '#bfbfbf'
-            }}
-          >
-            <AppstoreOutlined
-              style={{ fontSize: '48px', marginBottom: '16px' }}
-            />
-            <p style={{ margin: 0, fontSize: '16px' }}>
-              暂无{activeCategory}类型的应用
-            </p>
+          <div className="empty-state">
+            <AppstoreOutlined />
+            <p>暂无{activeCategory}类型的应用</p>
           </div>
         )}
       </Card>
-
-      <style jsx>{`
-        .app-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
-        }
-      `}</style>
     </div>
   );
 }

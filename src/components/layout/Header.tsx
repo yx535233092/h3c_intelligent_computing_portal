@@ -83,7 +83,6 @@ export default function Header() {
           theme={{
             components: {
               Menu: {
-                itemHeight: 64,
                 horizontalItemSelectedBg: 'transparent',
                 itemSelectedBg: 'transparent',
                 horizontalItemSelectedColor: '#d32d26',
