@@ -2,6 +2,7 @@
 import { useState, type PropsWithChildren } from 'react';
 import { useServerInsertedHTML } from 'next/navigation';
 import { createCache, extractStyle, StyleProvider } from '@ant-design/cssinjs';
+import { App } from 'antd';
 
 export const RootStyleRegistry = ({ children }: PropsWithChildren) => {
   const [cache] = useState(() => createCache());
@@ -16,5 +17,9 @@ export const RootStyleRegistry = ({ children }: PropsWithChildren) => {
     );
   });
 
-  return <StyleProvider cache={cache}>{children}</StyleProvider>;
+  return (
+    <StyleProvider cache={cache}>
+      <App>{children}</App>
+    </StyleProvider>
+  );
 };

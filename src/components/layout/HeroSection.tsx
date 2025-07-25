@@ -68,7 +68,11 @@ export default function HeroSection() {
   const pathname = usePathname();
 
   // 如果是首页，不渲染组件
-  if (pathname === '/' || pathname === '/home') {
+  if (
+    pathname === '/' ||
+    pathname === '/home' ||
+    pathname.includes('excel-process')
+  ) {
     return null;
   }
 

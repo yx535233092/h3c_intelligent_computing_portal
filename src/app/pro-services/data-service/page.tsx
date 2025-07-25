@@ -246,7 +246,7 @@ export default function DataService() {
                     高精度数据提取
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="/excel-process"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -271,7 +271,7 @@ export default function DataService() {
                     保持数据完整性
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="/excel-process"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -296,7 +296,7 @@ export default function DataService() {
                     表格逻辑结构还原
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="/excel-process"
                     target="_blank"
                     className={style.detailLink}
                   >

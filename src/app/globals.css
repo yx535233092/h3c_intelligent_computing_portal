@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@js-preview/excel/lib/index.css';
 
 @theme {
   /* 品牌色 */

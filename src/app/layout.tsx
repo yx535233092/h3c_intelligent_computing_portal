@@ -32,8 +32,8 @@ export default function RootLayout({
         />
       </head>
 
-      <RootStyleRegistry>
-        <body>
+      <body>
+        <RootStyleRegistry>
           {/* 全局导航栏 */}
           <Header />
 
@@ -45,8 +45,8 @@ export default function RootLayout({
 
           {/* 全局页脚 */}
           <Footer />
-        </body>
-      </RootStyleRegistry>
+        </RootStyleRegistry>
+      </body>
     </html>
   );
 }

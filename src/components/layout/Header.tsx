@@ -68,7 +68,7 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 w-full px-8 flex items-center bg-white h-16 border-t-brand border-t-2 shadow-lg z-9">
+    <header className="sticky top-0 w-full px-8 flex items-center bg-white h-16 border-t-brand border-t-2 shadow-lg z-99">
       {/* logo图标 */}
       <Logo />
 
