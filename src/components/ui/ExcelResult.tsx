@@ -4,7 +4,15 @@ interface UploadResult {
   filename?: string;
   rows?: number;
   columns?: number;
-  data?: Record<string, unknown>[];
+  data?:
+    | Record<string, unknown>[]
+    | {
+        json_format?: string;
+        md_format?: string;
+        [key: string]: unknown;
+      };
+  json_format?: string;
+  md_format?: string;
   [key: string]: unknown;
 }
 
@@ -14,6 +22,8 @@ type ExcelResultProps = {
 };
 
 export default function ExcelResult({ result, error }: ExcelResultProps) {
+  const [activeTab, setActiveTab] = useState<'json' | 'md'>('json');
+
   if (error) {
     return (
       <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
@@ -31,9 +41,19 @@ export default function ExcelResult({ result, error }: ExcelResultProps) {
     );
   }
 
+  // 判断data是否为对象格式（包含json_format和md_format）
+  const isDataObject = result.data && !Array.isArray(result.data);
+  const dataObj = isDataObject
+    ? (result.data as {
+        json_format?: string;
+        md_format?: string;
+        [key: string]: unknown;
+      })
+    : null;
+
   return (
     <div className="space-y-4">
-      <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
+      <div className="p-4 bg-green-50 border border-green-200 rounded-lg ">
         <h3 className="text-lg font-medium text-green-800 mb-2">处理成功</h3>
 
         {/* 显示处理结果 */}
@@ -62,7 +82,7 @@ export default function ExcelResult({ result, error }: ExcelResultProps) {
             </div>
           )}
 
-          {/* 如果有数据预览 */}
+          {/* 如果有数据预览（当data是数组时） */}
           {result.data && Array.isArray(result.data) && (
             <div>
               <span className="font-medium">数据预览：</span>
@@ -96,15 +116,58 @@ export default function ExcelResult({ result, error }: ExcelResultProps) {
             </div>
           )}
 
-          {/* 原始 JSON 数据（可折叠） */}
-          <details className="mt-4">
-            <summary className="cursor-pointer font-medium text-blue-600 hover:text-blue-800">
-              查看完整响应数据
-            </summary>
-            <pre className="mt-2 p-3 bg-gray-100 rounded text-sm overflow-auto">
-              {JSON.stringify(result, null, 2)}
-            </pre>
-          </details>
+          {/* 格式化结果显示 - 如果有 json_format 或 md_format */}
+          {dataObj && (dataObj.json_format || dataObj.md_format) && (
+            <div className="mt-4">
+              <div className="mb-3">
+                <span className="font-medium">处理结果：</span>
+              </div>
+
+              {/* 标签页切换 */}
+              <div className="flex border-b border-gray-200 mb-4">
+                {dataObj.json_format && (
+                  <button
+                    className={`px-4 py-2 text-sm font-medium border-b-2 ${
+                      activeTab === 'json'
+                        ? 'border-blue-500 text-blue-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                    onClick={() => setActiveTab('json')}
+                  >
+                    JSON 格式
+                  </button>
+                )}
+                {dataObj.md_format && (
+                  <button
+                    className={`px-4 py-2 text-sm font-medium border-b-2 ${
+                      activeTab === 'md'
+                        ? 'border-blue-500 text-blue-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                    onClick={() => setActiveTab('md')}
+                  >
+                    Markdown 格式
+                  </button>
+                )}
+              </div>
+
+              {/* 内容显示区域 */}
+              <div className="bg-white border border-gray-200 rounded-lg">
+                {activeTab === 'json' && dataObj.json_format && (
+                  <pre className="p-4 text-sm overflow-auto max-h-[calc(100vh-370px)] whitespace-pre-wrap">
+                    {dataObj.json_format}
+                  </pre>
+                )}
+                {activeTab === 'md' && dataObj.md_format && (
+                  <div className="p-4 prose prose-sm max-w-none max-h-[calc(100vh-370px)] overflow-auto">
+                    <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-3 rounded">
+                      {dataObj.md_format}
+                    </pre>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

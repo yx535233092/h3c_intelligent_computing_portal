@@ -31,15 +31,9 @@ export default function ExcelPreview({
 
   return (
     <div
+      className="w-full border-1 border-gray-200 rounded-md  h-[calc(100vh-200px)] overflow-hidden"
       ref={containerRef}
       id="excel-preview-container"
-      style={{
-        height: '600px',
-        width: '100%',
-        border: '1px solid #e5e7eb',
-        borderRadius: '6px',
-        overflow: 'hidden'
-      }}
     />
   );
 }

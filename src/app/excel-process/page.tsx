@@ -9,7 +9,11 @@ interface UploadResult {
   filename?: string;
   rows?: number;
   columns?: number;
-  data?: Record<string, unknown>[];
+  data?: {
+    json_format?: string;
+    md_format?: string;
+    [key: string]: unknown;
+  };
   [key: string]: unknown;
 }
 
@@ -30,14 +34,14 @@ export default function ExcelProcess() {
   >('idle');
 
   // 处理上传成功
-  const handleUploadSuccess = (result: UploadResult) => {
+  const handleUploadSuccess = (result?: UploadResult) => {
     setUploadResult(result);
     setUploadError(undefined);
     console.log('上传处理成功:', result);
   };
 
   // 处理上传失败
-  const handleUploadError = (error: string) => {
+  const handleUploadError = (error?: string) => {
     setUploadError(error);
     setUploadResult(undefined);
     console.error('上传处理失败:', error);
@@ -95,7 +99,9 @@ export default function ExcelProcess() {
   return (
     <div>
       <div className="flex items-center justify-between py-2 border-b-1 border-gray-200">
-        <span className="text-md font-md px-8">表格数据预处理</span>
+        <span className="text-lg font-semibold text-gray-800 px-8">
+          表格数据预处理
+        </span>
         <button
           onClick={testApiConnection}
           disabled={apiStatus === 'testing'}
@@ -104,8 +110,8 @@ export default function ExcelProcess() {
           {getApiStatusText()}
         </button>
       </div>
-      <div className="flex h-screen">
-        <div className="flex-1">
+      <div className="flex h-[calc(100vh-117px)]">
+        <div className="w-1/5 h-full">
           <div className="flex flex-col space-y-4 p-4">
             <div>
               <h1 className="text-lg font-semibold mb-2">我的文件</h1>
@@ -117,11 +123,11 @@ export default function ExcelProcess() {
             </div>
           </div>
         </div>
-        <div className="flex-3 min-w-0 overflow-hidden p-4">
+        <div className="w-2/5 min-w-0 overflow-hidden p-4 h-full">
           <h1 className="text-lg font-semibold mb-2">预览文件</h1>
           <ExcelPreview currentFileArrayBuffer={currentFileArrayBuffer} />
         </div>
-        <div className="flex-2 p-4">
+        <div className="w-2/5 p-4 h-full">
           <h1 className="text-lg font-semibold mb-2">处理结果</h1>
           <ExcelResult result={uploadResult} error={uploadError} />
         </div>
