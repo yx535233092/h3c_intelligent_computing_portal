@@ -69,6 +69,10 @@ export default function ExcelUpLoad({
     const newIndex = newFileList.length - 1;
     setSelectedFileIndex(newIndex);
 
+    // 清空之前的处理结果
+    onUploadSuccess?.(undefined);
+    onUploadError?.(undefined);
+
     const reader = new FileReader();
     reader.readAsArrayBuffer(file);
     reader.onload = (e: ProgressEvent<FileReader>) => {
