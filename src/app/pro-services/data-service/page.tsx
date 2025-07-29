@@ -9,6 +9,10 @@ export default function DataService() {
   useScrollToTop();
   const [activeTab, setActiveTab] = useState('text');
   const [productTitle, setProductTitle] = useState('智能文档处理');
+
+  // 添加更多动画相关的hooks
+  const [heroRef, isHeroInView] = useInView({ threshold: 0.3 });
+  const [featuresRef, isFeaturesInView] = useInView({ threshold: 0.2 });
   const [multiNeedsRef, isMultiNeedsInView] = useInView({ threshold: 0.2 });
   const [intelligentProcessRef, isIntelligentProcessInView] = useInView({
     threshold: 0.1
@@ -17,7 +21,14 @@ export default function DataService() {
   return (
     <div className={style['data-service-root']}>
       {/* 顶部标题区 */}
-      <section className={style.hero}>
+      <section
+        ref={heroRef}
+        className={`${style.hero} transition-all duration-1000 ${
+          isHeroInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
         <h1 className={style['hero-title']}>数据服务解决方案</h1>
         <p className={style['hero-subtitle']}>
           面向文本、图像与表格的智能解析服务，助力高效输出Markdown文档
@@ -28,7 +39,14 @@ export default function DataService() {
       </section>
 
       {/* 三栏优势区 */}
-      <section className={style.features}>
+      <section
+        ref={featuresRef}
+        className={`${style.features} transition-all duration-1000 ${
+          isFeaturesInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
         <div className={style['feature-card']}>
           <h3>表格识别更精准</h3>
           <p>支持复杂表格、单元格合并，跨页表格也能准确还原。</p>
@@ -95,9 +113,6 @@ export default function DataService() {
         }`}
       >
         <h2 className={style.intelligentProcessTitle}>{productTitle}</h2>
-        <a href="#" className={style.viewAllProducts}>
-          查看更多产品 {'>'}
-        </a>
 
         {/* 选项卡导航 */}
         <div className={style.tabNav}>

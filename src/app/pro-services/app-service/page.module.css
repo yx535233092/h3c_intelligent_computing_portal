@@ -81,12 +81,14 @@
 .capability-icon {
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #d32d26 0%, #ff4d4f 100%);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 16px;
+  border: 1px solid #d32d26;
+  color: #d32d26;
+  font-size: 22px;
 }
 
 .capability-icon i {

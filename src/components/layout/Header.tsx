@@ -68,12 +68,12 @@ export default function Header() {
   };
 
   return (
-    <header className="sticky top-0 w-full px-8 flex items-center bg-white h-16 border-t-brand border-t-2 shadow-lg z-99">
+    <header className="sticky top-0 w-full px-16 flex items-center bg-white h-16 border-t-brand border-t-2 shadow-lg z-99">
       {/* logo图标 */}
       <Logo />
 
       {/* 标题 */}
-      <span className="text-xl font-normal ml-2 tracking-wide">
+      <span className="text-xl font-normal ml-4 tracking-wide">
         智算专业服务
       </span>
 
@@ -87,7 +87,8 @@ export default function Header() {
                 itemSelectedBg: 'transparent',
                 horizontalItemSelectedColor: '#d32d26',
                 itemSelectedColor: '#d32d26',
-                subMenuItemSelectedColor: '#d32d26'
+                subMenuItemSelectedColor: '#d32d26',
+                fontSize: 16
               }
             }
           }}

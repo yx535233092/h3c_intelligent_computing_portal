@@ -1,8 +1,9 @@
 import Logo from '@/components/ui/Logo';
+import { HomeOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white px-8 py-12 flex flex-col">
+    <footer className="bg-gray-900 text-white px-16 py-12 flex flex-col">
       {/* 上侧 */}
       <div className="flex justify-between">
         {/* 左侧 */}
@@ -19,37 +20,36 @@ export default function Footer() {
           </p>
 
           {/* 图标 */}
-          <div className="flex gap-4">
+          {/* <div className="flex gap-4">
             <div>icon1</div>
             <div>icon2</div>
             <div>icon3</div>
-          </div>
+          </div> */}
         </div>
 
         {/* 中间 */}
         <div className="flex flex-col gap-4">
           <h1 className="text-xl font-bold">专业服务</h1>
           <ul className="flex flex-col gap-2 text-secondary-text">
-            <li>模型服务</li>
-            <li>数据服务</li>
             <li>应用服务</li>
-            <li>运维服务</li>
+            <li>数据服务</li>
+            <li>模型服务</li>
             <li>咨询培训服务</li>
           </ul>
         </div>
 
         {/* 右侧 */}
         <div className="flex flex-col gap-4">
-          <h1 className="text-xl font-bold">专业服务</h1>
+          <h1 className="text-xl font-bold">联系我们</h1>
           <ul className="flex flex-col gap-2 text-secondary-text">
             <li className="flex gap-2">
-              <i>图标</i> <span>400-xxx-xxxx</span>
+              <PhoneOutlined /> <span>400-810-0504</span>
             </li>
             <li className="flex gap-2">
-              <i>图标</i> <span>xxxxxxxx@h3c.com</span>
+              <MailOutlined /> <span>service@h3c.com</span>
             </li>
             <li className="flex gap-2">
-              <i>图标</i> <span>杭州市滨江区长河路466号</span>
+              <HomeOutlined /> <span>杭州市滨江区长河路466号 H3C公司</span>
             </li>
           </ul>
         </div>

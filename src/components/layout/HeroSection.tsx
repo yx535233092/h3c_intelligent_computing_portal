@@ -18,19 +18,19 @@ const pageConfigs: Record<string, PageConfig> = {
   '/about-us': {
     title: '关于我们',
     subtitle: 'About Us',
-    backgroundImage: '/6.jpg',
+    backgroundImage: '/12.jpg',
     breadcrumb: [{ title: '首页' }, { title: '关于我们' }]
   },
   '/contact-us': {
     title: '联系我们',
     subtitle: 'Contact Us',
-    backgroundImage: '/8.jpg',
+    backgroundImage: '/11.jpg',
     breadcrumb: [{ title: '首页' }, { title: '联系我们' }]
   },
   '/industry-cases': {
     title: '行业案例',
     subtitle: 'Industry Case',
-    backgroundImage: '/1.jpg',
+    backgroundImage: '/10.jpg',
     breadcrumb: [{ title: '首页' }, { title: '行业案例' }]
   },
   '/pro-services/app-service': {
@@ -82,7 +82,8 @@ export default function HeroSection() {
     pathname === '/' ||
     pathname === '/home' ||
     pathname.includes('excel-process') ||
-    pathname.includes('pro-services')
+    pathname.includes('pro-services') ||
+    pathname.includes('detail')
   ) {
     return null;
   }
@@ -108,9 +109,9 @@ export default function HeroSection() {
 
   return (
     <>
-      {/* 大标签 */}
+      {/* hero */}
       <div
-        className="w-full h-200 flex flex-col justify-center pl-36 gap-6"
+        className="w-full h-100 flex flex-col justify-center pl-60 gap-6"
         style={{
           background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${currentConfig.backgroundImage}') no-repeat center/cover`
         }}
@@ -123,7 +124,7 @@ export default function HeroSection() {
         </span>
       </div>
 
-      {/* 页签 */}
+      {/* 面包屑 */}
       <ConfigProvider
         theme={{
           components: {
@@ -135,11 +136,10 @@ export default function HeroSection() {
           }
         }}
       >
-        {/* 面包屑 */}
         <Breadcrumb
           className="border-b border-gray-200"
           style={{
-            paddingLeft: '4rem'
+            paddingLeft: '15rem'
           }}
           items={currentConfig.breadcrumb}
         />

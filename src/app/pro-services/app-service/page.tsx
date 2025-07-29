@@ -160,7 +160,7 @@ export default function AppService() {
       {/* 顶部能力介绍区域 - 智能应用服务宣传模块 */}
       <div
         ref={heroRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 ${
+        className={`transition-all duration-1000 px-60 pt-20 ${
           isHeroInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
@@ -183,7 +183,7 @@ export default function AppService() {
         {/* 核心能力展示 */}
         <div
           ref={capabilityRef as React.RefObject<HTMLDivElement>}
-          className={`transition-all duration-1000 ${
+          className={`transition-all duration-1000 mt-30 mb-30  ${
             isCapabilityInView
               ? 'opacity-100 translate-y-0'
               : 'opacity-0 translate-y-20'
@@ -258,223 +258,22 @@ export default function AppService() {
                 </div>
                 <div style={{ marginBottom: '20px' }}>
                   <ul className={styles['capability-list']}>
-                    <li>
-                      人口库智能问数：人口数据、出生率、结婚率等多场景查询
-                    </li>
-                    <li>
-                      经济数据智能分析：GDP、CPI、就业率等宏观经济指标分析
-                    </li>
+                    <li>智能问数：人口数据、出生率、结婚率等多场景查询</li>
+                    <li>经济数据智能分析：GDP、CPI、就业率等经济指标分析</li>
                     <li>地理信息数据查询：行政区划、地理坐标、空间分析等</li>
-                    <li>
-                      行业数据洞察：各行业发展趋势、市场规模、竞争格局分析
-                    </li>
+                    <li>行业数据洞察：各行业发展趋势、竞争格局分析</li>
                   </ul>
                 </div>
               </div>
             </Col>
           </Row>
         </div>
-
-        {/* 价值创造与技术优势整合模块 */}
-        <div
-          ref={valueTechRef as React.RefObject<HTMLDivElement>}
-          className={`${
-            styles['value-tech-module']
-          } transition-all duration-1000 ${
-            isValueTechInView
-              ? 'opacity-100 translate-y-0'
-              : 'opacity-0 translate-y-20'
-          }`}
-        >
-          <div className={styles['value-tech-container']}>
-            {/* 模块标题 */}
-            <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-              <div className={styles['module-badge']}>
-                <BarChartOutlined />
-                <span>核心优势</span>
-              </div>
-              <h2 className={styles['module-title']}>价值创造与技术优势</h2>
-              <p className={styles['module-description']}>
-                通过先进技术实现企业价值最大化，让智能化成为企业发展的核心驱动力
-              </p>
-            </div>
-
-            <Row gutter={[40, 40]}>
-              {/* 左侧：核心价值指标 */}
-              <Col xs={24} lg={14}>
-                <div className={styles['value-section']}>
-                  <h3 className={styles['value-section-title']}>
-                    <div className={styles['value-section-icon']}>
-                      <BarChartOutlined />
-                    </div>
-                    核心价值指标
-                  </h3>
-
-                  {/* 主要指标 */}
-                  <Row gutter={[20, 20]}>
-                    <Col xs={12}>
-                      <div className={styles['value-card']}>
-                        <div className={styles['value-number']}>80%</div>
-                        <div className={styles['value-label']}>效率提升</div>
-                        <div className={styles['value-description']}>
-                          自动化流程处理，减少重复性工作
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={12}>
-                      <div className={styles['value-card']}>
-                        <div className={styles['value-number']}>60%</div>
-                        <div className={styles['value-label']}>成本节约</div>
-                        <div className={styles['value-description']}>
-                          减少人工成本，优化资源配置
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={12}>
-                      <div className={styles['value-card']}>
-                        <div className={styles['value-number']}>90%</div>
-                        <div className={styles['value-label']}>决策效率</div>
-                        <div className={styles['value-description']}>
-                          智能数据分析，快速生成报告
-                        </div>
-                      </div>
-                    </Col>
-                    <Col xs={12}>
-                      <div className={styles['value-card']}>
-                        <div className={styles['value-number']}>95%</div>
-                        <div className={styles['value-label']}>客户满意度</div>
-                        <div className={styles['value-description']}>
-                          7×24小时智能服务，快速响应
-                        </div>
-                      </div>
-                    </Col>
-                  </Row>
-
-                  {/* 额外价值指标 */}
-                  <div className={styles['extra-value-section']}>
-                    <h4 className={styles['extra-value-title']}>
-                      更多价值体现
-                    </h4>
-                    <Row gutter={[16, 12]}>
-                      <Col xs={12}>
-                        <div className={styles['extra-value-item']}>
-                          <span className={styles['extra-value-text']}>
-                            数据准确率提升至99.5%
-                          </span>
-                        </div>
-                      </Col>
-                      <Col xs={12}>
-                        <div className={styles['extra-value-item']}>
-                          <span className={styles['extra-value-text']}>
-                            响应时间缩短至秒级
-                          </span>
-                        </div>
-                      </Col>
-                      <Col xs={12}>
-                        <div className={styles['extra-value-item']}>
-                          <span className={styles['extra-value-text']}>
-                            业务流程标准化程度达95%
-                          </span>
-                        </div>
-                      </Col>
-                      <Col xs={12}>
-                        <div className={styles['extra-value-item']}>
-                          <span className={styles['extra-value-text']}>
-                            员工培训时间减少70%
-                          </span>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-                </div>
-              </Col>
-
-              {/* 右侧：技术优势 */}
-              <Col xs={24} lg={10}>
-                <div className={styles['tech-section']}>
-                  <h3 className={styles['tech-section-title']}>
-                    <div className={styles['tech-section-icon']}>
-                      <AppstoreOutlined />
-                    </div>
-                    技术优势
-                  </h3>
-
-                  <div className={styles['tech-container']}>
-                    <div className={styles['tech-card']}>
-                      <div className={styles['tech-card-content']}>
-                        <div className={styles['tech-card-icon']}>
-                          <AppstoreOutlined />
-                        </div>
-                        <div className={styles['tech-card-text']}>
-                          <div className={styles['tech-card-title']}>
-                            场景化设计
-                          </div>
-                          <div className={styles['tech-card-description']}>
-                            针对不同业务场景定制化开发，满足个性化需求
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={styles['tech-card']}>
-                      <div className={styles['tech-card-content']}>
-                        <div className={styles['tech-card-icon']}>
-                          <BuildOutlined />
-                        </div>
-                        <div className={styles['tech-card-text']}>
-                          <div className={styles['tech-card-title']}>
-                            行业专业化
-                          </div>
-                          <div className={styles['tech-card-description']}>
-                            深度理解行业需求，提供专业解决方案
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={styles['tech-card']}>
-                      <div className={styles['tech-card-content']}>
-                        <div className={styles['tech-card-icon']}>
-                          <BarChartOutlined />
-                        </div>
-                        <div className={styles['tech-card-text']}>
-                          <div className={styles['tech-card-title']}>
-                            智能化程度高
-                          </div>
-                          <div className={styles['tech-card-description']}>
-                            集成AI技术，实现智能分析和处理
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className={styles['tech-card']}>
-                      <div className={styles['tech-card-content']}>
-                        <div className={styles['tech-card-icon']}>
-                          <CustomerServiceOutlined />
-                        </div>
-                        <div className={styles['tech-card-text']}>
-                          <div className={styles['tech-card-title']}>
-                            易用性强
-                          </div>
-                          <div className={styles['tech-card-description']}>
-                            界面友好，操作简单，快速上手
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
-        </div>
       </div>
 
       {/* 中部分类筛选区域 */}
       <div
         ref={categoryRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 ${
+        className={`transition-all duration-1000 px-60 ${
           isCategoryInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
@@ -514,7 +313,7 @@ export default function AppService() {
       {/* 底部应用展示区域 */}
       <div
         ref={appsRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 ${
+        className={`transition-all duration-1000 px-60 mt-10 mb-20 ${
           isAppsInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'

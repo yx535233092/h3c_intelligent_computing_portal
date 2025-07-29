@@ -1,270 +1,804 @@
 'use client';
 
-import { useState } from 'react';
-import style from './page.module.css';
+import React from 'react';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useInView } from '@/hooks/useInView';
 
 export default function ModelService() {
   useScrollToTop();
-  const [servicesRef, isServicesInView] = useInView({ threshold: 0.1 });
+
+  // 动画相关的hooks
+  const [heroRef, isHeroInView] = useInView({ threshold: 0.3 });
+  const [tuningRef, isTuningInView] = useInView({ threshold: 0.2 });
+  const [deployRef, isDeployInView] = useInView({ threshold: 0.2 });
+  const [evalRef, isEvalInView] = useInView({ threshold: 0.2 });
 
   return (
-    <div className={style['model-service-root']}>
-      {/* 顶部标题区 */}
-      <section className={style.hero}>
-        <h1 className={style['hero-title']}>模型服务解决方案</h1>
-        <p className={style['hero-subtitle']}>专业的AI模型全生命周期管理平台</p>
-        <p className={style['hero-desc']}>
-          提供从模型微调、部署到测评的全流程服务，支持多种硬件环境与国产化部署方案。
-        </p>
-      </section>
-
-      {/* 三栏优势区 */}
-      <section className={style.features}>
-        <div className={style['feature-card']}>
-          <div className={style['feature-icon']}>🎯</div>
-          <h3>模型微调更精准</h3>
-          <p>基于LLMFactory框架，支持多种微调策略，针对性优化模型性能。</p>
-        </div>
-        <div className={style['feature-card']}>
-          <div className={style['feature-icon']}>🚀</div>
-          <h3>部署方案多样化</h3>
-          <p>支持N卡、国产化芯片等多种硬件环境，灵活部署策略。</p>
-        </div>
-        <div className={style['feature-card']}>
-          <div className={style['feature-icon']}>📊</div>
-          <h3>测评体系专业化</h3>
-          <p>全面的压力测试和精度评估，确保模型质量和性能指标。</p>
-        </div>
-      </section>
-
-      {/* 主要服务模块区 */}
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+      {/* Hero介绍模块 */}
       <section
-        ref={servicesRef}
-        className={`${style['services-section']} ${
-          isServicesInView ? style.animateIn : ''
+        ref={heroRef}
+        className={`px-60 pt-20 pb-16 transition-all duration-1000 ${
+          isHeroInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
         }`}
       >
-        <div className={style['services-title']}>
-          <h2>核心服务模块</h2>
-          <p>全面覆盖AI模型开发、部署与运维的关键环节，提供企业级专业服务</p>
+        <div className="text-center">
+          <h1 className="text-5xl font-bold mb-6">
+            <span className="text-gray-800">智能</span>
+            <span className="text-red-600 mx-2">模型服务</span>
+            <span className="text-gray-800">解决方案</span>
+          </h1>
+          <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            从模型微调到部署测评，提供全链路AI模型服务能力
+          </p>
+          <p className="text-lg text-gray-500 max-w-3xl mx-auto">
+            支持多种硬件平台部署，专业的性能测评体系，助力AI模型快速落地应用
+          </p>
         </div>
 
-        {/* 模型微调模块 */}
-        <div className={style['service-card']}>
-          <div className={style['service-header']}>
-            <div className={style['service-icon']}>⚙️</div>
-            <div>
-              <h3 className={style['service-title']}>模型微调</h3>
-              <p className={style['service-subtitle']}>
-                基于LLMFactory框架的专业模型微调服务，支持多种微调策略和任务类型
-              </p>
+        {/* 核心优势展示 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <svg
+                className="w-8 h-8 text-blue-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+                />
+              </svg>
             </div>
-          </div>
-          <div className={style['service-content']}>
-            <p className={style['service-intro']}>
-              采用业界先进的LLMFactory微调框架，提供从数据预处理到模型训练的全流程支持。
-              支持LoRA、QLoRA、全参数微调等多种策略，针对不同业务场景提供定制化解决方案。
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              智能微调
+            </h3>
+            <p className="text-gray-600 text-center">
+              基于LLaMA-Factory等先进框架，支持多种微调策略，快速适配业务场景
             </p>
+          </div>
 
-            <div className={style['features-grid']}>
-              <div className={style['feature-item']}>
-                <h4>领域特化微调</h4>
-                <p>针对金融、医疗、法律等垂直领域进行专业知识注入和性能优化</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>多任务联合训练</h4>
-                <p>支持多个相关任务同时训练，提升模型泛化能力和效率</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>参数高效微调</h4>
-                <p>采用LoRA、AdaLoRA等技术，在保持性能的同时大幅减少计算资源</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>持续学习优化</h4>
-                <p>支持增量学习和在线学习，模型可持续改进和适应新数据</p>
-              </div>
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <svg
+                className="w-8 h-8 text-green-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"
+                />
+              </svg>
             </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              灵活部署
+            </h3>
+            <p className="text-gray-600 text-center">
+              支持NVIDIA GPU、国产芯片等多种硬件平台，提供云端和本地化部署方案
+            </p>
+          </div>
 
-            {/* 视频演示区域 */}
-            <div className={style['video-placeholder']}>
-              <div className={style['video-placeholder-icon']}>🎥</div>
-              <p className={style['video-placeholder-text']}>
-                LLMFactory调试演示视频（后续提供）
-              </p>
+          <div className="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+            <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6 mx-auto">
+              <svg
+                className="w-8 h-8 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
             </div>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4 text-center">
+              专业测评
+            </h3>
+            <p className="text-gray-600 text-center">
+              全面的性能测试体系，包含压力测试、精度评估，确保模型质量
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <div className={style['tech-specs']}>
-              <h4>技术规格</h4>
-              <div className={style['specs-grid']}>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>支持模型</div>
-                  <div className={style['spec-value']}>
-                    LLaMA、ChatGLM、Baichuan等
+      {/* 模型微调模块 */}
+      <section
+        ref={tuningRef}
+        className={`px-60 py-16 bg-gray-50 transition-all duration-1000 ${
+          isTuningInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              模型微调服务
+            </h2>
+            <p className="text-xl text-gray-600">
+              基于LLaMA-Factory框架的专业模型微调解决方案
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* 左侧视频区域 */}
+            <div className="relative">
+              <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+                {/* 视频占位区域 */}
+                <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-red-700 transition-colors cursor-pointer">
+                      <svg
+                        className="w-8 h-8 text-white ml-1"
+                        fill="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path d="M8 5v14l11-7z" />
+                      </svg>
+                    </div>
+                    <p className="text-white text-lg font-medium">
+                      LLaMA-Factory 微调演示
+                    </p>
+                    <p className="text-gray-300 text-sm">点击播放调试视频</p>
                   </div>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>微调策略</div>
-                  <div className={style['spec-value']}>LoRA、QLoRA、全参数</div>
+                {/* 控制栏 */}
+                <div className="bg-gray-800 px-4 py-3 flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                  </div>
+                  <span className="text-gray-400 text-sm">
+                    LLaMA-Factory Debug Console
+                  </span>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>数据格式</div>
-                  <div className={style['spec-value']}>JSON、CSV、文本等</div>
+              </div>
+            </div>
+
+            {/* 右侧功能介绍 */}
+            <div className="space-y-6">
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <svg
+                      className="w-6 h-6 text-blue-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      多策略微调
+                    </h3>
+                    <p className="text-gray-600">
+                      支持LoRA、QLoRA、全参数微调等多种策略，灵活适配不同规模的模型训练需求
+                    </p>
+                  </div>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>训练时间</div>
-                  <div className={style['spec-value']}>小时级至天级</div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
+                    <svg
+                      className="w-6 h-6 text-green-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 10V3L4 14h7v7l9-11h-7z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      快速训练
+                    </h3>
+                    <p className="text-gray-600">
+                      优化的训练流程和参数配置，大幅缩短模型微调时间，提升开发效率
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <svg
+                      className="w-6 h-6 text-purple-600"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                      可视化调试
+                    </h3>
+                    <p className="text-gray-600">
+                      提供直观的训练过程监控和参数调试界面，实时跟踪模型训练状态
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* 模型部署模块 */}
-        <div className={style['service-card']}>
-          <div className={style['service-header']}>
-            <div className={style['service-icon']}>🖥️</div>
-            <div>
-              <h3 className={style['service-title']}>模型部署</h3>
-              <p className={style['service-subtitle']}>
-                支持N卡和国产化芯片的多环境部署方案，确保模型高效稳定运行
-              </p>
+      {/* 模型部署模块 */}
+      <section
+        ref={deployRef}
+        className={`px-60 py-16 transition-all duration-1000 ${
+          isDeployInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              模型部署方案
+            </h2>
+            <p className="text-xl text-gray-600">
+              支持NVIDIA GPU和国产芯片的多元化部署选择
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* NVIDIA GPU部署 */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-green-600 rounded-2xl flex items-center justify-center mr-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">
+                    NVIDIA GPU 部署
+                  </h3>
+                  <p className="text-gray-600">高性能计算平台解决方案</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      RTX 4090 / A100
+                    </span>
+                    <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
+                      推荐
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    大模型推理首选，支持7B-70B参数规模
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      RTX 3080 / 3090
+                    </span>
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                      性价比
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    中等规模模型部署，支持7B-13B参数
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      Tesla V100 / T4
+                    </span>
+                    <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
+                      云端
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    云端部署方案，弹性扩容支持
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-green-600 text-white rounded-xl">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">CUDA 加速优化</span>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+                    />
+                  </svg>
+                </div>
+                <p className="text-green-100 text-sm mt-1">性能提升高达10倍</p>
+              </div>
+            </div>
+
+            {/* 国产芯片部署 */}
+            <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center mr-4">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">
+                    国产芯片部署
+                  </h3>
+                  <p className="text-gray-600">自主可控的硬件平台支持</p>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      昇腾 910B / 310P
+                    </span>
+                    <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
+                      华为
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    华为昇腾AI处理器，支持MindSpore框架
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      寒武纪 MLU370
+                    </span>
+                    <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
+                      寒武纪
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    深度学习专用处理器，高效推理计算
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      海光 DCU
+                    </span>
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
+                      海光
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    兼容CUDA生态，无缝迁移部署
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 p-4 bg-red-600 text-white rounded-xl">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold">信创合规支持</span>
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.031 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <p className="text-red-100 text-sm mt-1">满足政企安全要求</p>
+              </div>
             </div>
           </div>
-          <div className={style['service-content']}>
-            <p className={style['service-intro']}>
-              提供完整的模型部署解决方案，支持NVIDIA
-              GPU、国产化芯片（海光、飞腾、鲲鹏等）、
-              以及各种云原生部署环境。通过容器化、微服务架构确保部署的灵活性和可扩展性。
-            </p>
 
-            <div className={style['features-grid']}>
-              <div className={style['feature-item']}>
-                <h4>N卡GPU部署</h4>
-                <p>
-                  优化NVIDIA GPU利用率，支持多卡并行、动态调度和资源池化管理
-                </p>
+          {/* 部署方式选择 */}
+          <div className="mt-12 bg-white rounded-2xl shadow-lg p-8">
+            <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+              部署方式选择
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
+                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                    />
+                  </svg>
+                </div>
+                <h5 className="font-semibold text-gray-800 mb-2">云端部署</h5>
+                <p className="text-gray-600 text-sm">弹性扩容，按需付费</p>
               </div>
-              <div className={style['feature-item']}>
-                <h4>国产化芯片适配</h4>
-                <p>深度适配海光DCU、飞腾CPU、鲲鹏处理器等国产化硬件平台</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>容器化部署</h4>
-                <p>基于Docker和Kubernetes的云原生部署，支持自动扩缩容</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>边缘计算支持</h4>
-                <p>支持边缘设备部署，满足低延迟和数据安全要求</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>混合云部署</h4>
-                <p>支持公有云、私有云、混合云多种部署模式，灵活组合</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>高可用架构</h4>
-                <p>多副本部署、故障转移、负载均衡，确保服务稳定性</p>
-              </div>
-            </div>
 
-            <div className={style['tech-specs']}>
-              <h4>支持硬件平台</h4>
-              <div className={style['specs-grid']}>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>NVIDIA GPU</div>
-                  <div className={style['spec-value']}>
-                    V100、A100、H100系列
-                  </div>
+              <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-green-300 transition-colors">
+                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-green-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>海光DCU</div>
-                  <div className={style['spec-value']}>DCU300、DCU500系列</div>
+                <h5 className="font-semibold text-gray-800 mb-2">本地部署</h5>
+                <p className="text-gray-600 text-sm">数据安全，专属资源</p>
+              </div>
+
+              <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-purple-300 transition-colors">
+                <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-purple-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>飞腾CPU</div>
-                  <div className={style['spec-value']}>
-                    FT-2000+、FT-D2000系列
-                  </div>
-                </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>华为鲲鹏</div>
-                  <div className={style['spec-value']}>
-                    鲲鹏920、鲲鹏930系列
-                  </div>
-                </div>
+                <h5 className="font-semibold text-gray-800 mb-2">边缘部署</h5>
+                <p className="text-gray-600 text-sm">低延迟，离线可用</p>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* 模型测评模块 */}
-        <div className={style['service-card']}>
-          <div className={style['service-header']}>
-            <div className={style['service-icon']}>📈</div>
-            <div>
-              <h3 className={style['service-title']}>模型测评</h3>
-              <p className={style['service-subtitle']}>
-                专业的模型性能评估体系，涵盖压力测试和精度验证的全方位分析
-              </p>
+      {/* 模型测评模块 */}
+      <section
+        ref={evalRef}
+        className={`px-60 py-16 bg-gray-50 transition-all duration-1000 ${
+          isEvalInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-800 mb-4">
+              专业模型测评
+            </h2>
+            <p className="text-xl text-gray-600">
+              全方位的性能评估体系，确保模型质量与稳定性
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            {/* 压力测试 */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center mr-4">
+                  <svg
+                    className="w-8 h-8 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">压力测试</h3>
+                  <p className="text-gray-600">极限负载下的性能表现评估</p>
+                </div>
+              </div>
+
+              {/* 测试指标 */}
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between items-center p-4 bg-orange-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    并发处理能力
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-20 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <span className="text-orange-600 font-semibold">85%</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center p-4 bg-orange-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    响应时间稳定性
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-22 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <span className="text-orange-600 font-semibold">92%</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center p-4 bg-orange-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    内存使用效率
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-18 h-2 bg-orange-500 rounded-full"></div>
+                    </div>
+                    <span className="text-orange-600 font-semibold">78%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 测试场景 */}
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-semibold text-gray-800 mb-3">
+                  测试场景覆盖
+                </h4>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">高并发请求</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">长时间运行</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">大数据量处理</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">异常场景恢复</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* 精度测试 */}
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition-all duration-300">
+              <div className="flex items-center mb-6">
+                <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mr-4">
+                  <svg
+                    className="w-8 h-8 text-blue-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold text-gray-800">精度测试</h3>
+                  <p className="text-gray-600">多维度准确性与可靠性验证</p>
+                </div>
+              </div>
+
+              {/* 精度指标 */}
+              <div className="space-y-4 mb-6">
+                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    语义理解准确率
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-22 h-2 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <span className="text-blue-600 font-semibold">94%</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    生成内容质量
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-20 h-2 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <span className="text-blue-600 font-semibold">88%</span>
+                  </div>
+                </div>
+
+                <div className="flex justify-between items-center p-4 bg-blue-50 rounded-xl">
+                  <span className="font-semibold text-gray-800">
+                    逻辑一致性
+                  </span>
+                  <div className="flex items-center">
+                    <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
+                      <div className="w-23 h-2 bg-blue-500 rounded-full"></div>
+                    </div>
+                    <span className="text-blue-600 font-semibold">96%</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 评估维度 */}
+              <div className="bg-gray-50 rounded-xl p-4">
+                <h4 className="font-semibold text-gray-800 mb-3">评估维度</h4>
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">BLEU评分</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">ROUGE指标</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">人工评估</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">领域适应性</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div className={style['service-content']}>
-            <p className={style['service-intro']}>
-              建立完整的模型评估体系，通过多维度指标和专业测试工具，
-              全面评估模型的性能表现、稳定性和业务适用性。确保模型在生产环境中的可靠运行。
-            </p>
 
-            <div className={style['features-grid']}>
-              <div className={style['feature-item']}>
-                <h4>压力测试</h4>
-                <p>高并发请求测试、内存压力测试、长时间运行稳定性验证</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>精度评估</h4>
-                <p>BLEU、ROUGE、准确率、召回率等多维度精度指标评估</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>性能基准测试</h4>
-                <p>推理速度、吞吐量、延迟、资源利用率等性能指标测试</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>安全性测试</h4>
-                <p>对抗样本测试、数据泄露风险评估、模型鲁棒性验证</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>业务场景测试</h4>
-                <p>真实业务数据验证、边界条件测试、异常情况处理验证</p>
-              </div>
-              <div className={style['feature-item']}>
-                <h4>可解释性评估</h4>
-                <p>模型决策可解释性分析、特征重要性评估、偏见检测</p>
-              </div>
+          {/* 专业认证 */}
+          <div className="mt-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
+            <div className="text-center mb-8">
+              <h4 className="text-2xl font-bold mb-4">专业认证与标准</h4>
+              <p className="text-purple-100">
+                遵循国际标准，确保测评结果的权威性和可信度
+              </p>
             </div>
 
-            <div className={style['tech-specs']}>
-              <h4>测评指标体系</h4>
-              <div className={style['specs-grid']}>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>精度指标</div>
-                  <div className={style['spec-value']}>
-                    准确率、F1-Score、BLEU
-                  </div>
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>性能指标</div>
-                  <div className={style['spec-value']}>QPS、延迟、吞吐量</div>
+                <h5 className="font-semibold mb-1">ISO 25010</h5>
+                <p className="text-purple-100 text-sm">软件质量标准</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 15v2m-6 0h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                    />
+                  </svg>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>资源指标</div>
-                  <div className={style['spec-value']}>GPU/CPU利用率、内存</div>
+                <h5 className="font-semibold mb-1">NIST AI RMF</h5>
+                <p className="text-purple-100 text-sm">AI风险管理框架</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                    />
+                  </svg>
                 </div>
-                <div className={style['spec-item']}>
-                  <div className={style['spec-label']}>稳定性指标</div>
-                  <div className={style['spec-value']}>
-                    可用性、故障恢复时间
-                  </div>
+                <h5 className="font-semibold mb-1">MLPerf</h5>
+                <p className="text-purple-100 text-sm">机器学习基准测试</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                  <svg
+                    className="w-8 h-8 text-white"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
+                  </svg>
                 </div>
+                <h5 className="font-semibold mb-1">信创标准</h5>
+                <p className="text-purple-100 text-sm">国产化适配认证</p>
               </div>
             </div>
           </div>

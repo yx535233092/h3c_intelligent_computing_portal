@@ -1,5 +1,5 @@
 .data-service-root {
-  padding: 0 0 50px 0;
+  padding: 0 0 100px 0;
   background: #fafbfc;
   min-height: 100vh;
   font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
@@ -7,16 +7,16 @@
 
 .hero {
   text-align: center;
-  padding: 64px 16px 32px 16px;
-  background: linear-gradient(135deg, #fff 60%, #ffe5e5 100%);
+  padding: 150px 0 90px 0;
+  background: url('/13.jpg') no-repeat center/ 100% 100%;
   box-shadow: 0 4px 24px rgba(229, 57, 53, 0.06);
 }
 
 .hero-title {
-  color: #e53935;
+  color: #d32d26;
   font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 .hero-subtitle {
@@ -169,7 +169,7 @@
   animation: fadeInUp 0.8s ease-out 1.2s forwards;
 }
 .multiNeedsTitle {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: 400;
   margin-bottom: 40px;
   color: #222;
@@ -551,7 +551,7 @@
   display: flex;
   align-items: center;
   gap: 32px;
-  background: #fafbfc;
+  background: linear-gradient(135deg, #fff 60%, #fff2f2 100%);
   border-radius: 16px;
   padding: 32px;
   transition: transform 0.2s, box-shadow 0.2s;
