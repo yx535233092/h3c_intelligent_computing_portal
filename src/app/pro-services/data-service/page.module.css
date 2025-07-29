@@ -712,109 +712,491 @@
 .complexLayoutDemo {
   width: 160px;
   height: 120px;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #fafbff 0%, #f0f4ff 100%);
   border-radius: 8px;
   position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-.layoutBlocks::before {
-  content: '';
-  position: absolute;
-  left: 12px;
-  top: 12px;
-  width: 60px;
-  height: 80px;
-  background: #e9ecef;
-  border-radius: 4px;
-}
-
-.layoutBlocks::after {
-  content: '';
-  position: absolute;
-  right: 12px;
-  top: 12px;
-  width: 60px;
-  height: 80px;
-  background: #e9ecef;
-  border-radius: 4px;
-}
-
-.tableDemo {
-  width: 160px;
-  height: 120px;
-  background: #f8f9fa;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.complexTable {
-  width: 120px;
-  height: 80px;
-  border: 2px solid #e9ecef;
-  border-radius: 4px;
-  position: relative;
-}
-
-.complexTable::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 20px;
+.layoutDocument {
   width: 100%;
-  height: 1px;
-  background: #e9ecef;
-}
-
-.complexTable::after {
-  content: '';
-  position: absolute;
-  left: 40px;
-  top: 0;
-  width: 1px;
   height: 100%;
-  background: #e9ecef;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.headerDemo {
+.documentHeader {
+  width: 100%;
+  height: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.headerLine {
+  width: 70%;
+  height: 6px;
+  background: linear-gradient(90deg, #e53935 0%, #ff7043 100%);
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(229, 57, 53, 0.2);
+}
+
+.headerLine2 {
+  width: 45%;
+  height: 4px;
+  background: linear-gradient(90deg, #42a5f5 0%, #66bb6a 100%);
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(66, 165, 245, 0.2);
+}
+
+.documentBody {
+  flex: 1;
+  display: flex;
+  gap: 6px;
+}
+
+.leftColumn,
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.textLine {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #e0e7ff 0%, #c7d2fe 100%);
+  border-radius: 1.5px;
+  animation: shimmer 2s ease-in-out infinite alternate;
+}
+
+.textLine:nth-child(2) {
+  width: 85%;
+  animation-delay: 0.3s;
+}
+
+.textLine:nth-child(3) {
+  width: 90%;
+  animation-delay: 0.6s;
+}
+
+.textLine:nth-child(5) {
+  width: 75%;
+  animation-delay: 0.9s;
+}
+
+.imageBlock {
+  width: 100%;
+  height: 18px;
+  background: linear-gradient(135deg, #ffd54f 0%, #ffb74d 50%, #81c784 100%);
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 2px 0;
+}
+
+.imageBlock::before {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+}
+
+.imageBlock::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  right: 3px;
+  width: 12px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1px;
+}
+
+.chartBlock {
+  width: 100%;
+  height: 20px;
+  background: linear-gradient(135deg, #e1f5fe 0%, #b3e5fc 50%, #81d4fa 100%);
+  border-radius: 3px;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 2px 0;
+  overflow: hidden;
+}
+
+.chartBlock::before {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 2px;
+  width: 3px;
+  height: 8px;
+  background: #2196f3;
+  border-radius: 1px;
+  box-shadow: 4px 0 0 #4caf50, 8px 0 0 #ff9800, 12px 0 0 #f44336;
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(0.98);
+  }
+}
+
+/* 复杂表格解析样式 */
+.complexTableDemo {
   width: 160px;
   height: 120px;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
-.complexHeader {
-  width: 120px;
-  height: 80px;
-  border: 2px solid #e9ecef;
-  border-radius: 4px;
+.complexTableContainer {
+  width: 140px;
+  height: 100px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: flex;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  height: 20px;
+}
+
+.headerCell {
+  flex: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
 }
 
-.complexHeader::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 25px;
-  background: #e9ecef;
-  border-radius: 2px 2px 0 0;
+.headerCell:last-child {
+  border-right: none;
 }
 
-.complexHeader::after {
+.headerCell::after {
   content: '';
   position: absolute;
-  left: 0;
-  top: 25px;
-  width: 100%;
-  height: 1px;
-  background: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 1px;
 }
+
+.tableRows {
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableRow {
+  flex: 1;
+  display: flex;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tableRow:last-child {
+  border-bottom: none;
+}
+
+.dataCell {
+  flex: 1;
+  border-right: 1px solid #e5e7eb;
+  position: relative;
+  background: linear-gradient(90deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.dataCell:last-child {
+  border-right: none;
+}
+
+.dataCell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 8px;
+  right: 8px;
+  height: 2px;
+  background: linear-gradient(90deg, #cbd5e1 0%, #94a3b8 100%);
+  border-radius: 1px;
+  animation: dataLoad 2s ease-in-out infinite;
+}
+
+.dataCell:nth-child(2n)::after {
+  animation-delay: 0.3s;
+}
+
+.dataCell:nth-child(3n)::after {
+  animation-delay: 0.6s;
+}
+
+@keyframes dataLoad {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scaleX(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* 多区域表格解析样式 */
+.multiTableDemo {
+  width: 160px;
+  height: 120px;
+  background: linear-gradient(135deg, #fef3e2 0%, #fde68a 100%);
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  padding: 12px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tableArea1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.tableArea2 {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.tableArea3 {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  height: 70%;
+}
+
+.miniTable {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  border: 1px solid #f59e0b;
+}
+
+.miniTableHeader {
+  height: 30%;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  position: relative;
+}
+
+.miniTableHeader::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1px;
+}
+
+.miniTableRow {
+  height: 35%;
+  border-bottom: 1px solid #fed7aa;
+  position: relative;
+  background: linear-gradient(90deg, #fffbeb 0%, #fef3c7 100%);
+}
+
+.miniTableRow:last-child {
+  border-bottom: none;
+}
+
+.miniTableRow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: #fbbf24;
+  border-radius: 0.5px;
+  opacity: 0.7;
+}
+
+/* 复杂表头解析样式 */
+.mergedHeaderDemo {
+  width: 160px;
+  height: 120px;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mergedTableContainer {
+  width: 140px;
+  height: 100px;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid #22c55e;
+}
+
+.multiLevelHeader {
+  height: 40px;
+}
+
+.topHeaderRow {
+  height: 20px;
+  display: flex;
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+}
+
+.mergedHeaderCell1 {
+  width: 30%;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.mergedHeaderCell2 {
+  width: 45%;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.mergedHeaderCell3 {
+  width: 25%;
+  position: relative;
+}
+
+.mergedHeaderCell1::after,
+.mergedHeaderCell2::after,
+.mergedHeaderCell3::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1px;
+}
+
+.subHeaderRow {
+  height: 20px;
+  display: flex;
+  background: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+}
+
+.subHeaderCell {
+  flex: 1;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+.subHeaderCell:last-child {
+  border-right: none;
+}
+
+.subHeaderCell::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 0.5px;
+}
+
+.tableDataRows {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dataRowComplex {
+  flex: 1;
+  display: flex;
+  border-bottom: 1px solid #d1fae5;
+}
+
+.dataRowComplex:last-child {
+  border-bottom: none;
+}
+
+.dataCellComplex {
+  flex: 1;
+  border-right: 1px solid #d1fae5;
+  position: relative;
+  background: linear-gradient(90deg, #f7fee7 0%, #ecfdf5 100%);
+}
+
+.dataCellComplex:last-child {
+  border-right: none;
+}
+
+.dataCellComplex::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 6px;
+  right: 6px;
+  height: 1px;
+  background: linear-gradient(90deg, #bbf7d0 0%, #86efac 100%);
+  border-radius: 0.5px;
+  animation: complexDataLoad 2.5s ease-in-out infinite;
+}
+
+.dataCellComplex:nth-child(2n)::after {
+  animation-delay: 0.4s;
+}
+
+.dataCellComplex:nth-child(3n)::after {
+  animation-delay: 0.8s;
+}
+
+@keyframes complexDataLoad {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scaleX(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+/* 旧的表格样式已被上面的新样式替代 */
 
 .imageProcessDemo {
   display: flex;

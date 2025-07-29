@@ -1,3 +1,4 @@
+// hook: 判断元素是否在视窗中
 import { useEffect, useRef, useState } from 'react';
 
 interface UseInViewOptions {

@@ -1,0 +1,102 @@
+@import 'tailwindcss';
+@import '@js-preview/excel/lib/index.css';
+
+@theme {
+  /* 品牌色 */
+  --color-brand: #d32d26;
+  /* 一级文本 */
+  --color-first-text: #eee;
+  /* 二级文本 */
+  --color-secondary-text: #ccc;
+}
+
+/* 导出菜单动画 */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 首页动画效果 */
+@keyframes naturalFlow {
+  0%,
+  100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translateY(-5px) scale(1.02);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.05);
+    opacity: 0.9;
+  }
+  75% {
+    transform: translateY(-3px) scale(1.02);
+    opacity: 0.8;
+  }
+}
+
+@keyframes naturalFloat1 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  33% {
+    transform: translate(10px, -15px) rotate(5deg);
+  }
+  66% {
+    transform: translate(-8px, -10px) rotate(-3deg);
+  }
+}
+
+@keyframes naturalFloat2 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  25% {
+    transform: translate(-12px, 8px) rotate(-4deg);
+  }
+  50% {
+    transform: translate(15px, -5px) rotate(6deg);
+  }
+  75% {
+    transform: translate(-5px, 12px) rotate(-2deg);
+  }
+}
+
+@keyframes naturalFloat3 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  40% {
+    transform: translate(8px, -12px) rotate(3deg);
+  }
+  80% {
+    transform: translate(-10px, 6px) rotate(-5deg);
+  }
+}
+
+@keyframes naturalFloat4 {
+  0%,
+  100% {
+    transform: translate(0px, 0px) rotate(0deg);
+  }
+  30% {
+    transform: translate(-6px, -8px) rotate(-2deg);
+  }
+  60% {
+    transform: translate(12px, 4px) rotate(4deg);
+  }
+  90% {
+    transform: translate(-4px, -6px) rotate(-1deg);
+  }
+}

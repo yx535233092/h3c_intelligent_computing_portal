@@ -144,7 +144,28 @@ export default function DataService() {
               <div className={style.serviceCard}>
                 <div className={style.serviceImage}>
                   <div className={style.complexLayoutDemo}>
-                    <div className={style.layoutBlocks}></div>
+                    <div className={style.layoutDocument}>
+                      <div className={style.documentHeader}>
+                        <div className={style.headerLine}></div>
+                        <div className={style.headerLine2}></div>
+                      </div>
+                      <div className={style.documentBody}>
+                        <div className={style.leftColumn}>
+                          <div className={style.textLine}></div>
+                          <div className={style.textLine}></div>
+                          <div className={style.textLine}></div>
+                          <div className={style.imageBlock}></div>
+                          <div className={style.textLine}></div>
+                        </div>
+                        <div className={style.rightColumn}>
+                          <div className={style.textLine}></div>
+                          <div className={style.textLine}></div>
+                          <div className={style.chartBlock}></div>
+                          <div className={style.textLine}></div>
+                          <div className={style.textLine}></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={style.serviceInfo}>
@@ -157,7 +178,7 @@ export default function DataService() {
                     智能排版还原
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="http://192.168.10.24:7860/?title=复杂布局文档解析"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -187,7 +208,7 @@ export default function DataService() {
                     复杂公式结构解析
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="http://192.168.10.24:7860/?title=公式类文档解析"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -216,7 +237,7 @@ export default function DataService() {
                     媒体资料智能提取
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="http://192.168.10.24:7860/?title=媒体报刊类文档解析"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -232,8 +253,35 @@ export default function DataService() {
             <div className={style.tabPane}>
               <div className={style.serviceCard}>
                 <div className={style.serviceImage}>
-                  <div className={style.tableDemo}>
-                    <div className={style.complexTable}></div>
+                  <div className={style.complexTableDemo}>
+                    <div className={style.complexTableContainer}>
+                      <div className={style.tableHeader}>
+                        <div className={style.headerCell}></div>
+                        <div className={style.headerCell}></div>
+                        <div className={style.headerCell}></div>
+                        <div className={style.headerCell}></div>
+                      </div>
+                      <div className={style.tableRows}>
+                        <div className={style.tableRow}>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                        </div>
+                        <div className={style.tableRow}>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                        </div>
+                        <div className={style.tableRow}>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                          <div className={style.dataCell}></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={style.serviceInfo}>
@@ -257,8 +305,27 @@ export default function DataService() {
 
               <div className={style.serviceCard}>
                 <div className={style.serviceImage}>
-                  <div className={style.tableDemo}>
-                    <div className={style.complexTable}></div>
+                  <div className={style.multiTableDemo}>
+                    <div className={style.tableArea1}>
+                      <div className={style.miniTable}>
+                        <div className={style.miniTableHeader}></div>
+                        <div className={style.miniTableRow}></div>
+                        <div className={style.miniTableRow}></div>
+                      </div>
+                    </div>
+                    <div className={style.tableArea2}>
+                      <div className={style.miniTable}>
+                        <div className={style.miniTableHeader}></div>
+                        <div className={style.miniTableRow}></div>
+                        <div className={style.miniTableRow}></div>
+                      </div>
+                    </div>
+                    <div className={style.tableArea3}>
+                      <div className={style.miniTable}>
+                        <div className={style.miniTableHeader}></div>
+                        <div className={style.miniTableRow}></div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={style.serviceInfo}>
@@ -282,8 +349,39 @@ export default function DataService() {
 
               <div className={style.serviceCard}>
                 <div className={style.serviceImage}>
-                  <div className={style.headerDemo}>
-                    <div className={style.complexHeader}></div>
+                  <div className={style.mergedHeaderDemo}>
+                    <div className={style.mergedTableContainer}>
+                      <div className={style.multiLevelHeader}>
+                        <div className={style.topHeaderRow}>
+                          <div className={style.mergedHeaderCell1}></div>
+                          <div className={style.mergedHeaderCell2}></div>
+                          <div className={style.mergedHeaderCell3}></div>
+                        </div>
+                        <div className={style.subHeaderRow}>
+                          <div className={style.subHeaderCell}></div>
+                          <div className={style.subHeaderCell}></div>
+                          <div className={style.subHeaderCell}></div>
+                          <div className={style.subHeaderCell}></div>
+                          <div className={style.subHeaderCell}></div>
+                        </div>
+                      </div>
+                      <div className={style.tableDataRows}>
+                        <div className={style.dataRowComplex}>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                        </div>
+                        <div className={style.dataRowComplex}>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                          <div className={style.dataCellComplex}></div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className={style.serviceInfo}>
@@ -296,7 +394,7 @@ export default function DataService() {
                     表格逻辑结构还原
                   </p>
                   <a
-                    href="/excel-process"
+                    href="/excel-process?type=2"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -326,7 +424,7 @@ export default function DataService() {
                     专业文史处理
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="http://192.168.10.24:7860/?title=古籍解析"
                     target="_blank"
                     className={style.detailLink}
                   >
@@ -351,7 +449,7 @@ export default function DataService() {
                     草书行书支持
                   </p>
                   <a
-                    href="http://192.168.10.24:7860/"
+                    href="http://192.168.10.24:7860/?title=手写识别"
                     target="_blank"
                     className={style.detailLink}
                   >

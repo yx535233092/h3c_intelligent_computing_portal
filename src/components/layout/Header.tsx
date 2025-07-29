@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import Logo from '@/components/ui/Logo';
 import type { MenuProps } from 'antd';
 import React, { useState, useEffect } from 'react';
-import './Header.css';
+import styles from './Header.module.css';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -29,11 +29,11 @@ const items: MenuItem[] = [
       },
       {
         label: '模型服务',
-        key: '/pro-services/network-service'
+        key: '/pro-services/model-service'
       },
       {
-        label: '运维服务',
-        key: '/pro-services/security-service'
+        label: '咨询培训服务',
+        key: '/pro-services/consult-service'
       }
     ]
   },

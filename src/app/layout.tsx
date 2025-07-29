@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import './globals.css';
+import '@/styles/globals.css';
 import { RootStyleRegistry } from '@/components/layout/RootStyleRegistry';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
 

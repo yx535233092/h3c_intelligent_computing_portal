@@ -52,6 +52,16 @@ const pageConfigs: Record<string, PageConfig> = {
       { title: '专业服务' },
       { title: '数据服务' }
     ]
+  },
+  '/pro-services/model-service': {
+    title: '模型服务',
+    subtitle: 'Model Service',
+    backgroundImage: '/1.jpg',
+    breadcrumb: [
+      { title: '首页' },
+      { title: '专业服务' },
+      { title: '模型服务' }
+    ]
   }
 };
 
@@ -71,7 +81,8 @@ export default function HeroSection() {
   if (
     pathname === '/' ||
     pathname === '/home' ||
-    pathname.includes('excel-process')
+    pathname.includes('excel-process') ||
+    pathname.includes('pro-services')
   ) {
     return null;
   }

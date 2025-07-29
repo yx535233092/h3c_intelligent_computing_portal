@@ -1,9 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import ExcelUpload from '@/components/ui/ExcelUpload';
-import ExcelPreview from '@/components/ui/ExcelPreview';
-import ExcelResult from '@/components/ui/ExcelResult';
+import ExcelUpload from '@/components/features/excel/ExcelUpload';
+import ExcelPreview from '@/components/features/excel/ExcelPreview';
+import ExcelResult from '@/components/features/excel/ExcelResult';
 
 interface UploadResult {
   filename?: string;
@@ -28,11 +28,6 @@ export default function ExcelProcess() {
   );
   const [uploadError, setUploadError] = useState<string | undefined>(undefined);
 
-  // API 连接测试状态
-  const [apiStatus, setApiStatus] = useState<
-    'idle' | 'testing' | 'success' | 'error'
-  >('idle');
-
   // 处理上传成功
   const handleUploadSuccess = (result?: UploadResult) => {
     setUploadResult(result);
@@ -47,68 +42,12 @@ export default function ExcelProcess() {
     console.error('上传处理失败:', error);
   };
 
-  // 测试 API 连接
-  const testApiConnection = async () => {
-    setApiStatus('testing');
-    try {
-      const response = await fetch('http://localhost:8000/docs', {
-        method: 'GET',
-        mode: 'cors'
-      });
-
-      if (response.ok) {
-        setApiStatus('success');
-        setTimeout(() => setApiStatus('idle'), 3000);
-      } else {
-        setApiStatus('error');
-        setTimeout(() => setApiStatus('idle'), 3000);
-      }
-    } catch (error) {
-      console.error('API 连接测试失败:', error);
-      setApiStatus('error');
-      setTimeout(() => setApiStatus('idle'), 3000);
-    }
-  };
-
-  const getApiStatusText = () => {
-    switch (apiStatus) {
-      case 'testing':
-        return '测试中...';
-      case 'success':
-        return '✓ 连接正常';
-      case 'error':
-        return '✗ 连接失败';
-      default:
-        return '测试 API 连接';
-    }
-  };
-
-  const getApiStatusColor = () => {
-    switch (apiStatus) {
-      case 'testing':
-        return 'bg-blue-500';
-      case 'success':
-        return 'bg-green-500';
-      case 'error':
-        return 'bg-red-500';
-      default:
-        return 'bg-gray-500';
-    }
-  };
-
   return (
     <div>
       <div className="flex items-center justify-between py-2 border-b-1 border-gray-200">
         <span className="text-lg font-semibold text-gray-800 px-8">
           表格数据预处理
         </span>
-        <button
-          onClick={testApiConnection}
-          disabled={apiStatus === 'testing'}
-          className={`px-4 py-2 text-white text-sm rounded mr-8 ${getApiStatusColor()} hover:opacity-80 disabled:cursor-not-allowed`}
-        >
-          {getApiStatusText()}
-        </button>
       </div>
       <div className="flex h-[calc(100vh-117px)]">
         <div className="w-1/5 h-full">

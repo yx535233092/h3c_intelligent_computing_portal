@@ -130,7 +130,6 @@ if __name__ == '__main__':
                 None,
                 gr.update(value=None, visible=False),
                 gr.update(value=None, visible=False),
-                gr.update(value="", visible=False)  # Hide parsing prompt
             )
         parent_path = os.path.dirname(pdf_file)
         full_name = os.path.basename(pdf_file)
@@ -214,8 +213,8 @@ if __name__ == '__main__':
         return (
             md_content_ori,
             md_content,
-            gr.update(value=layout_pdf_path, visible=True),
-            gr.update(value=zip_path, visible=True),
+            gr.update(value=layout_pdf_path, visible=False),
+            gr.update(value=zip_path, visible=False),
         )
 
     def chat_with_image(message, pdf_file):
@@ -239,10 +238,10 @@ if __name__ == '__main__':
             file_writer = FileBasedDataWriter(base_dir)
             md_name = f"chat_response_{uuid.uuid4().hex}.md"
             file_writer.write(md_name, response.encode('utf-8'))
-            return response, response, gr.update(value=None, visible=True), gr.update(value=os.path.join(base_dir, md_name), visible=True)
+            return response, response, gr.update(value=None, visible=False), gr.update(value=os.path.join(base_dir, md_name), visible=False)
         except Exception as e:
             response = f"对话处理错误: {str(e)}"
-            return response, response, gr.update(value=None, visible=True), gr.update(value=None, visible=True)
+            return response, response, gr.update(value=None, visible=False), gr.update(value=None, visible=False)
 
     # Global cache: store images of each page
     pdf_cache = {
@@ -337,8 +336,8 @@ if __name__ == '__main__':
                 </div>""",
                 "请上传PDF文件",
                 "<div id='page_info_box'>0 / 0</div>",
-                gr.update(value=None, visible=True),
-                gr.update(value=None, visible=True),
+                gr.update(value=None, visible=False),
+                gr.update(value=None, visible=False),
             )
         
         try:
@@ -346,12 +345,12 @@ if __name__ == '__main__':
             md_content_ori, md_content, layout_pdf_update, zip_update = parse_pdf_and_return_results(pdf_file)
             
             # Update global variables
-            layout_pdf_path = layout_pdf_update['value']
-            markdown_zip_path = zip_update['value']
+            current_layout_pdf_path = layout_pdf_update['value'] if layout_pdf_update['value'] else None
+            current_markdown_zip_path = zip_update['value'] if zip_update['value'] else None
             
             # Load parsed layout PDF for preview
-            if layout_pdf_path and os.path.exists(layout_pdf_path):
-                pages = convert_from_path(layout_pdf_path, dpi=150)
+            if current_layout_pdf_path and os.path.exists(current_layout_pdf_path):
+                pages = convert_from_path(current_layout_pdf_path, dpi=150)
                 pdf_cache["images"] = pages
                 pdf_cache["current_page"] = 0
                 pdf_cache["total_pages"] = len(pages)
@@ -366,8 +365,8 @@ if __name__ == '__main__':
                 md_content,
                 md_content_ori,
                 page_info,
-                layout_pdf_update,
-                zip_update,
+                gr.update(value=current_layout_pdf_path, visible=False),
+                gr.update(value=current_markdown_zip_path, visible=False),
             )
         except:
             logger.warning("解析失败，切换到对话模式进行直接识别...")
@@ -378,8 +377,8 @@ if __name__ == '__main__':
                 md_content,
                 md_content_ori,
                 "<div id='page_info_box'>1 / 1</div>",
-                layout_pdf_update,
-                zip_update,
+                gr.update(value=None, visible=False),
+                gr.update(value=None, visible=False),
             )
 
     def clear_all():
@@ -400,8 +399,8 @@ if __name__ == '__main__':
             </div>""",  # Clear Markdown preview
             "等待解析结果...",  # Clear Markdown raw text
             "<div id='page_info_box'>0 / 0</div>",  # Clear page info
-            gr.update(value=None, visible=True),
-            gr.update(value=None, visible=True),
+            gr.update(value=None, visible=False),
+            gr.update(value=None, visible=False),
         )
 
     instruction = f'''请输出图片中的文字内容。'''
@@ -410,9 +409,35 @@ if __name__ == '__main__':
     instruction_table_latex = f'''请以LaTeX格式输出图片中的表格。'''
 
     css = """
+    #component-6,
+    #component-9,
+    #component-11  {
+        display: none !important;
+    }
+
+    #component-3,
+    #component-15 {
+        height:936px !important;
+    }
+
+    #download_menu_container {
+        position:absolute;
+        left:0;
+        bottom:52px;
+    }
+
     /* 主体样式 */
     .gradio-container {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow: visible !important;
+    }
+    
+    /* 确保所有相关容器都不会遮挡下拉菜单 */
+    .gradio-container .gr-blocks,
+    .gradio-container .gr-column,
+    .gradio-container .gr-row,
+    #download_menu_container {
+        overflow: visible !important;
     }
     
     /* 整体页面容器样式 */
@@ -501,6 +526,7 @@ if __name__ == '__main__':
         align-self: stretch !important;
         height: fit-content !important;
         min-height: 850px !important;
+        overflow: visible !important;
     }
     
     /* 右侧两栏样式 */
@@ -985,6 +1011,145 @@ if __name__ == '__main__':
         margin-right: 8px !important;
     }
     
+    /* 下载按钮组样式 */
+    .download-container {
+        width: 100%;
+        position: relative;
+        z-index: 9998 !important;
+        overflow: visible !important;
+    }
+    
+    /* 强制确保下载容器的父级元素不遮挡菜单 */
+    .download-container * {
+        overflow: visible !important;
+    }
+    
+    .download-dropdown {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        overflow: visible !important;
+    }
+    
+    .download-main-btn {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        padding: 12px 16px !important;
+        background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%) !important;
+        border: none !important;
+        border-radius: 10px !important;
+        color: #333 !important;
+        font-weight: 500 !important;
+        font-size: 14px !important;
+        cursor: pointer !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: 
+            0 4px 6px -1px rgba(0, 0, 0, 0.1),
+            0 2px 4px -1px rgba(0, 0, 0, 0.06),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+        position: relative !important;
+    }
+    
+    .download-main-btn:hover {
+        background: linear-gradient(145deg, #f8f9fa 0%, #e9ecef 100%) !important;
+        color: #d32d26 !important;
+        transform: translateY(-2px) !important;
+        box-shadow: 
+            0 8px 25px -5px rgba(0, 0, 0, 0.1),
+            0 10px 15px -3px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    }
+    
+    .dropdown-arrow {
+        transition: transform 0.3s ease !important;
+        margin-left: auto !important;
+    }
+    
+    .download-dropdown:hover .dropdown-arrow {
+        transform: rotate(-180deg) !important;
+    }
+    
+    .download-dropdown-menu {
+        position: absolute !important;
+        bottom: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: white !important;
+        border: 1px solid #e0e0e0 !important;
+        border-radius: 8px !important;
+        box-shadow: 
+            0 -10px 15px -3px rgba(0, 0, 0, 0.1),
+            0 -4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transform: translateY(10px) !important;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 9999 !important;
+        margin-bottom: 4px !important;
+        overflow: visible !important;
+    }
+    
+    .download-dropdown:hover .download-dropdown-menu {
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: translateY(0) !important;
+        z-index: 99999 !important;
+    }
+    
+    /* 强制确保hover时菜单能够显示在最顶层 */
+    .download-dropdown:hover {
+        z-index: 99998 !important;
+        overflow: visible !important;
+    }
+    
+    .download-option {
+        width: 100% !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 12px 16px !important;
+        background: transparent !important;
+        border: none !important;
+        color: #333 !important;
+        font-size: 14px !important;
+        font-weight: 400 !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        text-align: left !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+    }
+    
+    .download-option:last-child {
+        border-bottom: none !important;
+    }
+    
+    .download-option:hover {
+        background: linear-gradient(145deg, #f8f9fa 0%, #f0f0f0 100%) !important;
+        color: #d32d26 !important;
+        padding-left: 20px !important;
+    }
+    
+    .download-option svg {
+        flex-shrink: 0 !important;
+        opacity: 0.7 !important;
+        transition: opacity 0.2s ease !important;
+    }
+    
+    .download-option:hover svg {
+        opacity: 1 !important;
+        color: #d32d26 !important;
+    }
+    
+    /* 隐藏实际的下载按钮 */
+    #hidden_pdf_download,
+    #hidden_md_download {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    
     /* 隐藏页脚 */
     footer {
         visibility: hidden;
@@ -1163,6 +1328,30 @@ if __name__ == '__main__':
             gap: 15px !important;
         }
         
+        /* 移动端下载按钮组样式 */
+        .download-main-btn {
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            gap: 6px !important;
+        }
+        
+        .download-option {
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            gap: 8px !important;
+        }
+        
+        .download-option:hover {
+            padding-left: 18px !important;
+        }
+        
+        .download-dropdown-menu {
+            margin-bottom: 2px !important;
+            box-shadow: 
+                0 -8px 12px -2px rgba(0, 0, 0, 0.1),
+                0 -3px 5px -1px rgba(0, 0, 0, 0.05) !important;
+        }
+        
         /* 移动端隐藏特定组件 */
         #component-18,
         #component-26,
@@ -1174,12 +1363,56 @@ if __name__ == '__main__':
     }
     """
 
-    with gr.Blocks(theme="default", css=css, title='H3C 复杂布局文档解析') as demo:
-        # 顶部标题区域
-        gr.HTML("""
+    # 添加URL参数获取和打印功能
+    def get_url_params(request: gr.Request):
+        """获取并打印URL参数，并返回title用于更新页面标题"""
+        title = "H3C - 复杂布局文档解析"  # 默认标题
+        
+        try:
+            if request:
+                # 打印完整的URL
+                print(f"[URL测试] 完整URL: {request.url}")
+                
+                # 打印查询参数
+                if request.query_params:
+                    print(f"[URL测试] 查询参数: {dict(request.query_params)}")
+                    for key, value in request.query_params.items():
+                        print(f"[URL测试] 参数 {key} = {value}")
+                        # 如果有title参数，使用它作为页面标题
+                        if key.lower() == 'title':
+                            # 处理URL编码的中文字符
+                            import urllib.parse
+                            title = urllib.parse.unquote(value, encoding='utf-8')
+                            print(f"[URL测试] 使用title参数更新页面标题: {title}")
+                            # 防止XSS攻击，对HTML进行转义
+                            import html
+                            title = html.escape(title)
+                else:
+                    print("[URL测试] 没有查询参数")
+                
+                # 打印请求头信息（可选）
+                print(f"[URL测试] 用户代理: {request.headers.get('user-agent', 'Unknown')}")
+                print(f"[URL测试] 客户端IP: {getattr(request, 'client', {}).get('host', 'Unknown')}")
+                print("-" * 50)  # 分隔线
+            else:
+                print("[URL测试] 无法获取请求信息")
+        except Exception as e:
+            print(f"[URL测试] 获取参数时出错: {e}")
+        
+        # 返回更新后的HTML内容
+        return f"""
             <div id="top_title_container">
-                <h1 id="main_title">H3C - 复杂布局文档解析</h1>
+                <h1 id="main_title">{title}</h1>
                 <div id="subtitle">智能文档识别与解析平台</div>
+            </div>
+        """
+
+    with gr.Blocks(theme="default", css=css, title='H3C - 文档解析') as demo:
+        # 顶部标题区域 - 可动态更新
+        title_html = gr.HTML("""
+            <div id="top_title_container">
+                <h1 id="main_title">H3C</h1>
+                <div id="subtitle">新华三智能识别与解析平台</div>
             </div>
         """)
 
@@ -1195,9 +1428,49 @@ if __name__ == '__main__':
                 clear_button = gr.Button("清除内容", variant="stop")
                 
                 gr.Markdown("### 下载结果")
-                with gr.Row():
-                    pdf_download_button = gr.DownloadButton("布局PDF", visible=True, scale=1, size="sm")
-                    md_download_button = gr.DownloadButton("Markdown", visible=True, scale=1, size="sm")
+                # 隐藏的实际下载按钮
+                pdf_download_button = gr.DownloadButton("布局PDF", visible=False, scale=1, size="sm", elem_id="hidden_pdf_download")
+                md_download_button = gr.DownloadButton("Markdown", visible=False, scale=1, size="sm", elem_id="hidden_md_download")
+                
+                # 自定义下载按钮组
+                gr.HTML("""
+                <div class="download-container">
+                    <div class="download-dropdown">
+                        <button class="download-main-btn" type="button">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7,10 12,15 17,10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            下载文件
+                            <svg class="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="6,9 12,15 18,9"></polyline>
+                            </svg>
+                        </button>
+                        <div class="download-dropdown-menu">
+                            <button class="download-option" onclick="document.getElementById('hidden_pdf_download').click()" type="button">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                    <polyline points="10,9 9,9 9,10"></polyline>
+                                </svg>
+                                布局PDF
+                            </button>
+                            <button class="download-option" onclick="document.getElementById('hidden_md_download').click()" type="button">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <polyline points="14,2 14,8 20,8"></polyline>
+                                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                                </svg>
+                                Markdown
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                """, elem_id="download_menu_container")
 
             with gr.Column(scale=6, variant="compact"):
                 with gr.Row():
@@ -1311,6 +1584,14 @@ if __name__ == '__main__':
         clear_button.click(
             fn=clear_all,
             outputs=[pdf_input, pdf_view, md_view, md_raw, page_info, pdf_download_button, md_download_button],
+            show_progress=False
+        )
+        
+        # 页面加载时自动获取URL参数并更新标题
+        demo.load(
+            fn=get_url_params,
+            inputs=None,
+            outputs=title_html,
             show_progress=False
         )
 

@@ -1,4 +1,7 @@
+'use client';
+
 import { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 interface UploadResult {
   filename?: string;
@@ -39,6 +42,9 @@ export default function ExcelUpLoad({
   const [showExportMenu, setShowExportMenu] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const exportTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type') || '1';
 
   // 清理timeout
   useEffect(() => {
@@ -178,11 +184,14 @@ export default function ExcelUpLoad({
       formData.append('file', file);
 
       // 发送 POST 请求到解析接口
-      const response = await fetch('http://localhost:8000/parse_xlsx/', {
-        method: 'POST',
-        body: formData
-        // 不要手动设置 Content-Type，让浏览器自动设置 multipart/form-data 边界
-      });
+      const response = await fetch(
+        `http://localhost:8000/parse_xlsx/?type=${type}`,
+        {
+          method: 'POST',
+          body: formData
+          // 不要手动设置 Content-Type，让浏览器自动设置 multipart/form-data 边界
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);

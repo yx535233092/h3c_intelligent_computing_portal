@@ -15,6 +15,7 @@
     "@js-preview/excel": "^1.7.14",
     "@tailwindcss/typography": "^0.5.16",
     "antd": "^5.26.6",
+    "axios": "^1.11.0",
     "exceljs": "^4.4.0",
     "next": "15.4.1",
     "react": "19.1.0",

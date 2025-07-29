@@ -1,3 +1,4 @@
+// hook: 滚动到页面顶端
 import { useEffect } from 'react';
 
 export const useScrollToTop = () => {

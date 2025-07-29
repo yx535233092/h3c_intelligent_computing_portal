@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 import { ConfigProvider, Tabs } from 'antd';
 import React from 'react';
 import Image from 'next/image';
-import './page.css';
+import styles from './page.module.css';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
-import CaseCarousel from '@/components/ui/CaseCarousel';
+import CaseCarousel from '@/components/features/carousel/CaseCarousel';
 
 import type { TabsProps } from 'antd';
 

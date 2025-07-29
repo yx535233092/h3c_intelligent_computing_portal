@@ -22,7 +22,7 @@ type ExcelResultProps = {
 };
 
 export default function ExcelResult({ result, error }: ExcelResultProps) {
-  const [activeTab, setActiveTab] = useState<'json' | 'md'>('json');
+  const [activeTab, setActiveTab] = useState<'json' | 'md'>('md');
 
   if (error) {
     return (
@@ -125,18 +125,6 @@ export default function ExcelResult({ result, error }: ExcelResultProps) {
 
               {/* 标签页切换 */}
               <div className="flex border-b border-gray-200 mb-4">
-                {dataObj.json_format && (
-                  <button
-                    className={`px-4 py-2 text-sm font-medium border-b-2 ${
-                      activeTab === 'json'
-                        ? 'border-blue-500 text-blue-600'
-                        : 'border-transparent text-gray-500 hover:text-gray-700'
-                    }`}
-                    onClick={() => setActiveTab('json')}
-                  >
-                    JSON 格式
-                  </button>
-                )}
                 {dataObj.md_format && (
                   <button
                     className={`px-4 py-2 text-sm font-medium border-b-2 ${
@@ -149,21 +137,33 @@ export default function ExcelResult({ result, error }: ExcelResultProps) {
                     Markdown 格式
                   </button>
                 )}
+                {dataObj.json_format && (
+                  <button
+                    className={`px-4 py-2 text-sm font-medium border-b-2 ${
+                      activeTab === 'json'
+                        ? 'border-blue-500 text-blue-600'
+                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                    }`}
+                    onClick={() => setActiveTab('json')}
+                  >
+                    JSON 格式
+                  </button>
+                )}
               </div>
 
               {/* 内容显示区域 */}
               <div className="bg-white border border-gray-200 rounded-lg">
-                {activeTab === 'json' && dataObj.json_format && (
-                  <pre className="p-4 text-sm overflow-auto max-h-[calc(100vh-370px)] whitespace-pre-wrap">
-                    {dataObj.json_format}
-                  </pre>
-                )}
                 {activeTab === 'md' && dataObj.md_format && (
                   <div className="p-4 prose prose-sm max-w-none max-h-[calc(100vh-370px)] overflow-auto">
                     <pre className="whitespace-pre-wrap text-sm bg-gray-50 p-3 rounded">
                       {dataObj.md_format}
                     </pre>
                   </div>
+                )}
+                {activeTab === 'json' && dataObj.json_format && (
+                  <pre className="p-4 text-sm overflow-auto max-h-[calc(100vh-370px)] whitespace-pre-wrap">
+                    {dataObj.json_format}
+                  </pre>
                 )}
               </div>
             </div>

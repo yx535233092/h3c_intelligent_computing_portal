@@ -555,6 +555,95 @@
   box-shadow: none !important;
 }
 
+/* 覆盖 Ant Design v5 的 CSS-in-JS 样式 */
+:global(.ant-btn-variant-solid.ant-btn-primary) {
+  background: #d32d26 !important;
+  border-color: #d32d26 !important;
+  color: white !important;
+}
+
+:global(.ant-btn-variant-solid.ant-btn-primary:hover) {
+  background: #a8251f !important;
+  border-color: #a8251f !important;
+  color: white !important;
+}
+
+:global(.ant-btn-variant-solid.ant-btn-primary:focus) {
+  background: #d32d26 !important;
+  border-color: #d32d26 !important;
+  color: white !important;
+  box-shadow: 0 0 0 2px rgba(211, 45, 38, 0.2) !important;
+}
+
+:global(.ant-btn-variant-solid.ant-btn-primary:active) {
+  background: #a8251f !important;
+  border-color: #a8251f !important;
+  color: white !important;
+}
+
+/* 针对具体的按钮实例 */
+.category-button:global(.ant-btn-variant-solid) {
+  background: #d32d26 !important;
+  border-color: #d32d26 !important;
+  color: white !important;
+}
+
+.category-button:global(.ant-btn-variant-solid):hover {
+  background: #a8251f !important;
+  border-color: #a8251f !important;
+  color: white !important;
+}
+
+.category-button:global(.ant-btn-variant-solid):focus {
+  background: #d32d26 !important;
+  border-color: #d32d26 !important;
+  color: white !important;
+  box-shadow: 0 0 0 2px rgba(211, 45, 38, 0.2) !important;
+}
+
+.category-button:global(.ant-btn-variant-solid):active {
+  background: #a8251f !important;
+  border-color: #a8251f !important;
+  color: white !important;
+}
+
+/* 全局覆盖 Ant Design 的主色调 */
+:global(.ant-btn-primary) {
+  background-color: #d32d26 !important;
+  border-color: #d32d26 !important;
+}
+
+:global(.ant-btn-primary:hover) {
+  background-color: #a8251f !important;
+  border-color: #a8251f !important;
+}
+
+:global(.ant-btn-primary:focus) {
+  background-color: #d32d26 !important;
+  border-color: #d32d26 !important;
+  box-shadow: 0 0 0 2px rgba(211, 45, 38, 0.2) !important;
+}
+
+:global(.ant-btn-primary:active) {
+  background-color: #a8251f !important;
+  border-color: #a8251f !important;
+}
+
+/* 覆盖任何带有 css-dev-only-do-not-override 的样式 */
+:global([class*='css-dev-only-do-not-override']:where(.ant-btn-variant-solid)) {
+  background-color: #d32d26 !important;
+  border-color: #d32d26 !important;
+  color: white !important;
+}
+
+:global(
+    [class*='css-dev-only-do-not-override']:where(.ant-btn-variant-solid):hover
+  ) {
+  background-color: #a8251f !important;
+  border-color: #a8251f !important;
+  color: white !important;
+}
+
 /* 应用展示区域 */
 .apps-card {
   border-radius: 12px;
