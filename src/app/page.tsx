@@ -1,364 +1,454 @@
 'use client';
 
-import { useScrollToTop } from '@/hooks/useScrollToTop';
+import React from 'react';
 import { useRouter } from 'next/navigation';
-import { useInView } from '@/hooks/useInView';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useInView } from '@/hooks/useInView';
+import {
+  ArrowRightOutlined,
+  FileTextOutlined,
+  TableOutlined,
+  BarChartOutlined,
+  TeamOutlined,
+  CloudUploadOutlined,
+  ApiOutlined,
+  StarOutlined,
+  BuildOutlined,
+  PhoneOutlined,
+  MailOutlined,
+  EnvironmentOutlined,
+  BookOutlined,
+  CarryOutOutlined,
+  FileDoneOutlined,
+  PartitionOutlined,
+  CalendarOutlined,
+  UserOutlined
+} from '@ant-design/icons';
 
-export default function Home() {
-  useScrollToTop();
+export default function HomePage() {
   const router = useRouter();
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // 动画相关的hooks
   const [heroRef, isHeroInView] = useInView({ threshold: 0.3 });
   const [servicesRef, isServicesInView] = useInView({ threshold: 0.2 });
-  const [featuresRef, isFeaturesInView] = useInView({ threshold: 0.2 });
+  const [dataRef, isDataInView] = useInView({ threshold: 0.2 });
   const [casesRef, isCasesInView] = useInView({ threshold: 0.2 });
+  const [consultRef, isConsultInView] = useInView({ threshold: 0.2 });
 
-  // 轮播图数据
-  const slides = [
+  // 应用服务数据
+  const appServices = [
     {
-      title: '智能计算 赋能未来',
-      subtitle: 'Intelligent Computing Portal',
-      description: '新华三集团智算专业服务，为您提供全方位人工智能解决方案',
-      image: '/1.jpg',
-      cta: '了解更多'
+      icon: CalendarOutlined,
+      title: '快捷请假',
+      desc: '支持年假/事假/病假',
+      category: '智能办公'
     },
     {
-      title: '数据驱动 智慧决策',
-      subtitle: 'Data-Driven Smart Decisions',
-      description: '专业的数据服务解决方案，让您的数据发挥最大价值',
-      image: '/5.jpg',
-      cta: '数据服务'
+      icon: BuildOutlined,
+      title: '会议室预定',
+      desc: '线上/线下预约管理',
+      category: '智能办公'
     },
     {
-      title: '行业领先 服务卓越',
-      subtitle: 'Industry Leading Excellence',
-      description: '覆盖政府、企业、教育等多个行业的成功案例',
-      image: '/7.jpg',
-      cta: '行业案例'
+      icon: FileTextOutlined,
+      title: '文章改写',
+      desc: '智能文档处理改写',
+      category: '智能文档'
+    },
+    {
+      icon: BarChartOutlined,
+      title: '人口库智能问数',
+      desc: '人口数据多场景查询',
+      category: '智能问数'
     }
   ];
 
-  // 服务数据
-  const services = [
+  // 数据服务特性
+  const dataFeatures = [
     {
-      title: '应用服务',
-      description: '提供定制化应用开发、系统集成和技术咨询服务',
-      icon: '🚀',
-      link: '/pro-services/app-service'
+      icon: FileTextOutlined,
+      title: '文档解析',
+      desc: '支持PDF、Word、图片等多格式解析'
     },
     {
-      title: '数据服务',
-      description: '智能文档解析、表格识别、图像处理等数据处理服务',
-      icon: '📊',
-      link: '/pro-services/data-service'
+      icon: TableOutlined,
+      title: '表格识别',
+      desc: '复杂表格、跨页表格精准识别'
     },
     {
-      title: '模型服务',
-      description: 'AI模型训练、部署和优化，提供完整的机器学习解决方案',
-      icon: '🤖',
-      link: '/pro-services/network-service'
-    },
-    {
-      title: '运维服务',
-      description: '全方位的系统运维、监控和技术支持服务',
-      icon: '⚙️',
-      link: '/pro-services/security-service'
-    }
-  ];
-
-  // 特色功能
-  const features = [
-    {
-      title: '高精度识别',
-      description: '基于深度学习的文档识别技术，准确率达99.9%',
-      icon: '🎯'
-    },
-    {
-      title: '快速处理',
-      description: '百页文档秒级解析，支持大批量并行处理',
-      icon: '⚡'
-    },
-    {
-      title: '多格式支持',
-      description: '支持PDF、Word、Excel、图片等多种文件格式',
-      icon: '📄'
-    },
-    {
-      title: '安全可靠',
-      description: '企业级安全保障，数据加密传输和存储',
-      icon: '🔒'
+      icon: StarOutlined,
+      title: '智能提取',
+      desc: '文字、图片、公式信息智能提取'
     }
   ];
 
   // 行业案例数据
-  const industries = [
-    { name: '政府', icon: '🏛️', desc: '政务数字化转型' },
-    { name: '企业', icon: '🏢', desc: '企业智能化升级' },
-    { name: '教育', icon: '🎓', desc: '智慧教育解决方案' },
-    { name: '金融', icon: '💰', desc: '金融科技创新' },
-    { name: '医疗', icon: '🏥', desc: '智慧医疗服务' },
-    { name: '制造', icon: '🏭', desc: '智能制造转型' }
+  const industryCases = [
+    {
+      title: '某市公安情报分析以案搜案',
+      industry: '政府',
+      image: '/某市公安情报分析以案搜案.png',
+      desc: '基于AI大模型训练平台，形成辅助合成研判能力'
+    },
+    {
+      title: '某运营商智能营销预案',
+      industry: '运营商',
+      image: '/某运营商智能营销预案.png',
+      desc: '通过大模型分析数据，生成精准营销策略'
+    },
+    {
+      title: '某集团智能问答系统',
+      industry: '企业',
+      image: '/某集团智能问答系统.png',
+      desc: '面向企业集团构建的统一知识聚合检索系统'
+    },
+    {
+      title: '某高职校AI+知识服务',
+      industry: '教育',
+      image: '/某高职校DEEPSEEK-AI+知识服务应用.png',
+      desc: 'AI智能助手提升高校管理效率和决策支持'
+    }
   ];
 
-  // 轮播自动切换
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 5000);
-    return () => clearInterval(timer);
-  }, [slides.length]);
-
-  const handleSlideChange = (index: number) => {
-    setCurrentSlide(index);
-  };
-
-  const handleServiceClick = (link: string) => {
-    router.push(link);
-  };
-
-  const handleCTAClick = (slide: (typeof slides)[0], index: number) => {
-    if (index === 0) {
-      router.push('/about-us');
-    } else if (index === 1) {
-      router.push('/pro-services/data-service');
-    } else if (index === 2) {
-      router.push('/industry-cases');
-    }
-  };
-
   return (
-    <div className="min-h-screen">
-      {/* 英雄区域 - 轮播图 */}
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero 区域 */}
       <section
         ref={heroRef}
-        className={`relative h-screen overflow-hidden transition-all duration-1000 ${
-          isHeroInView ? 'opacity-100' : 'opacity-0'
+        className={`relative px-60 pt-32 pb-40 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 overflow-hidden transition-all duration-1000 ${
+          isHeroInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
         }`}
       >
-        {slides.map((slide, index) => (
-          <div
-            key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
-            }`}
-            style={{
-              background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('${slide.image}') center/cover`
-            }}
-          >
-            <div className="flex items-center justify-center h-full text-white text-center px-4">
-              <div className="max-w-4xl mx-auto">
-                <h1 className="text-6xl md:text-7xl font-bold mb-6 tracking-wide">
-                  {slide.title}
-                </h1>
-                <p className="text-2xl md:text-3xl mb-4 font-light opacity-90">
-                  {slide.subtitle}
-                </p>
-                <p className="text-lg md:text-xl mb-8 opacity-80 max-w-2xl mx-auto leading-relaxed">
-                  {slide.description}
-                </p>
-                <button
-                  onClick={() => handleCTAClick(slide, index)}
-                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-300 transform hover:scale-105 shadow-lg"
-                >
-                  {slide.cta}
-                </button>
-              </div>
+        {/* 背景装饰 */}
+        <div className="absolute inset-0 bg-[url('/12.jpg')] bg-cover bg-center opacity-20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-transparent"></div>
+
+        {/* 浮动装饰元素 */}
+        <div className="absolute top-20 right-40 w-72 h-72 bg-brand/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-700"></div>
+
+        <div className="relative z-10">
+          <div className="max-w-4xl">
+            <h1 className="text-7xl font-bold text-white mb-8 leading-tight">
+              智算专业服务
+              <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-red-400">
+                数字化转型引擎
+              </span>
+            </h1>
+            <p className="text-2xl text-gray-300 mb-12 leading-relaxed">
+              基于新华三智算平台，提供全方位的AI应用服务、数据处理服务和行业解决方案
+              <br />
+              助力企业数字化转型，释放数据价值，提升业务效率
+            </p>
+            <div className="flex gap-6">
+              <button
+                onClick={() => router.push('/pro-services/app-service')}
+                className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3"
+              >
+                立即体验
+                <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+              </button>
+              <button
+                onClick={() => router.push('/contact-us')}
+                className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:bg-white/10"
+              >
+                联系咨询
+              </button>
             </div>
-          </div>
-        ))}
-
-        {/* 轮播指示器 */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-3">
-          {slides.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => handleSlideChange(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'bg-white' : 'bg-white/50'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* 滚动提示 */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 text-white text-center">
-          <div className="animate-bounce">
-            <svg
-              className="w-6 h-6 mx-auto mb-2"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-            <span className="text-sm opacity-75">向下滚动了解更多</span>
           </div>
         </div>
       </section>
 
-      {/* 专业服务区域 */}
+      {/* 应用服务 */}
       <section
         ref={servicesRef}
-        className={`py-20 bg-gradient-to-b from-gray-50 to-white transition-all duration-1000 ${
+        className={`px-60 py-32 transition-all duration-1000 ${
           isServicesInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-800 mb-6">专业服务</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              提供全方位的智能计算服务，从应用开发到数据处理，从模型训练到系统运维，满足您的所有需求
-            </p>
-          </div>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            智能应用服务
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            汇聚精品AI应用，覆盖智能办公、智能文档、智能问数三大核心场景
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                onClick={() => handleServiceClick(service.link)}
-                className="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer group"
-              >
-                <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3 group-hover:text-red-600 transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {service.description}
-                </p>
+        <div className="grid grid-cols-4 gap-8">
+          {appServices.map((service, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
+            >
+              <div className="w-16 h-16 bg-white border-2 border-brand text-brand rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="text-2xl text-white" />
               </div>
-            ))}
-          </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 mb-4">{service.desc}</p>
+              <span className="inline-block px-3 py-1 bg-brand/10 text-brand text-sm rounded-full font-medium">
+                {service.category}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => router.push('/pro-services/app-service')}
+            className="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+          >
+            查看全部应用
+            <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </section>
 
-      {/* 核心优势区域 */}
+      {/* 数据服务 */}
       <section
-        ref={featuresRef}
-        className={`py-20 bg-white transition-all duration-1000 ${
-          isFeaturesInView
+        ref={dataRef}
+        className={`px-60 py-32 bg-white transition-all duration-1000 ${
+          isDataInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-800 mb-6">核心优势</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              基于多年技术积累和行业实践，为您提供高质量、高效率的智能计算解决方案
+        <div className="grid grid-cols-2 gap-20 items-center">
+          <div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-8">
+              数据服务解决方案
+            </h2>
+            <p className="text-xl text-gray-600 mb-12 leading-relaxed">
+              面向文本、图像与表格的智能解析服务，支持多种文档格式，
+              一键解析数据内容，助力高效输出结构化文档。
             </p>
+
+            <div className="space-y-8">
+              {dataFeatures.map((feature, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <div className="w-12 h-12 text-white bg-gradient-to-br from-red-600 to-red-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <feature.icon className="text-xl text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                      {feature.title}
+                    </h3>
+                    <p className="text-gray-600">{feature.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12">
+              <button
+                onClick={() => router.push('/pro-services/data-service')}
+                className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3"
+              >
+                了解详情
+                <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+              </button>
+            </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="text-center group">
-                <div className="bg-red-100 w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-red-200 transition-colors duration-300">
-                  <span className="text-3xl">{feature.icon}</span>
+          <div className="relative">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-3xl p-12 shadow-2xl">
+              {/* 数据处理流程图示 */}
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-red-500 rounded-lg flex items-center justify-center text-white">
+                    <FileTextOutlined className="text-xl text-white" />
+                  </div>
+                  <div className="flex-1 h-2 bg-gradient-to-r from-red-500 to-blue-500 rounded-full"></div>
+                  <div className="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center text-white">
+                    <ApiOutlined className="text-xl text-white" />
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {feature.description}
-                </p>
+
+                <div className="grid grid-cols-3 gap-4">
+                  <div className="bg-white rounded-xl p-4 shadow-md">
+                    <div className="text-center">
+                      <CloudUploadOutlined className="text-2xl text-gray-400 mb-2" />
+                      <p className="text-sm text-gray-600">文档上传</p>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 shadow-md">
+                    <div className="text-center">
+                      <StarOutlined className="text-2xl text-brand mb-2" />
+                      <p className="text-sm text-gray-600">AI解析</p>
+                    </div>
+                  </div>
+                  <div className="bg-white rounded-xl p-4 shadow-md">
+                    <div className="text-center">
+                      <TableOutlined className="text-2xl text-green-500 mb-2" />
+                      <p className="text-sm text-gray-600">结构化输出</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 行业案例预览 */}
+      {/* 行业案例 */}
       <section
         ref={casesRef}
-        className={`py-20 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white transition-all duration-1000 ${
+        className={`px-60 py-32 bg-gray-50 transition-all duration-1000 ${
           isCasesInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold mb-6">行业案例</h2>
-            <p className="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
-              服务覆盖多个重要行业，助力数字化转型和智能化升级
-            </p>
-          </div>
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            行业成功案例
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            协助众多企业完成智能化数字化转型，覆盖政府、运营商、企业、教育等多个行业
+          </p>
+        </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
-            {industries.map((industry, index) => (
-              <div
-                key={index}
-                className="text-center group cursor-pointer"
-                onClick={() => router.push('/industry-cases')}
-              >
-                <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-white/20 transition-all duration-300 group-hover:scale-110">
-                  <span className="text-2xl">{industry.icon}</span>
-                </div>
-                <h3 className="font-semibold mb-2 group-hover:text-red-300 transition-colors">
-                  {industry.name}
-                </h3>
-                <p className="text-sm opacity-75">{industry.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center">
-            <button
-              onClick={() => router.push('/industry-cases')}
-              className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+        <div className="grid grid-cols-2 gap-8">
+          {industryCases.map((caseItem, index) => (
+            <div
+              key={index}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              style={{
+                animationDelay: `${index * 0.2}s`
+              }}
             >
-              查看更多案例
-            </button>
-          </div>
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={caseItem.image}
+                  alt={caseItem.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute top-4 left-4">
+                  <span className="bg-brand text-white px-3 py-1 rounded-full text-sm font-medium">
+                    {caseItem.industry}
+                  </span>
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                  {caseItem.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{caseItem.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => router.push('/industry-cases')}
+            className="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+          >
+            查看更多案例
+            <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+          </button>
         </div>
       </section>
 
-      {/* 联系咨询区域 */}
-      <section className="py-20 bg-gradient-to-b from-red-50 to-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="bg-white rounded-2xl p-12 shadow-xl">
-            <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Image
-                src="/chat.png"
-                alt="专家咨询"
-                width={40}
-                height={40}
-                className="object-contain filter brightness-0 invert"
-              />
+      {/* 培训咨询 */}
+      <section
+        ref={consultRef}
+        className={`px-60 py-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden transition-all duration-1000 ${
+          isConsultInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        {/* 背景装饰 */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-brand/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+        <div className="relative z-10">
+          <div className="grid grid-cols-2 gap-20 items-center">
+            <div>
+              <h2 className="text-5xl font-bold mb-8">专业培训咨询服务</h2>
+              <p className="text-xl text-gray-300 mb-12 leading-relaxed">
+                提供专业的AI技术培训、数字化转型咨询和定制化解决方案，
+                助力企业快速掌握智能技术应用。
+              </p>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center">
+                    <BookOutlined className="text-xl text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">技术培训</h3>
+                    <p className="text-gray-300">
+                      AI技术应用、数据分析、系统操作培训
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <CarryOutOutlined className="text-xl text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">业务咨询</h3>
+                    <p className="text-gray-300">
+                      数字化转型策略、业务流程优化咨询
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
+                    <PartitionOutlined className="text-xl text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-1">定制方案</h3>
+                    <p className="text-gray-300">
+                      针对企业需求的个性化解决方案设计
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              专业技术咨询
-            </h2>
-            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-              我们的专家团队随时为您提供专业的技术咨询和解决方案建议
-            </p>
+            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-12">
+              <h3 className="text-3xl font-bold mb-8 text-center">联系我们</h3>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={() => router.push('/contact-us')}
-                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
-              >
-                联系我们
-              </button>
-              <button
-                onClick={() => router.push('/excel-process')}
-                className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300"
-              >
-                在线体验
-              </button>
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <PhoneOutlined className="text-xl text-brand" />
+                  <span className="text-lg">400-888-0916</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <MailOutlined className="text-xl text-brand" />
+                  <span className="text-lg">service@h3c.com</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <EnvironmentOutlined className="text-xl text-brand" />
+                  <span className="text-lg">
+                    杭州市滨江区长河路466号 H3C公司
+                  </span>
+                </div>
+              </div>
+
+              <div className="mt-12 text-center">
+                <button
+                  onClick={() => router.push('/contact-us')}
+                  className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+                >
+                  立即咨询
+                  <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

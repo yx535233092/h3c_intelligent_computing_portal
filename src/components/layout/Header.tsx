@@ -5,7 +5,6 @@ import { useRouter, usePathname } from 'next/navigation';
 import Logo from '@/components/ui/Logo';
 import type { MenuProps } from 'antd';
 import React, { useState, useEffect } from 'react';
-import styles from './Header.module.css';
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -41,10 +40,7 @@ const items: MenuItem[] = [
     label: '行业案例',
     key: '/industry-cases'
   },
-  {
-    label: '关于我们',
-    key: '/about-us'
-  },
+
   {
     label: '联系我们',
     key: '/contact-us'

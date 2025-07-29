@@ -15,12 +15,6 @@ interface PageConfig {
 
 // 页面配置映射
 const pageConfigs: Record<string, PageConfig> = {
-  '/about-us': {
-    title: '关于我们',
-    subtitle: 'About Us',
-    backgroundImage: '/12.jpg',
-    breadcrumb: [{ title: '首页' }, { title: '关于我们' }]
-  },
   '/contact-us': {
     title: '联系我们',
     subtitle: 'Contact Us',
