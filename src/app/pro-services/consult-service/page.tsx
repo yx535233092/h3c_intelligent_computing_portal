@@ -12,7 +12,11 @@ import {
   UserOutlined,
   TeamOutlined,
   TrophyOutlined,
-  SyncOutlined
+  SyncOutlined,
+  ReadOutlined,
+  CodeOutlined,
+  StarOutlined,
+  CustomerServiceOutlined
 } from '@ant-design/icons';
 
 export default function ConsultServicePage() {
@@ -60,28 +64,28 @@ export default function ConsultServicePage() {
           <div className="grid grid-cols-2 gap-8">
             {[
               {
-                title: 'AI战略规划',
+                title: '基础架构咨询',
                 description:
-                  '制定符合企业发展的AI战略路线图，确保技术投入与业务目标完美契合',
-                icon: <AimOutlined />
+                  '为企业提供AI基础设施架构设计咨询，包括计算资源、存储系统、网络架构等核心组件的规划与优化',
+                icon: <BuildOutlined />
               },
               {
-                title: '技术架构设计',
+                title: '训推技术咨询',
                 description:
-                  '设计可扩展、高可用的AI技术架构，为系统稳定运行提供坚实基础',
-                icon: <BuildOutlined />
+                  '提供模型训练与推理技术咨询服务，包括数据预处理、模型训练、部署优化等全流程技术指导',
+                icon: <RobotOutlined />
+              },
+              {
+                title: '产品应用咨询',
+                description:
+                  '针对具体AI产品应用场景，提供技术选型、功能设计、用户体验优化等全方位的产品化咨询',
+                icon: <BulbOutlined />
               },
               {
                 title: '解决方案咨询',
                 description:
-                  '针对具体业务场景，提供定制化的AI解决方案咨询与优化建议',
-                icon: <BulbOutlined />
-              },
-              {
-                title: '项目评估',
-                description:
-                  '全面评估AI项目的可行性、风险点和预期收益，确保投资回报最大化',
-                icon: <BarChartOutlined />
+                  '基于企业实际需求，提供端到端的AI解决方案咨询，从需求分析到技术实施的全流程指导',
+                icon: <AimOutlined />
               }
             ].map((item, index) => (
               <div
@@ -106,7 +110,7 @@ export default function ConsultServicePage() {
         </div>
       </section>
 
-      {/* 技术培训模块 */}
+      {/* 智算培训模块 */}
       <section
         ref={trainingRef}
         className={`px-60 py-20 bg-gradient-to-br from-blue-50 to-purple-50 transition-all duration-1000 ease-out delay-400 ${
@@ -117,41 +121,66 @@ export default function ConsultServicePage() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">技术培训</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">智算培训</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              提供系统化的AI技术培训，帮助团队快速提升技术能力，打造专业的AI人才队伍
+              提供系统化的智算技术培训，帮助团队快速提升技术能力，打造专业的智算人才队伍
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-8">
             {[
               {
-                title: '机器学习基础',
+                title: '智算应用实践',
                 description:
-                  '从零开始学习机器学习核心概念，掌握算法原理和实际应用技巧',
-                icon: <RobotOutlined />,
-                level: '基础入门'
-              },
-              {
-                title: '深度学习实战',
-                description:
-                  '深入理解神经网络架构，通过实际项目掌握深度学习开发技能',
-                icon: <BranchesOutlined />,
-                level: '进阶提升'
-              },
-              {
-                title: '大模型应用',
-                description:
-                  '学习大语言模型的应用开发，掌握ChatGPT等先进AI技术的集成使用',
+                  '向量数据库介绍、知识库构建及优化、应用场景定制（工作流、智能体、智能问答）',
+                details: [
+                  '向量数据库基础知识与大模型结合',
+                  '知识库原理、RAG架构及优化技巧',
+                  '工作流、智能体、智能问答定制开发'
+                ],
                 icon: <RocketOutlined />,
-                level: '高级应用'
+                level: '应用实践',
+                iconColor: 'text-blue-600',
+                dotColor: 'bg-blue-400'
               },
               {
-                title: '项目实战指导',
-                description:
-                  '结合真实项目场景，提供一对一指导，确保理论知识与实践能力并重',
+                title: '智算平台介绍',
+                description: '智算调度平台介绍与实操、使能平台&AI助手基础应用',
+                details: [
+                  '傲飞算力平台与多租户业务流程',
+                  '算力仓库、开发环境、训练微调推理',
+                  '使能平台基础使用、知识库智能体'
+                ],
+                icon: <BranchesOutlined />,
+                level: '平台操作',
+                iconColor: 'text-green-600',
+                dotColor: 'bg-green-400'
+              },
+              {
+                title: '智算知识体系',
+                description: '大模型基础与进阶知识、推理部署实验',
+                details: [
+                  'Transformer模型、主流推理框架',
+                  '预训练、分布式训练、RLHF强化学习',
+                  'DeepSeek裸金属部署实验'
+                ],
+                icon: <RobotOutlined />,
+                level: '理论进阶',
+                iconColor: 'text-purple-600',
+                dotColor: 'bg-purple-400'
+              },
+              {
+                title: '智算基础架构',
+                description: '智算概述与发展趋势、智算基础设施架构设计',
+                details: [
+                  '智算发展趋势与行业应用',
+                  '基础设施架构设计原理',
+                  '智算技术体系全貌解析'
+                ],
                 icon: <UserOutlined />,
-                level: '实战演练'
+                level: '架构设计',
+                iconColor: 'text-orange-600',
+                dotColor: 'bg-orange-400'
               }
             ].map((item, index) => (
               <div
@@ -161,26 +190,42 @@ export default function ConsultServicePage() {
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-10'
                 }`}
-                style={{ transitionDelay: `${500 + index * 100}ms` }}
+                style={{ transitionDelay: `${0}ms` }}
               >
                 <div className="absolute top-4 right-4">
                   <span className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-xs px-3 py-1 rounded-full">
                     {item.level}
                   </span>
                 </div>
-                <div className="text-4xl mb-4 text-purple-600">{item.icon}</div>
+                <div className={`text-4xl mb-4 ${item.iconColor}`}>
+                  {item.icon}
+                </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600 leading-relaxed mb-4">
                   {item.description}
                 </p>
+                {item.details && (
+                  <div className="space-y-2">
+                    {item.details.map((detail, detailIndex) => (
+                      <div key={detailIndex} className="flex items-start">
+                        <div
+                          className={`w-2 h-2 ${item.dotColor} rounded-full mt-2 mr-3 flex-shrink-0`}
+                        ></div>
+                        <p className="text-sm text-gray-500 leading-relaxed">
+                          {detail}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
 
           {/* 培训特色 */}
-          <div
+          {/* <div
             className={`mt-16 text-center transition-all duration-1000 ease-out delay-700 ${
               trainingInView
                 ? 'opacity-100 translate-y-0'
@@ -211,6 +256,77 @@ export default function ConsultServicePage() {
                   <p className="text-gray-600">持续更新</p>
                 </div>
               </div>
+            </div>
+          </div> */}
+
+          {/* 服务优势 */}
+          <div
+            className={`mt-16 transition-all duration-1000 ease-out delay-900 ${
+              trainingInView
+                ? 'opacity-100 translate-y-0'
+                : 'opacity-0 translate-y-10'
+            }`}
+          >
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-semibold text-gray-900 mb-4">
+                服务优势
+              </h3>
+              <p className="text-lg text-gray-600">
+                一体系+双结合+多专家+可定制
+              </p>
+            </div>
+
+            <div className="grid grid-cols-2 gap-8">
+              {[
+                {
+                  title: '专业知识体系',
+                  description:
+                    '课程遵循从基础到前沿的逻辑、模块化设计，目标清晰，内容实时更新，适配不同水平学员进阶。',
+                  icon: <ReadOutlined />,
+                  iconColor: 'text-blue-500'
+                },
+                {
+                  title: '实验与理论结合',
+                  description:
+                    '50%实操课时，依托演示环境、客户环境进行实操结合行业案例，强化知识应用与项目实战能力。',
+                  icon: <CodeOutlined />,
+                  iconColor: 'text-green-500'
+                },
+                {
+                  title: '专家团队护航',
+                  description:
+                    '汇聚云智专家团队，拥有丰富项目经验和授课经验深度指导技术学习。',
+                  icon: <StarOutlined />,
+                  iconColor: 'text-purple-500'
+                },
+                {
+                  title: '服务私人定制',
+                  description:
+                    '可结合客户需求，定制化培训课程，教学方式与学习周期，满足客户业务需求。',
+                  icon: <CustomerServiceOutlined />,
+                  iconColor: 'text-orange-500'
+                }
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className={`bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 ease-out transform hover:scale-105 border border-gray-100 ${
+                    trainingInView
+                      ? 'opacity-100 translate-y-0'
+                      : 'opacity-0 translate-y-10'
+                  }`}
+                  style={{ transitionDelay: `${1000 + index * 150}ms` }}
+                >
+                  <div className={`text-4xl mb-4 ${item.iconColor}`}>
+                    {item.icon}
+                  </div>
+                  <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                    {item.title}
+                  </h4>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

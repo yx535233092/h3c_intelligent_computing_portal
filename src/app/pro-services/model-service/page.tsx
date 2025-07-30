@@ -84,7 +84,8 @@ export default function ModelService() {
               灵活部署
             </h3>
             <p className="text-gray-600 text-center">
-              支持NVIDIA GPU、国产芯片等多种硬件平台，提供云端和本地化部署方案
+              支持NVIDIA
+              GPU、国产芯片等多种硬件平台，提供单机多卡、多机多卡等多样化部署方案
             </p>
           </div>
 
@@ -137,23 +138,17 @@ export default function ModelService() {
             {/* 左侧视频区域 */}
             <div className="relative">
               <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
-                {/* 视频占位区域 */}
-                <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center mb-4 mx-auto hover:bg-red-700 transition-colors cursor-pointer">
-                      <svg
-                        className="w-8 h-8 text-white ml-1"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M8 5v14l11-7z" />
-                      </svg>
-                    </div>
-                    <p className="text-white text-lg font-medium">
-                      LLaMA-Factory 微调演示
-                    </p>
-                    <p className="text-gray-300 text-sm">点击播放调试视频</p>
-                  </div>
+                {/* 视频播放区域 */}
+                <div className="aspect-video bg-black">
+                  <video
+                    className="w-full h-full object-contain"
+                    controls
+                    preload="metadata"
+                  >
+                    <source src="/微调视频.mov" type="video/quicktime" />
+                    <source src="/微调视频.mov" type="video/mp4" />
+                    您的浏览器不支持视频播放。
+                  </video>
                 </div>
                 {/* 控制栏 */}
                 <div className="bg-gray-800 px-4 py-3 flex items-center justify-between">
@@ -163,7 +158,7 @@ export default function ModelService() {
                     <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                   </div>
                   <span className="text-gray-400 text-sm">
-                    LLaMA-Factory Debug Console
+                    LLaMA-Factory 微调演示视频
                   </span>
                 </div>
               </div>
@@ -303,42 +298,42 @@ export default function ModelService() {
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-800">
-                      RTX 4090 / A100
+                      A100/A800/H20/H100/H800
                     </span>
                     <span className="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">
-                      推荐
+                      高性能训推
                     </span>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    大模型推理首选，支持7B-70B参数规模
+                    大模型训练推理首选，支持7B-70B参数规模
                   </p>
                 </div>
 
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-800">
-                      RTX 3080 / 3090
+                      A6000/A40/L20/L40S
                     </span>
                     <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      性价比
+                      专业可视化
                     </span>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    中等规模模型部署，支持7B-13B参数
+                    专业工作站部署，支持中等规模模型推理
                   </p>
                 </div>
 
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-800">
-                      Tesla V100 / T4
+                      3090/4090/4090D/5090/5090D
                     </span>
                     <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
-                      云端
+                      消费级游戏
                     </span>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    云端部署方案，弹性扩容支持
+                    个人开发者和小型团队部署，性价比高
                   </p>
                 </div>
               </div>
@@ -388,9 +383,23 @@ export default function ModelService() {
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-800">
-                      昇腾 910B
+                      昆仑芯 P800-PCLE/P800 OAM
                     </span>
                     <span className="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">
+                      昆仑芯
+                    </span>
+                  </div>
+                  <p className="text-gray-600 text-sm">
+                    百度昆仑芯AI处理器，高性能训练推理
+                  </p>
+                </div>
+
+                <div className="bg-white rounded-xl p-4 shadow-sm">
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="font-semibold text-gray-800">
+                      昇腾 910B2/3
+                    </span>
+                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                       华为
                     </span>
                   </div>
@@ -402,28 +411,14 @@ export default function ModelService() {
                 <div className="bg-white rounded-xl p-4 shadow-sm">
                   <div className="flex justify-between items-center mb-2">
                     <span className="font-semibold text-gray-800">
-                      寒武纪 MLU370
+                      天数/海光等其他国产芯片
                     </span>
-                    <span className="bg-orange-100 text-orange-800 px-3 py-1 rounded-full text-sm">
-                      寒武纪
-                    </span>
-                  </div>
-                  <p className="text-gray-600 text-sm">
-                    深度学习专用处理器，高效推理计算
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-xl p-4 shadow-sm">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="font-semibold text-gray-800">
-                      海光 DCU
-                    </span>
-                    <span className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                      海光
+                    <span className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">
+                      其他
                     </span>
                   </div>
                   <p className="text-gray-600 text-sm">
-                    兼容CUDA生态，无缝迁移部署
+                    天数智芯、海光信息等国产AI加速卡，支持多种深度学习框架
                   </p>
                 </div>
               </div>
@@ -455,7 +450,7 @@ export default function ModelService() {
             <h4 className="text-2xl font-bold text-gray-800 mb-6 text-center">
               部署方式选择
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-blue-300 transition-colors">
                 <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg
@@ -468,12 +463,14 @@ export default function ModelService() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"
+                      d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"
                     />
                   </svg>
                 </div>
-                <h5 className="font-semibold text-gray-800 mb-2">云端部署</h5>
-                <p className="text-gray-600 text-sm">弹性扩容，按需付费</p>
+                <h5 className="font-semibold text-gray-800 mb-2">单机单卡</h5>
+                <p className="text-gray-600 text-sm">
+                  基础部署，适合小规模应用
+                </p>
               </div>
 
               <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-green-300 transition-colors">
@@ -492,8 +489,8 @@ export default function ModelService() {
                     />
                   </svg>
                 </div>
-                <h5 className="font-semibold text-gray-800 mb-2">本地部署</h5>
-                <p className="text-gray-600 text-sm">数据安全，专属资源</p>
+                <h5 className="font-semibold text-gray-800 mb-2">单机多卡</h5>
+                <p className="text-gray-600 text-sm">并行计算，提升处理能力</p>
               </div>
 
               <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-purple-300 transition-colors">
@@ -508,12 +505,32 @@ export default function ModelService() {
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
                     />
                   </svg>
                 </div>
-                <h5 className="font-semibold text-gray-800 mb-2">边缘部署</h5>
-                <p className="text-gray-600 text-sm">低延迟，离线可用</p>
+                <h5 className="font-semibold text-gray-800 mb-2">多机多卡</h5>
+                <p className="text-gray-600 text-sm">分布式部署，大规模计算</p>
+              </div>
+
+              <div className="text-center p-6 border border-gray-200 rounded-xl hover:border-orange-300 transition-colors">
+                <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <svg
+                    className="w-8 h-8 text-orange-600"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+                    />
+                  </svg>
+                </div>
+                <h5 className="font-semibold text-gray-800 mb-2">多实例集群</h5>
+                <p className="text-gray-600 text-sm">高可用集群，负载均衡</p>
               </div>
             </div>
           </div>
@@ -592,7 +609,7 @@ export default function ModelService() {
 
                 <div className="flex justify-between items-center p-4 bg-orange-50 rounded-xl">
                   <span className="font-semibold text-gray-800">
-                    内存使用效率
+                    资源使用效率
                   </span>
                   <div className="flex items-center">
                     <div className="w-24 h-2 bg-gray-200 rounded-full mr-3">
@@ -713,92 +730,6 @@ export default function ModelService() {
                     <span className="text-gray-600">领域适应性</span>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* 专业认证 */}
-          <div className="mt-12 bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl p-8 text-white">
-            <div className="text-center mb-8">
-              <h4 className="text-2xl font-bold mb-4">专业认证与标准</h4>
-              <p className="text-purple-100">
-                遵循国际标准，确保测评结果的权威性和可信度
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h5 className="font-semibold mb-1">ISO 25010</h5>
-                <p className="text-purple-100 text-sm">软件质量标准</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 15v2m-6 0h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <h5 className="font-semibold mb-1">NIST AI RMF</h5>
-                <p className="text-purple-100 text-sm">AI风险管理框架</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                    />
-                  </svg>
-                </div>
-                <h5 className="font-semibold mb-1">MLPerf</h5>
-                <p className="text-purple-100 text-sm">机器学习基准测试</p>
-              </div>
-
-              <div className="text-center">
-                <div className="w-16 h-16 bg-white bg-opacity-20 rounded-xl flex items-center justify-center mx-auto mb-3">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z" />
-                  </svg>
-                </div>
-                <h5 className="font-semibold mb-1">信创标准</h5>
-                <p className="text-purple-100 text-sm">国产化适配认证</p>
               </div>
             </div>
           </div>

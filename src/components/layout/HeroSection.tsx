@@ -4,6 +4,7 @@ import { Breadcrumb, ConfigProvider } from 'antd';
 import React from 'react';
 import { usePathname } from 'next/navigation';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
+import path from 'path';
 
 // 定义页面配置类型
 interface PageConfig {
@@ -77,7 +78,7 @@ export default function HeroSection() {
     pathname === '/home' ||
     pathname.includes('excel-process') ||
     pathname.includes('pro-services') ||
-    pathname.includes('detail')
+    pathname.includes('industry-cases/')
   ) {
     return null;
   }

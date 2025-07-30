@@ -1,8 +1,8 @@
 .case-img {
+  padding: 0 0 40px 0;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 
   img {
-    padding: 2rem;
     height: 100%;
   }
 }
@@ -11,4 +11,30 @@
     transform: scale(1.05);
     z-index: 1;
   }
+}
+
+/* Ant Design Carousel 指示器按钮样式 */
+:global(.ant-carousel .slick-dots li button) {
+  background: red !important;
+}
+
+/* 或者使用更具体的选择器 */
+:global(.ant-carousel .slick-dots li.slick-active::after) {
+  background: red !important;
+}
+
+/* 非激活状态的指示器 */
+:global(.ant-carousel .slick-dots li:not(.slick-active) button) {
+  background: #343333 !important;
+}
+
+/* 左右箭头样式 - 仅修改颜色 */
+:global(.ant-carousel .slick-prev),
+:global(.ant-carousel .slick-next) {
+  color: #d32d26 !important;
+}
+
+:global(.ant-carousel .slick-prev:hover),
+:global(.ant-carousel .slick-next:hover) {
+  color: #d32d26 !important;
 }

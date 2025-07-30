@@ -45,6 +45,53 @@ export default function ExcelUpLoad({
 
   const searchParams = useSearchParams();
   const type = searchParams.get('type') || '1';
+  const title = searchParams.get('title');
+
+  // 根据title加载默认文件
+  useEffect(() => {
+    const loadDefaultFile = async () => {
+      let defaultFilePath = '';
+
+      if (title === '多区域表格解析') {
+        defaultFilePath = '/多区域表格.xlsx';
+      } else if (title === '复杂表头解析(合并场景)') {
+        defaultFilePath = '/表格合并.xlsx';
+      }
+
+      if (defaultFilePath) {
+        try {
+          const response = await fetch(defaultFilePath);
+          if (response.ok) {
+            const blob = await response.blob();
+            const filename = defaultFilePath.split('/').pop() || 'default.xlsx';
+            const file = new File([blob], filename, {
+              type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            });
+
+            const newFileItem: FileItem = {
+              file,
+              uploadTime: new Date()
+            };
+
+            setFileList([newFileItem]);
+            setSelectedFileIndex(0);
+
+            // 读取文件内容
+            const reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = (e: ProgressEvent<FileReader>) => {
+              const arrayBuffer = e.target?.result as ArrayBuffer;
+              setCurrentFileArrayBuffer(arrayBuffer);
+            };
+          }
+        } catch (error) {
+          console.warn('加载默认文件失败:', error);
+        }
+      }
+    };
+
+    loadDefaultFile();
+  }, [title, setCurrentFileArrayBuffer]);
 
   // 清理timeout
   useEffect(() => {

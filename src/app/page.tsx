@@ -9,20 +9,15 @@ import {
   FileTextOutlined,
   TableOutlined,
   BarChartOutlined,
-  TeamOutlined,
   CloudUploadOutlined,
   ApiOutlined,
   StarOutlined,
   BuildOutlined,
-  PhoneOutlined,
-  MailOutlined,
-  EnvironmentOutlined,
-  BookOutlined,
-  CarryOutOutlined,
-  FileDoneOutlined,
-  PartitionOutlined,
   CalendarOutlined,
-  UserOutlined
+  RobotOutlined,
+  UserOutlined,
+  BookOutlined,
+  ReadOutlined
 } from '@ant-design/icons';
 
 export default function HomePage() {
@@ -33,7 +28,8 @@ export default function HomePage() {
   const [servicesRef, isServicesInView] = useInView({ threshold: 0.2 });
   const [dataRef, isDataInView] = useInView({ threshold: 0.2 });
   const [casesRef, isCasesInView] = useInView({ threshold: 0.2 });
-  const [consultRef, isConsultInView] = useInView({ threshold: 0.2 });
+  const [modelRef, isModelInView] = useInView({ threshold: 0.2 });
+  const [trainingRef, isTrainingInView] = useInView({ threshold: 0.2 });
 
   // 应用服务数据
   const appServices = [
@@ -85,28 +81,82 @@ export default function HomePage() {
   // 行业案例数据
   const industryCases = [
     {
+      id: 'goverment1',
       title: '某市公安情报分析以案搜案',
       industry: '政府',
       image: '/某市公安情报分析以案搜案.png',
       desc: '基于AI大模型训练平台，形成辅助合成研判能力'
     },
     {
+      id: 'operator1',
       title: '某运营商智能营销预案',
       industry: '运营商',
       image: '/某运营商智能营销预案.png',
       desc: '通过大模型分析数据，生成精准营销策略'
     },
     {
+      id: 'enterprise1',
       title: '某集团智能问答系统',
       industry: '企业',
       image: '/某集团智能问答系统.png',
       desc: '面向企业集团构建的统一知识聚合检索系统'
     },
     {
+      id: 'education1',
       title: '某高职校AI+知识服务',
       industry: '教育',
       image: '/某高职校DEEPSEEK-AI+知识服务应用.png',
       desc: 'AI智能助手提升高校管理效率和决策支持'
+    }
+  ];
+
+  // 模型工程服务数据
+  const modelServices = [
+    {
+      icon: RobotOutlined,
+      title: '智能微调',
+      desc: '基于LLaMA-Factory等先进框架，支持多种微调策略，快速适配业务场景',
+      features: ['多策略微调', '快速训练', '可视化调试']
+    },
+    {
+      icon: ApiOutlined,
+      title: '灵活部署',
+      desc: '支持NVIDIA GPU、国产芯片等多种硬件平台，提供多样化部署方案',
+      features: ['多硬件支持', '多种部署方式', '高可用集群']
+    },
+    {
+      icon: BarChartOutlined,
+      title: '专业测评',
+      desc: '全面的性能测试体系，包含压力测试、精度评估，确保模型质量',
+      features: ['压力测试', '精度评估', '多维度验证']
+    }
+  ];
+
+  // 咨询培训服务数据
+  const trainingServices = [
+    {
+      icon: BuildOutlined,
+      title: '技术咨询',
+      desc: '提供AI基础架构、训推技术、产品应用等全方位技术咨询服务',
+      category: '专业咨询'
+    },
+    {
+      icon: BookOutlined,
+      title: '智算培训',
+      desc: '系统化智算技术培训，涵盖平台操作、应用实践、理论进阶',
+      category: '技能提升'
+    },
+    {
+      icon: UserOutlined,
+      title: '专家服务',
+      desc: '汇聚云智专家团队，提供项目实战指导和技术深度支持',
+      category: '专家护航'
+    },
+    {
+      icon: ReadOutlined,
+      title: '定制化服务',
+      desc: '结合客户需求，定制培训课程、教学方式与学习周期',
+      category: '个性定制'
     }
   ];
 
@@ -173,7 +223,7 @@ export default function HomePage() {
       >
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            智能应用服务
+            应用工程服务
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             汇聚精品AI应用，覆盖智能办公、智能文档、智能问数三大核心场景
@@ -184,7 +234,8 @@ export default function HomePage() {
           {appServices.map((service, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              onClick={() => {}}
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 "
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
@@ -226,7 +277,7 @@ export default function HomePage() {
         <div className="grid grid-cols-2 gap-20 items-center">
           <div>
             <h2 className="text-5xl font-bold text-gray-900 mb-8">
-              数据服务解决方案
+              数据工程服务
             </h2>
             <p className="text-xl text-gray-600 mb-12 leading-relaxed">
               面向文本、图像与表格的智能解析服务，支持多种文档格式，
@@ -300,6 +351,132 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 模型工程服务 */}
+      <section
+        ref={modelRef}
+        className={`px-60 py-32 bg-white transition-all duration-1000 ${
+          isModelInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            模型工程服务
+          </h2>
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            从模型微调到部署测评，提供全链路AI模型服务能力，支持多种硬件平台部署
+          </p>
+        </div>
+
+        <div className="grid grid-cols-3 gap-12">
+          {modelServices.map((service, index) => (
+            <div
+              key={index}
+              className="group bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
+            >
+              <div className="text-white w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <service.icon className="text-2xl text-white" />
+              </div>
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {service.desc}
+              </p>
+
+              <div className="space-y-3">
+                {service.features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700 font-medium">{feature}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button
+            onClick={() => router.push('/pro-services/model-service')}
+            className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+          >
+            了解详情
+            <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+          </button>
+        </div>
+      </section>
+
+      {/* 咨询培训服务 */}
+      <section
+        ref={trainingRef}
+        className={`relative px-60 py-32 bg-white overflow-hidden transition-all duration-1000 ${
+          isTrainingInView
+            ? 'opacity-100 translate-y-0'
+            : 'opacity-0 translate-y-20'
+        }`}
+      >
+        {/* 背景装饰 */}
+        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-brand/5 to-blue-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-80 h-80 bg-gradient-to-br from-purple-500/5 to-brand/5 rounded-full blur-3xl"></div>
+
+        <div className="relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl font-bold text-gray-900 mb-6">
+              咨询培训服务
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              专业的AI技术咨询与培训服务，助力企业数字化转型升级，打造专业的智算人才队伍
+            </p>
+            <div className="mt-8 w-24 h-1 bg-gradient-to-r from-brand to-blue-500 mx-auto rounded-full"></div>
+          </div>
+
+          <div className="grid grid-cols-4 gap-6">
+            {trainingServices.map((service, index) => (
+              <div
+                key={index}
+                className="group bg-gradient-to-br from-white to-gray-50/50 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-3 border border-gray-100/50 backdrop-blur-sm relative overflow-hidden"
+                style={{
+                  animationDelay: `${index * 0.1}s`
+                }}
+              >
+                {/* 卡片内装饰 */}
+                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-brand/5 to-transparent rounded-bl-3xl"></div>
+
+                <div className="relative z-10">
+                  <div className="text-white w-16 h-16 bg-gradient-to-br from-brand via-red-500 to-red-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <service.icon className="text-2xl text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    {service.desc}
+                  </p>
+                  <span className="inline-block px-4 py-2 bg-gradient-to-r from-brand/10 to-blue-500/10 text-brand text-sm rounded-full font-medium border border-brand/20">
+                    {service.category}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center mt-16">
+            <button
+              onClick={() => router.push('/pro-services/consult-service')}
+              className="group bg-gradient-to-r from-gray-900 to-gray-800 hover:from-brand hover:to-red-600 text-white px-10 py-4 rounded-2xl text-lg font-medium transition-all duration-500 hover:scale-105 hover:shadow-2xl flex items-center gap-3 mx-auto"
+            >
+              了解详情
+              <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+            </button>
+          </div>
+        </div>
+      </section>
+
       {/* 行业案例 */}
       <section
         ref={casesRef}
@@ -322,7 +499,8 @@ export default function HomePage() {
           {industryCases.map((caseItem, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              onClick={() => router.push(`/industry-cases/${caseItem.id}`)}
+              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               style={{
                 animationDelay: `${index * 0.2}s`
               }}
@@ -358,99 +536,6 @@ export default function HomePage() {
             查看更多案例
             <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
           </button>
-        </div>
-      </section>
-
-      {/* 培训咨询 */}
-      <section
-        ref={consultRef}
-        className={`px-60 py-32 bg-gradient-to-br from-gray-900 to-gray-800 text-white relative overflow-hidden transition-all duration-1000 ${
-          isConsultInView
-            ? 'opacity-100 translate-y-0'
-            : 'opacity-0 translate-y-20'
-        }`}
-      >
-        {/* 背景装饰 */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-brand/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-
-        <div className="relative z-10">
-          <div className="grid grid-cols-2 gap-20 items-center">
-            <div>
-              <h2 className="text-5xl font-bold mb-8">专业培训咨询服务</h2>
-              <p className="text-xl text-gray-300 mb-12 leading-relaxed">
-                提供专业的AI技术培训、数字化转型咨询和定制化解决方案，
-                助力企业快速掌握智能技术应用。
-              </p>
-
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-brand rounded-lg flex items-center justify-center">
-                    <BookOutlined className="text-xl text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-1">技术培训</h3>
-                    <p className="text-gray-300">
-                      AI技术应用、数据分析、系统操作培训
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <CarryOutOutlined className="text-xl text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-1">业务咨询</h3>
-                    <p className="text-gray-300">
-                      数字化转型策略、业务流程优化咨询
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center">
-                    <PartitionOutlined className="text-xl text-white" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-semibold mb-1">定制方案</h3>
-                    <p className="text-gray-300">
-                      针对企业需求的个性化解决方案设计
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-12">
-              <h3 className="text-3xl font-bold mb-8 text-center">联系我们</h3>
-
-              <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <PhoneOutlined className="text-xl text-brand" />
-                  <span className="text-lg">400-888-0916</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <MailOutlined className="text-xl text-brand" />
-                  <span className="text-lg">service@h3c.com</span>
-                </div>
-                <div className="flex items-center gap-4">
-                  <EnvironmentOutlined className="text-xl text-brand" />
-                  <span className="text-lg">
-                    杭州市滨江区长河路466号 H3C公司
-                  </span>
-                </div>
-              </div>
-
-              <div className="mt-12 text-center">
-                <button
-                  onClick={() => router.push('/contact-us')}
-                  className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
-                >
-                  立即咨询
-                  <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>

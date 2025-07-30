@@ -144,11 +144,11 @@ export default function AppService() {
   // 分类选项
   const categories = [
     { key: '全部', label: '全部', icon: <AppstoreOutlined /> },
-    { key: '智能问数', label: '智能问数', icon: <DatabaseOutlined /> },
     { key: '智能问答', label: '智能问答', icon: <MessageOutlined /> },
     { key: '智能文档', label: '智能文档', icon: <FileTextOutlined /> },
-    { key: '智能客服', label: '智能客服', icon: <CustomerServiceOutlined /> },
-    { key: '智能办公', label: '智能办公', icon: <BuildOutlined /> }
+    { key: '智能问数', label: '智能问数', icon: <DatabaseOutlined /> },
+    { key: '智能办公', label: '智能办公', icon: <BuildOutlined /> },
+    { key: '智能客服', label: '智能客服', icon: <CustomerServiceOutlined /> }
   ];
 
   const handleAppClick = (url: string) => {
@@ -190,31 +190,6 @@ export default function AppService() {
           }`}
         >
           <Row gutter={[24, 24]}>
-            {/* 智能办公场景 */}
-            <Col xs={24} md={8}>
-              <div className={styles['capability-card']}>
-                <div className={styles['capability-header']}>
-                  <div className={styles['capability-icon']}>
-                    <BuildOutlined />
-                  </div>
-                  <div>
-                    <h3 className={styles['capability-title']}>智能办公场景</h3>
-                    <p className={styles['capability-subtitle']}>
-                      提升行政效率，优化内部管理
-                    </p>
-                  </div>
-                </div>
-                <div style={{ marginBottom: '20px' }}>
-                  <ul className={styles['capability-list']}>
-                    <li>快捷请假系统：支持年假、事假、病假等多种类型</li>
-                    <li>会议室预定：线上线下无缝衔接，提升资源利用率</li>
-                    <li>访客申请：外部访客智能登记，加强安全管理</li>
-                    <li>出差申请：在线化出差申请流程，提高审批效率</li>
-                  </ul>
-                </div>
-              </div>
-            </Col>
-
             {/* 智能文档场景 */}
             <Col xs={24} md={8}>
               <div className={styles['capability-card']}>
@@ -262,6 +237,31 @@ export default function AppService() {
                     <li>经济数据智能分析：GDP、CPI、就业率等经济指标分析</li>
                     <li>地理信息数据查询：行政区划、地理坐标、空间分析等</li>
                     <li>行业数据洞察：各行业发展趋势、竞争格局分析</li>
+                  </ul>
+                </div>
+              </div>
+            </Col>
+
+            {/* 智能办公场景 */}
+            <Col xs={24} md={8}>
+              <div className={styles['capability-card']}>
+                <div className={styles['capability-header']}>
+                  <div className={styles['capability-icon']}>
+                    <BuildOutlined />
+                  </div>
+                  <div>
+                    <h3 className={styles['capability-title']}>智能办公场景</h3>
+                    <p className={styles['capability-subtitle']}>
+                      提升行政效率，优化内部管理
+                    </p>
+                  </div>
+                </div>
+                <div style={{ marginBottom: '20px' }}>
+                  <ul className={styles['capability-list']}>
+                    <li>快捷请假系统：支持年假、事假、病假等多种类型</li>
+                    <li>会议室预定：线上线下无缝衔接，提升资源利用率</li>
+                    <li>访客申请：外部访客智能登记，加强安全管理</li>
+                    <li>出差申请：在线化出差申请流程，提高审批效率</li>
                   </ul>
                 </div>
               </div>

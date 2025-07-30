@@ -1,5 +1,6 @@
 'use client';
 
+import { useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import ExcelUpload from '@/components/features/excel/ExcelUpload';
 import ExcelPreview from '@/components/features/excel/ExcelPreview';
@@ -18,6 +19,9 @@ interface UploadResult {
 }
 
 export default function ExcelProcess() {
+  const searchParams = useSearchParams();
+  const title = searchParams.get('title');
+
   // 当前展示文件ArraryBuffer
   const [currentFileArrayBuffer, setCurrentFileArrayBuffer] =
     useState<ArrayBuffer | null>(null);
@@ -46,7 +50,7 @@ export default function ExcelProcess() {
     <div>
       <div className="flex items-center justify-between py-2 border-b-1 border-gray-200">
         <span className="text-lg font-semibold text-gray-800 px-8">
-          表格数据预处理
+          {title}
         </span>
       </div>
       <div className="flex h-[calc(100vh-117px)]">

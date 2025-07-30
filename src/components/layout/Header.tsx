@@ -19,15 +19,15 @@ const items: MenuItem[] = [
     key: '/pro-services',
     children: [
       {
-        label: '应用服务',
+        label: '应用工程服务',
         key: '/pro-services/app-service'
       },
       {
-        label: '数据服务',
+        label: '数据工程服务',
         key: '/pro-services/data-service'
       },
       {
-        label: '模型服务',
+        label: '模型工程服务',
         key: '/pro-services/model-service'
       },
       {

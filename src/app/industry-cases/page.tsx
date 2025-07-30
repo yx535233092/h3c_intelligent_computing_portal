@@ -6,65 +6,24 @@ import React from 'react';
 import Image from 'next/image';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import CaseCarousel from '@/components/features/carousel/CaseCarousel';
+import { caseCategories } from '@/utils/caseData';
 
 import type { TabsProps } from 'antd';
 
-const items: TabsProps['items'] = [
-  {
-    key: '1',
-    label: '政府',
+// 根据数据生成 Tabs 配置
+const generateTabsItems = (): TabsProps['items'] => {
+  return caseCategories.map((category) => ({
+    key: category.key,
+    label: category.label,
     children: (
       <div>
-        <CaseCarousel
-          title="某市公安情报分析以案搜案"
-          description="基于AI大模型训练平台的数据和计算资源，形成处置过程中辅助合成研判的“语音语义建模”能力，该阶段为AI智能客服的较高级阶段，在初级能力基础上训练AI进行语义识别，达到“以案搜人”、“以案搜案”等效果。"
-          picName="某市公安情报分析以案搜案.png"
-        ></CaseCarousel>
+        <CaseCarousel items={category.items} />
       </div>
     )
-  },
-  {
-    key: '2',
-    label: '运营商',
-    children: (
-      <div>
-        <CaseCarousel
-          title="某运营商智能营销预案"
-          description="通过大模型分析大量数据，可根据一线营销作战过程中千变万化的营销动态，实现生成精准作战策略，提高营销触达转化效果。"
-          picName="某运营商智能营销预案.png"
-        ></CaseCarousel>
-      </div>
-    )
-  },
-  {
-    key: '3',
-    label: '企业',
-    children: (
-      <div>
-        <CaseCarousel
-          title="某集团智能问答系统"
-          description="企业智能问答系统，是基于通用大模型应用能力，面向企业集团及其分子公司构建的统一知识聚合、检索和问答系统，超大规模组织、超大规模用户、超大规模知识、超大规模数据安全防护"
-          picName="某集团智能问答系统.png"
-        ></CaseCarousel>
-      </div>
-    )
-  },
-  {
-    key: '4',
-    label: '教育',
-    children: (
-      <div>
-        <CaseCarousel
-          title="某高职校DEEPSEEK-AI+知识服务应用"
-          description="AI+知识服务应用通过智能助手与数据分析技术，提升高校的管理效率、决策支持和知识资源的获取与管理。功能涵盖文档解读、知识查阅、员工知识管理等多个方面，帮助师生快速获取信息并提升工作协作效率。"
-          picName="某高职校DEEPSEEK-AI+知识服务应用.png"
-        ></CaseCarousel>
-      </div>
-    )
-  }
-];
+  }));
+};
 
-const onTabsChange = (key: string) => {};
+const items = generateTabsItems();
 
 export default function IndustryCasesPage() {
   useScrollToTop();
@@ -109,10 +68,10 @@ export default function IndustryCasesPage() {
               }}
               defaultActiveKey="1"
               items={items}
-              onChange={onTabsChange}
               indicator={{ align: 'center' }}
               centered
               animated={{ inkBar: true, tabPane: true }}
+              destroyOnHidden={true}
             />
           </div>
         </div>
@@ -176,6 +135,9 @@ export default function IndustryCasesPage() {
         </div>
 
         <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
+          {/* 装饰性元素 */}
+          <div className="absolute top-0 left-0 w-32 h-32 bg-brand/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-0 right-0 w-40 h-40 bg-brand/5 rounded-full blur-3xl"></div>
           {/* 聊天图标 */}
           <div className="flex justify-center mb-6">
             <div className="w-20 h-20 bg-brand rounded-full flex items-center justify-center shadow-lg">

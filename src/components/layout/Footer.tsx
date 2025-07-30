@@ -1,5 +1,6 @@
 import Logo from '@/components/ui/Logo';
 import { HomeOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
+import Link from 'next/link'; // 从 next/link 导入 Link 组件
 
 export default function Footer() {
   return (
@@ -31,10 +32,46 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <h1 className="text-xl font-bold">专业服务</h1>
           <ul className="flex flex-col gap-2 text-secondary-text">
-            <li>应用服务</li>
-            <li>数据服务</li>
-            <li>模型服务</li>
-            <li>咨询培训服务</li>
+            <li>
+              <Link
+                style={{
+                  color: '#ccc'
+                }}
+                href="/pro-services/app-service"
+              >
+                应用服务
+              </Link>
+            </li>
+            <li>
+              <Link
+                style={{
+                  color: '#ccc'
+                }}
+                href="/pro-services/data-service"
+              >
+                数据服务
+              </Link>
+            </li>
+            <li>
+              <Link
+                style={{
+                  color: '#ccc'
+                }}
+                href="/pro-services/model-service"
+              >
+                模型服务
+              </Link>
+            </li>
+            <li>
+              <Link
+                style={{
+                  color: '#ccc'
+                }}
+                href="/pro-services/consult-service"
+              >
+                咨询培训服务
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -62,15 +99,15 @@ export default function Footer() {
         </span>
         <ul className="flex gap-4 text-secondary-text">
           <li className="hover:text-white transition-all duration-300">
-            <a href="">隐私政策</a>
+            <Link href="">隐私政策</Link>
           </li>
           <li className="hover:text-white transition-all duration-300">
-            <a href="">使用条款</a>
+            <Link href="">使用条款</Link>
           </li>
           <li className="hover:text-white transition-all duration-300">
-            <a href="https://www.h3c.com" target="_blank">
+            <Link href="https://www.h3c.com" target="_blank">
               新华三官网
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
