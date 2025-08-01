@@ -1,8 +1,9 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function DocumentProcess() {
+function AppDetailContent() {
   const searchParams = useSearchParams();
   const type = searchParams.get('type');
   let url = '';
@@ -32,5 +33,19 @@ export default function DocumentProcess() {
     <div>
       <iframe className="w-full h-[90vh]" src={`${url}`}></iframe>
     </div>
+  );
+}
+
+export default function DocumentProcess() {
+  return (
+    <Suspense
+      fallback={
+        <div className="w-full h-[90vh] flex items-center justify-center">
+          加载中...
+        </div>
+      }
+    >
+      <AppDetailContent />
+    </Suspense>
   );
 }

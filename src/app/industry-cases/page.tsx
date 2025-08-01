@@ -35,9 +35,10 @@ const tabItems = [
         <CaseCarousel
           items={[
             {
-              title: '某运营商智能营销预案',
-              description: '描述',
-              picName: '某运营商智能营销预案.png',
+              title: '某省联通智能受理',
+              description:
+                '覆盖业务咨询、信息查询、业务受理热点应用场景，实现用户利用自然语言自助进行业务咨询、信息查询、业务办理，降低系统上手难度，改善人机交互友好性，提高省份客户系统满意度，助力省份客户降本增效。',
+              picName: '运营商1.png',
               routeAdress: '/industry-cases/operator'
             }
           ]}
