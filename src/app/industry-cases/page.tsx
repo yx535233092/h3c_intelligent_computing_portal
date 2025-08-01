@@ -6,24 +6,84 @@ import React from 'react';
 import Image from 'next/image';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import CaseCarousel from '@/components/features/carousel/CaseCarousel';
-import { caseCategories } from '@/utils/caseData';
 
-import type { TabsProps } from 'antd';
-
-// 根据数据生成 Tabs 配置
-const generateTabsItems = (): TabsProps['items'] => {
-  return caseCategories.map((category) => ({
-    key: category.key,
-    label: category.label,
+const tabItems = [
+  {
+    key: '1',
+    label: '政府',
     children: (
       <div>
-        <CaseCarousel items={category.items} />
+        <CaseCarousel
+          items={[
+            {
+              title: '某市公安情报分析以案搜案',
+              description:
+                '基于AI大模型训练平台的数据和计算资源，形成处置过程中辅助合成研判的“语音语义建模”能力，该阶段为AI智能客服的较高级阶段，在初级能力基础上训练AI进行语义识别，达到“以案搜人”、“以案搜案”等效果。',
+              picName: '某市公安情报分析以案搜案.png',
+              routeAdress: '/industry-cases/goverment'
+            }
+          ]}
+        />
       </div>
     )
-  }));
-};
-
-const items = generateTabsItems();
+  },
+  {
+    key: '2',
+    label: '运营商',
+    children: (
+      <div>
+        <CaseCarousel
+          items={[
+            {
+              title: '某运营商智能营销预案',
+              description: '描述',
+              picName: '某运营商智能营销预案.png',
+              routeAdress: '/industry-cases/operator'
+            }
+          ]}
+        />
+      </div>
+    )
+  },
+  {
+    key: '3',
+    label: '企业',
+    children: (
+      <div>
+        <CaseCarousel
+          items={[
+            {
+              title: '某集团智能问答系统',
+              description:
+                '企业智能问答系统，是基于通用大模型应用能力，面向企业集团及其分子公司构建的统一知识聚合、检索和问答系统，超大规模组织、超大规模用户、超大规模知识、超大规模数据安全防护',
+              picName: '某集团智能问答系统.png',
+              routeAdress: '/industry-cases/enterprise'
+            }
+          ]}
+        />
+      </div>
+    )
+  },
+  {
+    key: '4',
+    label: '教育',
+    children: (
+      <div>
+        <CaseCarousel
+          items={[
+            {
+              title: '某高职校DEEPSEEK-AI+知识服务应用',
+              description:
+                '这是一个能融合数据、能智能服务、能任务闭环、还能安全交付的高校知识平台。通过统一门户、知识治理平台、智能体支撑底座，全面服务教研、申报、评估、管理等核心业务场景，并具备支撑智能体构建的持续演进能力。',
+              picName: '教育1.png',
+              routeAdress: '/industry-cases/education'
+            }
+          ]}
+        />
+      </div>
+    )
+  }
+];
 
 export default function IndustryCasesPage() {
   useScrollToTop();
@@ -67,7 +127,7 @@ export default function IndustryCasesPage() {
                 width: '100%'
               }}
               defaultActiveKey="1"
-              items={items}
+              items={tabItems}
               indicator={{ align: 'center' }}
               centered
               animated={{ inkBar: true, tabPane: true }}
