@@ -13,11 +13,12 @@ import {
   ApiOutlined,
   StarOutlined,
   BuildOutlined,
-  CalendarOutlined,
   RobotOutlined,
   UserOutlined,
   BookOutlined,
-  ReadOutlined
+  ReadOutlined,
+  MessageOutlined,
+  DatabaseOutlined
 } from '@ant-design/icons';
 
 export default function HomePage() {
@@ -31,31 +32,35 @@ export default function HomePage() {
   const [modelRef, isModelInView] = useInView({ threshold: 0.2 });
   const [trainingRef, isTrainingInView] = useInView({ threshold: 0.2 });
 
-  // 应用服务数据
+  // 应用服务数据 - 四个核心场景
   const appServices = [
     {
-      icon: CalendarOutlined,
-      title: '快捷请假',
-      desc: '支持年假/事假/病假',
-      category: '智能办公'
-    },
-    {
-      icon: BuildOutlined,
-      title: '会议室预定',
-      desc: '线上/线下预约管理',
-      category: '智能办公'
+      icon: MessageOutlined,
+      title: '智能问答场景',
+      desc: '知识查询智能化，问答交互人性化',
+      category: '智能问答',
+      examples: ['图文问答助手', '消防法律助手', '康养知识问答']
     },
     {
       icon: FileTextOutlined,
-      title: '文章改写',
-      desc: '智能文档处理改写',
-      category: '智能文档'
+      title: '智能文档场景',
+      desc: '文档处理智能化，内容创作高效化',
+      category: '智能文档',
+      examples: ['文章改写助手', '医疗诊断分析', 'AI写作助手']
     },
     {
-      icon: BarChartOutlined,
-      title: '人口库智能问数',
-      desc: '人口数据多场景查询',
-      category: '智能问数'
+      icon: DatabaseOutlined,
+      title: '智能问数场景',
+      desc: '数据洞察智能化，决策支持精准化',
+      category: '智能问数',
+      examples: ['人口数据查询', '经济数据分析', '地理信息查询']
+    },
+    {
+      icon: BuildOutlined,
+      title: '智能办公场景',
+      desc: '提升行政效率，优化内部管理',
+      category: '智能办公',
+      examples: ['快捷请假系统', '会议室预定', '访客申请']
     }
   ];
 
@@ -181,29 +186,28 @@ export default function HomePage() {
 
         <div className="relative z-10">
           <div className="max-w-4xl">
-            <h1 className="text-7xl font-bold text-white mb-8 leading-tight">
+            <h1 className="text-6xl font-bold text-white mb-8 leading-tight">
               智算专业服务
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand to-red-400">
-                数字化转型引擎
+              <span className="text-4xl text-transparent bg-clip-text bg-gradient-to-r from-brand via-red-500 to-red-700 font-semibold">
+                释放AI大模型潜能 · 加速智能应用落地
               </span>
             </h1>
-            <p className="text-2xl text-gray-300 mb-12 leading-relaxed">
-              基于新华三智算平台，提供全方位的AI应用服务、数据处理服务和行业解决方案
-              <br />
-              助力企业数字化转型，释放数据价值，提升业务效率
+            <p className="text-xl text-red-50 mb-12 leading-relaxed max-w-3xl drop-shadow-sm">
+              我们提供从技术咨询、模型优化、算力管理到应用定制的全流程专家服务，致力于打通大模型从技术潜力到商业价值的“最后一公里”，助您高效构建、部署与扩展AI应用。
             </p>
             <div className="flex gap-6">
               <button
                 onClick={() => router.push('/pro-services/app-service')}
-                className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 hover:shadow-2xl flex items-center gap-3"
+                className="group relative bg-gradient-to-r from-brand to-red-700 hover:from-red-500 hover:to-brand text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-brand/30 flex items-center gap-3 overflow-hidden"
               >
-                立即体验
-                <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
+                <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700"></span>
+                <span className="relative z-10">立即体验</span>
+                <ArrowRightOutlined className="relative z-10 text-lg transition-all duration-300 group-hover:translate-x-1 group-hover:scale-110" />
               </button>
               <button
                 onClick={() => router.push('/contact-us')}
-                className="border-2 border-white/30 hover:border-white text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:bg-white/10"
+                className="group relative border-2 border-brand/40 hover:border-brand/80 hover:bg-gradient-to-r hover:from-brand/10 hover:to-red-600/10 text-red-50 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-brand/20 backdrop-blur-sm"
               >
                 联系咨询
               </button>
@@ -226,7 +230,7 @@ export default function HomePage() {
             应用工程服务
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            汇聚精品AI应用，覆盖智能办公、智能文档、智能问数三大核心场景
+            汇聚智能问答、智能文档、智能问数、智能办公四大核心场景，为政府、运营商、教育、企业等行业提供全方位的智能化解决方案
           </p>
         </div>
 
@@ -240,13 +244,29 @@ export default function HomePage() {
                 animationDelay: `${index * 0.1}s`
               }}
             >
-              <div className="w-16 h-16 bg-white border-2 border-brand text-brand rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-white w-16 h-16 bg-gradient-to-br from-brand to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="text-2xl text-white" />
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 {service.title}
               </h3>
               <p className="text-gray-600 mb-4">{service.desc}</p>
+
+              <div className="mb-4">
+                <div className="text-sm text-gray-500 mb-2">应用示例：</div>
+                <div className="space-y-1">
+                  {service.examples.map((example, exampleIndex) => (
+                    <div
+                      key={exampleIndex}
+                      className="text-sm text-gray-700 flex items-center"
+                    >
+                      <span className="w-1.5 h-1.5 bg-brand rounded-full mr-2"></span>
+                      {example}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <span className="inline-block px-3 py-1 bg-brand/10 text-brand text-sm rounded-full font-medium">
                 {service.category}
               </span>

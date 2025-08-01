@@ -632,15 +632,15 @@ export default function ModelService() {
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
+                    <span className="text-gray-600">长上下文处理</span>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
                     <span className="text-gray-600">长时间运行</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">大数据量处理</span>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="w-2 h-2 bg-orange-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">异常场景恢复</span>
+                    <span className="text-gray-600">多模态输入</span>
                   </div>
                 </div>
               </div>
@@ -715,19 +715,19 @@ export default function ModelService() {
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">BLEU评分</span>
+                    <span className="text-gray-600">基础语言能力</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">ROUGE指标</span>
+                    <span className="text-gray-600">代码生成能力</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">人工评估</span>
+                    <span className="text-gray-600">数学与推理能力</span>
                   </div>
                   <div className="flex items-center">
                     <div className="w-2 h-2 bg-blue-500 rounded-full mr-2"></div>
-                    <span className="text-gray-600">领域适应性</span>
+                    <span className="text-gray-600">工具使用能力</span>
                   </div>
                 </div>
               </div>

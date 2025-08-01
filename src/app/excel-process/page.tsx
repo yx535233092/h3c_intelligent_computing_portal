@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useState, Suspense } from 'react';
 import ExcelUpload from '@/components/features/excel/ExcelUpload';
 import ExcelPreview from '@/components/features/excel/ExcelPreview';
 import ExcelResult from '@/components/features/excel/ExcelResult';
@@ -18,7 +18,7 @@ interface UploadResult {
   [key: string]: unknown;
 }
 
-export default function ExcelProcess() {
+function ExcelProcessContent() {
   const searchParams = useSearchParams();
   const title = searchParams.get('title');
 
@@ -76,5 +76,13 @@ export default function ExcelProcess() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ExcelProcess() {
+  return (
+    <Suspense fallback={<div>加载中...</div>}>
+      <ExcelProcessContent />
+    </Suspense>
   );
 }

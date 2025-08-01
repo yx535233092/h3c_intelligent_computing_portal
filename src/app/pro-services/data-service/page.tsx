@@ -83,14 +83,14 @@ const ProductCard = ({
           target="_blank"
           className={commonStyles.linkStyle}
           style={{
-            background: 'linear-gradient(135deg, #4285f4, #1a73e8)',
+            background: 'linear-gradient(135deg, #d32d26, #b71c1c)',
             color: 'white',
-            padding: '12px 24px',
+            padding: '8px 16px',
             borderRadius: '25px',
             textDecoration: 'none',
             fontSize: '16px',
             fontWeight: '600',
-            boxShadow: '0 4px 15px rgba(66, 133, 244, 0.3)',
+            boxShadow: '0 4px 15px rgba(211, 45, 38, 0.3)',
             border: '2px solid transparent',
             transition: 'all 0.3s ease',
             display: 'inline-block',
@@ -101,16 +101,16 @@ const ProductCard = ({
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
             e.currentTarget.style.boxShadow =
-              '0 8px 25px rgba(66, 133, 244, 0.4)';
+              '0 8px 25px rgba(211, 45, 38, 0.4)';
             e.currentTarget.style.background =
-              'linear-gradient(135deg, #1a73e8, #1557b0)';
+              'linear-gradient(135deg, #b71c1c, #8b0000)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'translateY(0) scale(1)';
             e.currentTarget.style.boxShadow =
-              '0 4px 15px rgba(66, 133, 244, 0.3)';
+              '0 4px 15px rgba(211, 45, 38, 0.3)';
             e.currentTarget.style.background =
-              'linear-gradient(135deg, #4285f4, #1a73e8)';
+              'linear-gradient(135deg, #d32d26, #b71c1c)';
           }}
         >
           立即体验 {'>'}
@@ -618,7 +618,7 @@ export default function DataService() {
           '智能识别文档结构和内容',
           '保持原有格式和排版信息'
         ],
-        link: 'http://192.168.10.24:7860/?title=常规文档解析',
+        link: '/document-process?title=常规文档解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：文档 → AI解析 → 结构化文本 */}
@@ -670,7 +670,7 @@ export default function DataService() {
       {
         title: '复杂表格解析',
         description: ['行列合并表格', '跨页表格', '...'],
-        link: 'http://192.168.10.24:7860/?title=复杂布局文档解析',
+        link: '/document-process?title=复杂表格解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：复杂表格 → AI识别 → 结构化数据 */}
@@ -726,7 +726,7 @@ export default function DataService() {
       {
         title: '公式类文档解析',
         description: ['数学公式精准识别', 'LaTeX格式输出', '复杂公式结构解析'],
-        link: 'http://192.168.10.24:7860/?title=公式类文档解析',
+        link: '/document-process?title=公式类文档解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：公式文档 → AI识别 → LaTeX代码 */}
@@ -776,7 +776,7 @@ export default function DataService() {
       {
         title: '媒体报刊类文档解析',
         description: ['报纸版面解析', '杂志内容解析', '研究报告解析'],
-        link: 'http://192.168.10.24:7860/?title=媒体报刊类文档解析',
+        link: '/document-process?title=媒体报刊类文档解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：报纸杂志 → AI解析 → 结构化内容 */}
@@ -830,7 +830,7 @@ export default function DataService() {
       {
         title: '论文解析',
         description: ['普通论文解析', '化学论文解析', '章节结构提取'],
-        link: 'http://192.168.10.24:7860/?title=论文解析',
+        link: '/document-process?title=论文解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：学术论文 → AI分析 → 结构化数据 */}
@@ -899,7 +899,7 @@ export default function DataService() {
       {
         title: '试卷解析',
         description: ['题目选项识别', '答案区域提取', '评分标准解析'],
-        link: 'http://192.168.10.24:7860/?title=试卷解析',
+        link: '/document-process?title=试卷解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：试卷 → AI解析 → 结构化题目 */}
@@ -1120,7 +1120,7 @@ export default function DataService() {
       {
         title: '古籍解析',
         description: ['古代文献识别', '繁体字、古文字', '专业文史处理'],
-        link: 'http://192.168.10.24:7860/?title=古籍解析',
+        link: '/document-process?title=古籍解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：古籍图片 → AI识别 → 繁体文本 */}
@@ -1171,7 +1171,7 @@ export default function DataService() {
       {
         title: '手写识别',
         description: ['高精度手写识别', '多种笔迹风格', '草书行书支持'],
-        link: 'http://192.168.10.24:7860/?title=手写识别',
+        link: '/document-process?title=手写识别',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：手写图片 → AI识别 → 数字化文本 */}

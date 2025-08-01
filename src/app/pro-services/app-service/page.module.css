@@ -584,26 +584,26 @@
 }
 
 /* 针对具体的按钮实例 */
-.category-button:global(.ant-btn-variant-solid) {
+:global(.ant-btn-variant-solid) {
   background: #d32d26 !important;
   border-color: #d32d26 !important;
   color: white !important;
 }
 
-.category-button:global(.ant-btn-variant-solid):hover {
+:global(.ant-btn-variant-solid):hover {
   background: #a8251f !important;
   border-color: #a8251f !important;
   color: white !important;
 }
 
-.category-button:global(.ant-btn-variant-solid):focus {
+:global(.ant-btn-variant-solid):focus {
   background: #d32d26 !important;
   border-color: #d32d26 !important;
   color: white !important;
   box-shadow: 0 0 0 2px rgba(211, 45, 38, 0.2) !important;
 }
 
-.category-button:global(.ant-btn-variant-solid):active {
+:global(.ant-btn-variant-solid):active {
   background: #a8251f !important;
   border-color: #a8251f !important;
   color: white !important;
@@ -632,6 +632,7 @@
 }
 
 /* 覆盖任何带有 css-dev-only-do-not-override 的样式 */
+
 :global([class*='css-dev-only-do-not-override']:where(.ant-btn-variant-solid)) {
   background-color: #d32d26 !important;
   border-color: #d32d26 !important;

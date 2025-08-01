@@ -78,7 +78,9 @@ export default function HeroSection() {
     pathname === '/home' ||
     pathname.includes('excel-process') ||
     pathname.includes('pro-services') ||
-    pathname.includes('industry-cases/')
+    pathname.includes('industry-cases/') ||
+    pathname.includes('document-process') ||
+    pathname.includes('app-detail')
   ) {
     return null;
   }

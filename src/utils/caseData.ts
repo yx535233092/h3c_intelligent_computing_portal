@@ -17,6 +17,7 @@ export interface CaseItem {
   title: string;
   description: string;
   picName: string;
+  detailPicName: string;
   routeAdress: string;
   pointOfPain: PointOfPain[];
   solution: Solution[];
@@ -39,6 +40,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '基于AI大模型训练平台的数据和计算资源，形成处置过程中辅助合成研判的"语音语义建模"能力，该阶段为AI智能客服的较高级阶段，在初级能力基础上训练AI进行语义识别，达到"以案搜人"、"以案搜案"等效果。',
         picName: '某市公安情报分析以案搜案.png',
+        detailPicName: '某市公安情报分析以案搜案.png',
         routeAdress: '/industry-cases/goverment1',
         pointOfPain: [
           {
@@ -101,6 +103,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '某消防救援总队以省委省政府提出的"一号发展工程"指示精神为指引，在2024年以更大力度实施数字经济创新提质，贯彻执行 "加强数据开发利用，深化拓展场景应用，激活数据要素新价值"的战略方向。项目结合国家消防救援局"数字消防"建设的工作要求，构建消防领域"智能防控、智能处置、智能管理"三大业务方向。',
         picName: '浙江某消防总队办公问答助手.png',
+        detailPicName: '浙江某消防总队办公问答助手.png',
         routeAdress: '/industry-cases/goverment2',
         pointOfPain: [],
         solution: [],
@@ -111,6 +114,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '实现专项预案数字化，把专项预案处置流程、各岗位职责通过文档解析的方式实现应急预案的结构化生成，辅助应急期间开展应急处置工作。',
         picName: '某省应急局处置方案生成.png',
+        detailPicName: '某省应急局处置方案生成.png',
         routeAdress: '/industry-cases/goverment3',
         pointOfPain: [],
         solution: [],
@@ -121,6 +125,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '基于大语言模型和政务知识库构建面向多业务场景的智能问答应用。通过对政务领域事项数据、办事材料、办事指南、办事流程、办事进度、办事地址、服务政策、培训文档等各类知识进行统一归集和管理，利用大模型理解用户提问并自主生成人性化的准确答案。',
         picName: '某省大数据智能问数助手.png',
+        detailPicName: '某省大数据智能问数助手.png',
         routeAdress: '/industry-cases/goverment4',
         pointOfPain: [],
         solution: [],
@@ -135,8 +140,9 @@ export const caseCategories: CaseCategory[] = [
       {
         title: '某运营商智能营销预案',
         description:
-          '通过大模型分析大量数据，可根据一线营销作战过程中千变万化的营销动态，实现生成精准作战策略，提高营销触达转化效果。',
+          '通过大模型对海量数据的深度分析，能够依据一线营销实战中瞬息万变的动态信息，精准生成适配的作战策略，从而有效提升营销触达的转化效能。',
         picName: '某运营商智能营销预案.png',
+        detailPicName: '某运营商智能营销预案.png',
         routeAdress: '/industry-cases/operator1',
         pointOfPain: [
           {
@@ -168,11 +174,6 @@ export const caseCategories: CaseCategory[] = [
             title: '数据分析能力受限，难以深度洞察',
             description:
               '面对海量营销数据，缺乏有效的数据分析工具和深入洞察能力，难以从复杂数据中提炼出有价值的商业情报和趋势。'
-          },
-          {
-            title: '营销运营成本与效率有待优化',
-            description:
-              '现有营销和客户服务流程可能存在较高的运营成本，且整体效率未能达到最优，需要通过智能化手段降低成本并提升效益。'
           }
         ],
         solution: [
@@ -250,6 +251,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '针对编写招标文件过程中缺少文档编写辅助系统，完全依赖人工编写各类招投标文档，标书支撑面临编制工作量大、审核耗时长、依赖个人经验、存量数据挖掘不足等痛点。基于历史积累的投标文件、相关政策法规、人员资料信息等材料构建标书知识库，并融合大小模型能力，打造智慧标书助手，加快标书制作审核效率，提升标书人员专业水平。',
         picName: '山东移动标书助手.png',
+        detailPicName: '山东移动标书助手.png',
         routeAdress: '/industry-cases/operator2',
         pointOfPain: [],
         solution: [],
@@ -259,6 +261,7 @@ export const caseCategories: CaseCategory[] = [
         title: '云南移动方案助手',
         description: '售前方案编制效率和质量双提升',
         picName: '云南移动方案助手.png',
+        detailPicName: '云南移动方案助手.png',
         routeAdress: '/industry-cases/operator3',
         pointOfPain: [],
         solution: [],
@@ -273,8 +276,9 @@ export const caseCategories: CaseCategory[] = [
       {
         title: '某集团智能问答系统',
         description:
-          '企业智能问答系统，是基于通用大模型应用能力，面向企业集团及其分子公司构建的统一知识聚合、检索和问答系统，超大规模组织、超大规模用户、超大规模知识、超大规模数据安全防护',
+          '该系统围绕国家政策咨询和集团制度问答两大场景打造面向企业集团及其分公司的统一智能化问答平台，实现安全、精准、高效的知识检索与问答服务。',
         picName: '某集团智能问答系统.png',
+        detailPicName: '智能问答.png',
         routeAdress: '/industry-cases/enterprise1',
         pointOfPain: [
           {
@@ -306,11 +310,6 @@ export const caseCategories: CaseCategory[] = [
             title: '传统检索速度慢，无法满足实时响应需求',
             description:
               '在处理大规模数据和查询请求时，现有检索系统响应速度可能较慢，无法在短时间内（例如2秒内）提供结果，影响用户体验和工作效率。'
-          },
-          {
-            title: '知识问答准确率有待提升',
-            description:
-              '传统问答或检索系统在处理复杂、多维度问题时，回答的准确率不高（例如低于60%），无法有效辅助用户进行决策。'
           }
         ],
         solution: [
@@ -327,17 +326,17 @@ export const caseCategories: CaseCategory[] = [
           {
             title: '提供精准的政策法规智能查询',
             description:
-              '针对国家或地方发布的政策、法规、资讯等知识，进行智能识别和解读，并形成机器可识别的SQL或Python，以辅助用户精准理解和决策。'
+              '针对国家或地方发布的政策、法规、资讯等知识，进行智能识别和解读，辅助用户精准理解和決策。'
           },
           {
             title: '支持多领域通用知识问答',
             description:
-              '提供涵盖人文地理、数字计算、历史文化、军事、农业、生物医药、医疗保障等跨领域通用和专业的知识问答服务。'
+              '提供涵盖教育、医疗、企业、政府等多领域专业的知识问答服务。'
           },
           {
             title: '构建超大规模用户和数据安全防护体系',
             description:
-              '面向超大规模用户群体，支持集团25个业务单元、超3000个实体企业，并提供业务、部门、角色等7个维度的数据安全防护，确保数据不泄密。'
+              '面向超大规模用户群体，支持集团总部及分公司权限管理，并提供业务、部门、角色等7个维度的数据安全防护，确保数据不泄密。'
           },
           {
             title: '提升检索速度和问答准确率',
@@ -362,6 +361,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '非标合同需要人工从合同正文里识别对应信息，出错率高，耗时长，通过大模型代替人工为用户提供合同预审、合同履约方案等，大幅提升合同审核效率、准确率，降低合同签订和交付的风险和损失，同时提高二次续约的成功率。',
         picName: '企业智能合同分析.png',
+        detailPicName: '企业智能合同分析.png',
         routeAdress: '/industry-cases/enterprise2',
         pointOfPain: [],
         solution: [],
@@ -372,6 +372,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           '融合大模型、语音交互、虚拟形象制作等多项技术，打造的虚拟数智人产品。面向智能咨询、讲解营销等场景，帮助企业引入虚拟员工降本增效，同时通过虚拟品牌形象打造营销记忆点。',
         picName: '某石油企业数智人应用.png',
+        detailPicName: '某石油企业数智人应用.png',
         routeAdress: '/industry-cases/enterprise3',
         pointOfPain: [],
         solution: [],
@@ -386,8 +387,9 @@ export const caseCategories: CaseCategory[] = [
       {
         title: '某高职校DEEPSEEK-AI+知识服务应用',
         description:
-          'AI+知识服务应用通过智能助手与数据分析技术，提升高校的管理效率、决策支持和知识资源的获取与管理。功能涵盖文档解读、知识查阅、员工知识管理等多个方面，帮助师生快速获取信息并提升工作协作效率。',
+          '“AI + 知识服务” 应用借助智能助手与数据分析技术，可提升高校管理效率、强化决策支持、优化知识资源的获取与管理。其功能涵盖文档解读、知识查阅、知识管理等多个方面，能助力师生快速获取信息并提高工作协作效率。',
         picName: '某高职校DEEPSEEK-AI+知识服务应用.png',
+        detailPicName: '某高职校DEEPSEEK-AI+知识服务应用.png',
         routeAdress: '/industry-cases/education1',
         pointOfPain: [
           {
@@ -504,6 +506,7 @@ export const caseCategories: CaseCategory[] = [
         description:
           'AI+为深入贯彻"十四五"规划构建智慧水利体系，加快完善水旱灾害防御"三大体系"要求。以"完善流域防洪工程体系"为切口，结合多模态大模型构建水利知识体系，通过知识机器人"小蓄"实现高效查询、水利新闻随时汇聚、业务图册随时浏览，极大提升水利业务智能化水平。 ',
         picName: '某水科院大模型智能问答.png',
+        detailPicName: '某水科院大模型智能问答.png',
         routeAdress: '/industry-cases/education2',
         pointOfPain: [],
         solution: [],

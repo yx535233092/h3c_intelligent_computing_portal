@@ -98,7 +98,7 @@ export default function CaseDetailPage() {
             <div className="relative">
               <div className="aspect-video rounded-2xl overflow-hidden shadow-2xl bg-white p-4">
                 <Image
-                  src={`/${caseData.picName}`}
+                  src={`/${caseData.detailPicName}`}
                   alt={caseData.title}
                   width={600}
                   height={400}
@@ -117,7 +117,7 @@ export default function CaseDetailPage() {
           <section className="mb-20">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-900 mb-4">
-                面临的挑战
+                客户的痛点
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 {caseCategory?.label === '政府' &&

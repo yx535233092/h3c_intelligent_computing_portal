@@ -232,7 +232,7 @@ export default function ExcelUpLoad({
 
       // 发送 POST 请求到解析接口
       const response = await fetch(
-        `http://localhost:8000/parse_xlsx/?type=${type}`,
+        `http://localhost:8000/v1/parse_xlsx/?type=3`,
         {
           method: 'POST',
           body: formData

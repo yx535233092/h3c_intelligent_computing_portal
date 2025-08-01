@@ -1,0 +1,36 @@
+'use client';
+
+import { useSearchParams } from 'next/navigation';
+
+export default function DocumentProcess() {
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type');
+  let url = '';
+  switch (type) {
+    case 'hj':
+      url = 'https://www.iwhaledi.com/knowledge/chat/share?';
+      const token = searchParams.get('token');
+      url += `H5Sign=${token}`;
+      console.log(url);
+
+      break;
+    case 'df':
+      url = 'http://192.168.10.24';
+      const isChat = searchParams.get('chat');
+      if (isChat) {
+        url += '/chat';
+      } else {
+        url += '/workflow';
+      }
+      const dfToken = searchParams.get('dfToken');
+      url += `/${dfToken}`;
+      console.log(url);
+      break;
+  }
+
+  return (
+    <div>
+      <iframe className="w-full h-[90vh]" src={`${url}`}></iframe>
+    </div>
+  );
+}
