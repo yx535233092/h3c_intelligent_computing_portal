@@ -1,3 +1,4 @@
+@import './common.css';
 @import 'tailwindcss';
 @import '@js-preview/excel/lib/index.css';
 

@@ -1,0 +1,22 @@
+import requests
+
+# 目标 URL
+url = 'https://lab.iwhalecloud.com/llmdoc/v1/auth/check-permission'
+
+# 需要设置的 cookie
+cookies = {
+'access_token': 'eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJXb1Z0YjhZTHFhcHNKcVMzb0prVHBwN0p1LWtvamg0QzkzcHc2UXN6YXVVIn0.eyJleHAiOjE3NTQzNjE3MzQsImlhdCI6MTc1NDM1OTkzNCwianRpIjoiZGZhNzQwNDUtMTY5Yi00MmNhLWE1NWUtMTFjZDBkZTZiNTc5IiwiaXNzIjoiaHR0cHM6Ly9sYWIuaXdoYWxlY2xvdWQuY29tL3NlY3VyaXR5L3JlYWxtcy9sbG1kb2MiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTg4YmFhMzItNjMwZS00ZTA2LWJmZjctYTcwYzVjMDYxZDAwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoibGxtZG9jLWFwcCIsInNpZCI6IjcwNDQyNDk5LTYyYWUtNDg3OS05ZjRhLTNlMGFkZDgwYTM3YSIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsiVE9QSUNfQURNSU4iLCJkZWZhdWx0LXJvbGVzLWxsbWRvYyIsIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCBwcm9maWxlIGVtYWlsIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJuYW1lIjoiZmlyc3RfZWhjMm4gbGFzdF9FTzBnUyIsInByZWZlcnJlZF91c2VybmFtZSI6ImgzY195YW5zaGkiLCJnaXZlbl9uYW1lIjoiZmlyc3RfZWhjMm4iLCJmYW1pbHlfbmFtZSI6Imxhc3RfRU8wZ1MiLCJlbWFpbCI6InZ1cGN3dGdoQGdtYWlsLmNvbSJ9.XKIbGIULVHojOvaaIvn8x402SgR_oHmeAubefTk6Ixl0yZo5BQFHw8-PtesOth_OuVnwZ4ZpLSFdAARu2GV5TD8KzUMw7t8WoRrv8A5J_s-CLKmftN5N8ZcsVEH2lhIO1H4thZmpOWFl4KubakfHcP5_8cf1PTeoYNOj0BMUtQWfN9G5GM0rcj5o7Ub-K74qH-J6kBsvedr3SfiN2v2igUGXHjjz3laTu8FqAYlfz3BepciYoUcnn1HvDsT6avuF5iLrpsrQKvlARroa50U2Y8tj9zydHiA4CB8Ey1VA52Uj07KCVjvwN7eB97lIJoZfYES4jhIYCdZ-H76rM_bbDQ'
+}
+
+try:
+  # 发送请求并包含 cookies
+    response = requests.get(url, cookies=cookies)
+  # 检查响应状态码
+    if response.status_code == 200:
+        print('Request succeeded.')
+        print('Response:', response.text) # 打印响应文本
+    else:
+        print('Failed to get valid response, Status Code:', response.status_code)
+
+except requests.exceptions.RequestException as e:
+    print('Error making request:', e)

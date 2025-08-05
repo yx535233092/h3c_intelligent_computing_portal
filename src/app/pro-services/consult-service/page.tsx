@@ -121,7 +121,7 @@ export default function ConsultServicePage() {
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">智算培训</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">专项培训</h2>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               提供系统化的智算技术培训，帮助团队快速提升技术能力，打造专业的智算人才队伍
             </p>

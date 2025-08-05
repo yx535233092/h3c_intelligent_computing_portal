@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
-import { RootStyleRegistry } from '@/components/layout/RootStyleRegistry';
-import ConditionalLayout from '@/components/layout/ConditionalLayout';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
+import Header from '@/components/layout/Header';
+import Footer from '@/components/layout/Footer';
+import HeroSection from '@/components/layout/HeroSection';
 
 export const metadata: Metadata = {
   title: '新华三 - 智算门户',
@@ -35,9 +37,12 @@ export default function RootLayout({
       </head>
 
       <body>
-        <RootStyleRegistry>
-          <ConditionalLayout>{children}</ConditionalLayout>
-        </RootStyleRegistry>
+        <AntdRegistry>
+          <Header />
+          <HeroSection />
+          {children}
+          <Footer />
+        </AntdRegistry>
       </body>
     </html>
   );

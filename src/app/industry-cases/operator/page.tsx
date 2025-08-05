@@ -289,14 +289,6 @@ export default function UniversityKnowledgePlatformPage() {
               </p>
             </div>
           </div>
-          <div className="mt-12 text-center">
-            <div className="inline-flex items-center px-6 py-3 bg-white rounded-full shadow-lg">
-              <span className="text-gray-700 font-medium">应用场景：</span>
-              <span className="ml-2 text-blue-600 font-semibold">
-                联通集团政企业务浙江省
-              </span>
-            </div>
-          </div>
         </div>
       </section>
     </div>

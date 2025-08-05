@@ -54,6 +54,15 @@ const applications = [
     icon: 'PictureRounded'
   },
   {
+    id: 15,
+    name: '康养行业财报分析',
+    description: '康养行业相关财报智能分析',
+    url: '/app-detail?type=hj&token=a9c90e42c9b2a8be403ef1343e0425eeb368aa0a6a428d8ac4d705373f870d521790f3e9f652c1c454fe4254f91b6fc2c0cfeb9977f34607c7c8188f6caaced34f7696a293ea808e52c793e5c6add8a2ae98117adb883c68b9f2fc97b43dd2dd401611983c81b33c1c5a6cbe85bcff85',
+    sceneCategory: '智能办公',
+    industryTag: '企业',
+    icon: 'PictureRounded'
+  },
+  {
     id: 12,
     name: '事假单小助手',
     description: '支持事假单的智能填写。',
@@ -73,8 +82,8 @@ const applications = [
   },
   {
     id: 14,
-    name: '交通行业通信知识问答',
-    description: '人口数据、出生率、结婚率等多场景查询',
+    name: '通信知识问答',
+    description: '交通行业相关通信知识问答',
     url: '/app-detail?type=hj&token=bf78d5e2b1e7634747d8abb84d7a536ab942dc8f9a03237933fa4b046769b4b2249d4d2cd06329560e1b454f363e81183a0bb6782091509a01b6075bcec8dcd8638fe1f60cc2f248cc322bc1b4d8cac5a13667e893aec0d4adeab35eab04b881e9140e536aebfe55795b6e7815c52761',
     sceneCategory: '智能问答',
     industryTag: '政府',
@@ -82,7 +91,7 @@ const applications = [
   },
   {
     id: 9,
-    name: '图文问答助手',
+    name: '产品图文问答助手',
     description: '支持图文双重检索',
     url: '/app-detail?type=df&chat=true&dfToken=EDWuQZouY06bnKXy',
     sceneCategory: '智能问答',
@@ -92,7 +101,7 @@ const applications = [
   {
     id: 2,
     name: '会议室预定',
-    description: '线上/线下',
+    description: '线上/线下预定会议室',
     url: '/app-detail?type=df&chat=true&dfToken=sQCvVCOZgHW5nRdq',
     sceneCategory: '智能办公',
     industryTag: '政府',
@@ -195,7 +204,7 @@ export default function AppService() {
       {/* 顶部能力介绍区域 - 智能应用服务宣传模块 */}
       <div
         ref={heroRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 px-60 pt-20 ${
+        className={`transition-all duration-1000 px-30 pt-20 ${
           isHeroInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
@@ -265,11 +274,11 @@ export default function AppService() {
                 </div>
                 <div style={{ marginBottom: '20px' }}>
                   <ul className={styles['capability-list']}>
-                    <li>文章改写助手：基于B文章风格智能改写A文章</li>
+                    <li>合同风险审核：提升合同与招投标的审核效率和准确性</li>
                     <li>
                       医疗诊断分析助手：根据病理、检查信息进行智能诊断分析
                     </li>
-                    <li>AI写作助手：智能内容创作与文案生成</li>
+                    <li>智能标书：采购场景中，智能生成和优化标书</li>
                   </ul>
                 </div>
               </div>
@@ -292,8 +301,8 @@ export default function AppService() {
                 <div style={{ marginBottom: '20px' }}>
                   <ul className={styles['capability-list']}>
                     <li>智能问数：人口数据、出生率、结婚率等多场景查询</li>
-                    <li>经济数据智能分析：GDP、CPI、就业率等经济指标分析</li>
-                    <li>地理信息数据查询：行政区划、地理坐标、空间分析等</li>
+                    <li>电信运营商智能报表：智能看数分析，高效获取业务洞察</li>
+                    <li>ChatBI智能问数：自然语言交互式的数据智能分析</li>
                   </ul>
                 </div>
               </div>
@@ -309,14 +318,16 @@ export default function AppService() {
                   <div>
                     <h3 className={styles['capability-title']}>智能办公场景</h3>
                     <p className={styles['capability-subtitle']}>
-                      提升行政效率，优化内部管理
+                      办公流程智能化，管理效率数字化
                     </p>
                   </div>
                 </div>
                 <div style={{ marginBottom: '20px' }}>
                   <ul className={styles['capability-list']}>
-                    <li>快捷请假系统：支持年假、事假、病假等多种类型</li>
-                    <li>会议室预定：线上线下无缝衔接，提升资源利用率</li>
+                    <li>事假单助手：支持事假单的智能填写</li>
+                    <li>
+                      智慧政务大厅：政务服务流程智能化，提升办事效率和体验
+                    </li>
                     <li>访客申请：外部访客智能登记，加强安全管理</li>
                   </ul>
                 </div>
@@ -329,7 +340,7 @@ export default function AppService() {
       {/* 中部分类筛选区域 */}
       <div
         ref={categoryRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 px-60 ${
+        className={`transition-all duration-1000 px-30 ${
           isCategoryInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
@@ -346,7 +357,15 @@ export default function AppService() {
                 key={category.key}
                 type={activeCategory === category.key ? 'primary' : 'default'}
                 icon={category.icon}
-                onClick={() => setActiveCategory(category.key)}
+                onClick={(e) => {
+                  setActiveCategory(category.key);
+                  // 立即失焦，避免需要点击外面才能变红
+                  e.currentTarget.blur();
+                  // 确保焦点完全移除
+                  setTimeout(() => {
+                    e.currentTarget.blur();
+                  }, 0);
+                }}
                 size="large"
                 className={styles['category-button']}
                 style={
@@ -369,7 +388,7 @@ export default function AppService() {
       {/* 底部应用展示区域 */}
       <div
         ref={appsRef as React.RefObject<HTMLDivElement>}
-        className={`transition-all duration-1000 px-60 mt-10 mb-20 ${
+        className={`transition-all duration-1000 px-30 mt-10 mb-20 ${
           isAppsInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'

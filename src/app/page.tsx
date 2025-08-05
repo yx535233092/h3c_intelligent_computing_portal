@@ -46,21 +46,21 @@ export default function HomePage() {
       title: '智能文档场景',
       desc: '文档处理智能化，内容创作高效化',
       category: '智能文档',
-      examples: ['文章改写助手', '医疗诊断分析', 'AI写作助手']
+      examples: ['合同风险审核', '医疗诊断分析', '智能标书']
     },
     {
       icon: DatabaseOutlined,
       title: '智能问数场景',
       desc: '数据洞察智能化，决策支持精准化',
       category: '智能问数',
-      examples: ['人口数据查询', '经济数据分析', '地理信息查询']
+      examples: ['智能问数', 'ChatBI智能报表', 'ChatBI智能问数']
     },
     {
       icon: BuildOutlined,
       title: '智能办公场景',
       desc: '提升行政效率，优化内部管理',
       category: '智能办公',
-      examples: ['快捷请假系统', '会议室预定', '访客申请']
+      examples: ['事假单助手', '智慧政务大厅', '访客申请']
     }
   ];
 
@@ -141,14 +141,14 @@ export default function HomePage() {
   const trainingServices = [
     {
       icon: BuildOutlined,
-      title: '技术咨询',
-      desc: '提供AI基础架构、训推技术、产品应用等全方位技术咨询服务',
-      category: '专业咨询'
+      title: '技术支撑',
+      desc: '提供AI基础架构、训推技术、产品应用等全方位技术支撑服务',
+      category: '专业支撑'
     },
     {
       icon: BookOutlined,
-      title: '智算培训',
-      desc: '系统化智算技术培训，涵盖平台操作、应用实践、理论进阶',
+      title: '专项培训',
+      desc: '系统化智算专项培训，涵盖平台操作、应用实践、理论进阶',
       category: '技能提升'
     },
     {
@@ -215,71 +215,61 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* 应用服务 */}
+      {/* 模型工程服务 */}
       <section
-        ref={servicesRef}
-        className={`px-60 py-32 transition-all duration-1000 ${
-          isServicesInView
+        ref={modelRef}
+        className={`px-60 py-32 bg-white transition-all duration-1000 ${
+          isModelInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
         }`}
       >
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            应用工程服务
+            模型工程服务
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            汇聚智能问答、智能文档、智能问数、智能办公四大核心场景，为政府、运营商、教育、企业等行业提供全方位的智能化解决方案
+            从模型微调到部署测评，提供全链路AI模型服务能力，支持多种硬件平台部署
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-8">
-          {appServices.map((service, index) => (
+        <div className="grid grid-cols-3 gap-12">
+          {modelServices.map((service, index) => (
             <div
               key={index}
-              onClick={() => {}}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 "
+              className="group bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
             >
-              <div className="text-white w-16 h-16 bg-gradient-to-br from-brand to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-white w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="text-2xl text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-4">{service.desc}</p>
+              <p className="text-gray-600 mb-6 leading-relaxed">
+                {service.desc}
+              </p>
 
-              <div className="mb-4">
-                <div className="text-sm text-gray-500 mb-2">应用示例：</div>
-                <div className="space-y-1">
-                  {service.examples.map((example, exampleIndex) => (
-                    <div
-                      key={exampleIndex}
-                      className="text-sm text-gray-700 flex items-center"
-                    >
-                      <span className="w-1.5 h-1.5 bg-brand rounded-full mr-2"></span>
-                      {example}
-                    </div>
-                  ))}
-                </div>
+              <div className="space-y-3">
+                {service.features.map((feature, featureIndex) => (
+                  <div key={featureIndex} className="flex items-center gap-3">
+                    <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0"></div>
+                    <span className="text-gray-700 font-medium">{feature}</span>
+                  </div>
+                ))}
               </div>
-
-              <span className="inline-block px-3 py-1 bg-brand/10 text-brand text-sm rounded-full font-medium">
-                {service.category}
-              </span>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <button
-            onClick={() => router.push('/pro-services/app-service')}
-            className="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+            onClick={() => router.push('/pro-services/model-service')}
+            className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
           >
-            查看全部应用
+            了解详情
             <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
           </button>
         </div>
@@ -371,61 +361,70 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 模型工程服务 */}
+      {/* 应用服务 */}
       <section
-        ref={modelRef}
-        className={`px-60 py-32 bg-white transition-all duration-1000 ${
-          isModelInView
+        ref={servicesRef}
+        className={`px-60 py-32 transition-all duration-1000 ${
+          isServicesInView
             ? 'opacity-100 translate-y-0'
             : 'opacity-0 translate-y-20'
         }`}
       >
         <div className="text-center mb-20">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
-            模型工程服务
+            应用工程服务
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            从模型微调到部署测评，提供全链路AI模型服务能力，支持多种硬件平台部署
+            汇聚智能问答、智能文档、智能问数、智能办公四大核心场景，为政府、运营商、教育、企业等行业提供全方位的智能化解决方案
           </p>
         </div>
 
-        <div className="grid grid-cols-3 gap-12">
-          {modelServices.map((service, index) => (
+        <div className="grid grid-cols-4 gap-8">
+          {appServices.map((service, index) => (
             <div
               key={index}
-              className="group bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
+              onClick={() => {}}
+              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 "
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
             >
-              <div className="text-white w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <div className="text-white w-16 h-16 bg-gradient-to-br from-brand to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                 <service.icon className="text-2xl text-white" />
               </div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-4">
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
                 {service.title}
               </h3>
-              <p className="text-gray-600 mb-6 leading-relaxed">
-                {service.desc}
-              </p>
+              <p className="text-gray-600 mb-4">{service.desc}</p>
 
-              <div className="space-y-3">
-                {service.features.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-brand rounded-full flex-shrink-0"></div>
-                    <span className="text-gray-700 font-medium">{feature}</span>
-                  </div>
-                ))}
+              <div className="mb-4">
+                <div className="text-sm text-gray-500 mb-2">应用示例：</div>
+                <div className="space-y-1">
+                  {service.examples.map((example, exampleIndex) => (
+                    <div
+                      key={exampleIndex}
+                      className="text-sm text-gray-700 flex items-center"
+                    >
+                      <span className="w-1.5 h-1.5 bg-brand rounded-full mr-2"></span>
+                      {example}
+                    </div>
+                  ))}
+                </div>
               </div>
+
+              <span className="inline-block px-3 py-1 bg-brand/10 text-brand text-sm rounded-full font-medium">
+                {service.category}
+              </span>
             </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <button
-            onClick={() => router.push('/pro-services/model-service')}
-            className="group bg-brand hover:bg-red-600 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+            onClick={() => router.push('/pro-services/app-service')}
+            className="group bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 rounded-xl text-lg font-medium transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
           >
-            了解详情
+            查看全部应用
             <ArrowRightOutlined className="transition-transform group-hover:translate-x-1" />
           </button>
         </div>
@@ -447,10 +446,10 @@ export default function HomePage() {
         <div className="relative z-10">
           <div className="text-center mb-20">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              咨询培训服务
+              AI应用支撑
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              专业的AI技术咨询与培训服务，助力企业数字化转型升级，打造专业的智算人才队伍
+              专业的AI应用支撑，助力企业数字化转型升级，打造专业的智算人才队伍
             </p>
             <div className="mt-8 w-24 h-1 bg-gradient-to-r from-brand to-blue-500 mx-auto rounded-full"></div>
           </div>

@@ -206,7 +206,7 @@ export default function UniversityKnowledgePlatformPage() {
                 全域数据治理
               </h3>
               <p className="text-gray-600 mb-6">
-                统一接入2000+份制度文档，构建企业级知识图谱，联动K-Cool知识系统、国家政策API、LDAP主数据，实现跨系统数据融合
+                统一接入32900+份制度文档，构建企业级知识图谱，联动K-Cool知识系统、国家政策API、LDAP主数据，实现跨系统数据融合
               </p>
               <ul className="space-y-2 text-gray-600">
                 <li className="flex items-center">

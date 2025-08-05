@@ -18,7 +18,8 @@ function AppDetailContent() {
     case 'df':
       url = 'http://192.168.10.24';
       const isChat = searchParams.get('chat');
-      if (isChat) {
+
+      if (isChat === 'true') {
         url += '/chat';
       } else {
         url += '/workflow';

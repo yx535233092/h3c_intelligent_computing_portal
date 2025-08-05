@@ -668,9 +668,9 @@ export default function DataService() {
         )
       },
       {
-        title: '复杂表格解析',
-        description: ['行列合并表格', '跨页表格', '...'],
-        link: '/document-process?title=复杂表格解析',
+        title: '表格文档解析',
+        description: ['行合并表格', '列合并表格', '跨页表格'],
+        link: '/document-process?title=表格文档解析',
         demoContent: (
           <div className="w-[160px] h-[120px] flex items-center justify-center relative">
             {/* 操作流程：复杂表格 → AI识别 → 结构化数据 */}
