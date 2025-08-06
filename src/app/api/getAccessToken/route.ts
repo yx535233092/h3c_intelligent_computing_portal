@@ -30,7 +30,7 @@ export async function POST(request: NextRequest) {
     body.password = btoa(body.password);
 
     const response = await fetch(
-      'https://lab.iwhalecloud.com/llmdoc/v1/auth/login',
+      'https://lab.iwhalecloud.com/docchain/v1/auth/login',
       {
         method: 'POST',
         headers: {
@@ -42,20 +42,7 @@ export async function POST(request: NextRequest) {
     const resData: LoginResponse = await response.json();
     if (resData.code === 0) {
       const accessToken = resData.data.access_token;
-      // const inspectToken = await fetch(
-      //   'https://lab.iwhalecloud.com/llmdoc/v1/auth/check-permission',
-      //   {
-      //     method: 'GET',
-      //     headers: {
-      //       Cookie: `access_token=${accessToken}`
-      //     }
-      //   }
-      // );
-      // console.log(inspectToken);
-
-      return NextResponse.json({
-        accessToken
-      });
+      return NextResponse.json({ accessToken });
     }
     return NextResponse.json(resData);
   } catch (error) {

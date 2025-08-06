@@ -141,27 +141,27 @@ export default function HomePage() {
   const trainingServices = [
     {
       icon: BuildOutlined,
-      title: '技术支撑',
-      desc: '提供AI基础架构、训推技术、产品应用等全方位技术支撑服务',
-      category: '专业支撑'
+      title: '基础架构集成设计服务',
+      desc: '提供GPU/CPU集群、分布式存储等基础设施架构设计，确保高扩展性与稳定性。',
+      category: '基础设施'
     },
     {
       icon: BookOutlined,
-      title: '专项培训',
-      desc: '系统化智算专项培训，涵盖平台操作、应用实践、理论进阶',
-      category: '技能提升'
+      title: '训推技术指导服务​',
+      desc: '覆盖模型全生命周期，从数据预处理到推理部署优化，提供轻量化改造技术指导。',
+      category: '技术指导'
     },
     {
       icon: UserOutlined,
-      title: '专家服务',
-      desc: '汇聚云智专家团队，提供项目实战指导和技术深度支持',
-      category: '专家护航'
+      title: 'AI 应用支撑服务​',
+      desc: '深度融合行业特性，提供技术栈选型、功能设计等定制化服务，实现降本增效。',
+      category: '应用定制'
     },
     {
       icon: ReadOutlined,
-      title: '定制化服务',
-      desc: '结合客户需求，定制培训课程、教学方式与学习周期',
-      category: '个性定制'
+      title: '专项培训服务',
+      desc: '系统化培训向量数据库、RAG架构、智能体开发等核心技能，助力技术落地。',
+      category: '技能培训'
     }
   ];
 

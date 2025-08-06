@@ -5,8 +5,9 @@ import { Suspense } from 'react';
 
 function AppDetailContent() {
   const searchParams = useSearchParams();
-  const type = searchParams.get('type');
   let url = '';
+
+  const type = searchParams.get('type');
   switch (type) {
     case 'hj':
       url = 'https://www.iwhaledi.com/knowledge/chat/share?';

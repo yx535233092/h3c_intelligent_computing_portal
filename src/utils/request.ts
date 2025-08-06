@@ -1,4 +1,8 @@
-import axios, { AxiosInstance, AxiosResponse, AxiosError } from 'axios';
+import axios, {
+  type AxiosInstance,
+  type AxiosResponse,
+  type AxiosError
+} from 'axios';
 
 // 1.定义请求地址
 const BASE_URL = 'http://localhost:8000';

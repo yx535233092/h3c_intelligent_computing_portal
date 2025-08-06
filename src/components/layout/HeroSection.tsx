@@ -9,7 +9,7 @@ interface PageConfig {
   title: string;
   subtitle: string;
   backgroundImage: string;
-  breadcrumb: Array<{ title: string }>;
+  breadcrumb: Array<{ title: string; href?: string }>;
 }
 
 // 页面配置映射
@@ -62,7 +62,7 @@ export default function HeroSection() {
 
   const currentConfig = getPageConfig();
 
-  // 如果是首页，不渲染组件
+  // 在渲染列表中的路由，渲染组件
   if (renderPath.includes(pathname)) {
     return (
       <>

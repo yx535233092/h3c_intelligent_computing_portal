@@ -27,6 +27,16 @@ import styles from './page.module.css';
 // 应用数据
 const applications = [
   {
+    id: 16,
+    name: '多模态文档知识库',
+    description:
+      '支持多模态文档、表格、图片、视频等多模态数据的智能解析、智能问答',
+    url: '/hj-platform',
+    sceneCategory: '智能问答',
+    industryTag: '企业',
+    icon: 'DataAnalysis'
+  },
+  {
     id: 8,
     name: '人口库智能问数',
     description: '人口数据、出生率、结婚率等多场景查询',

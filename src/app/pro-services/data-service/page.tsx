@@ -215,16 +215,16 @@ export default function DataService() {
   // 优势数据
   const features = [
     {
-      title: '表格识别更精准',
-      description: '支持复杂表格、单元格合并，跨页表格也能准确还原。'
+      title: '表格识别准确',
+      description: '支持常见表格格式识别，包括合并单元格和跨页表格处理。'
     },
     {
-      title: '解析速度极快',
-      description: '百页文档秒级解析，支持大批量离线处理。'
+      title: '支持多种文件格式',
+      description: '可以解析PDF、Word、Excel、图片等多种类型文件。'
     },
     {
-      title: '高稳定性',
-      description: '亿级调用量技术积累，稳定可靠，成功率99.999%。'
+      title: '服务稳定可靠',
+      description: '基于成熟技术架构，提供稳定的文档解析服务。'
     }
   ];
 
@@ -614,9 +614,9 @@ export default function DataService() {
       {
         title: '常规文档解析',
         description: [
-          '支持PDF、Word、图片等多种格式',
-          '智能识别文档结构和内容',
-          '保持原有格式和排版信息'
+          '支持PDF、Word、图片等常见格式',
+          '识别文档基本结构和文本内容',
+          '尽可能保持原有格式信息'
         ],
         link: '/document-process?title=常规文档解析',
         demoContent: (
