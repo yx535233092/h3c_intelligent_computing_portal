@@ -23,147 +23,7 @@ import {
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useInView } from '@/hooks/useInView';
 import styles from './page.module.css';
-
-// 应用数据
-const applications = [
-  {
-    id: 16,
-    name: '多模态文档知识库',
-    description:
-      '支持多模态文档、表格、图片、视频等多模态数据的智能解析、智能问答',
-    url: '/hj-platform',
-    sceneCategory: '智能问答',
-    industryTag: '企业',
-    icon: 'DataAnalysis'
-  },
-
-  {
-    id: 10,
-    name: '消防法律助手',
-    description: '支持消防法律知识智能问答',
-    url: '/app-detail?type=hj&token=6696c7f841ee233c7d7a0f19aed376991af7749b4416d234a60ef3223f7457db4460250cffc975277a36b288b8e224383cd89ba5fed842597442c3c03b093f297751234fb5e1f7a7eea3e7c494a7d1b17a7c135a5878b11ccf35657c3f92ee9862f9cda15ed731d170f873f2f3e32886',
-    sceneCategory: '智能问答',
-    industryTag: '政府',
-    icon: 'PictureRounded'
-  },
-  {
-    id: 11,
-    name: '康养知识问答',
-    description: '基于专业书籍进行精准、全面的问答。',
-    url: '/app-detail?type=hj&token=a9c90e42c9b2a8be403ef1343e0425eec02c99ddab76bc9d8e2ab5bf1c7706ff79b8a5f3e8ca732502c1e843e3b4c5ff184c393697c8f120a07fc5a0c006381fe75431d32ff63fa02766f96f80d52303816150d86c413af08a500a169e806f2bb05dbcf178b27bfb3da5ca99eb3710e5',
-    sceneCategory: '智能问答',
-    industryTag: '企业',
-    icon: 'PictureRounded'
-  },
-  {
-    id: 15,
-    name: '康养行业财报分析',
-    description: '康养行业相关财报智能分析',
-    url: '/app-detail?type=hj&token=a9c90e42c9b2a8be403ef1343e0425eeb368aa0a6a428d8ac4d705373f870d521790f3e9f652c1c454fe4254f91b6fc2c0cfeb9977f34607c7c8188f6caaced34f7696a293ea808e52c793e5c6add8a2ae98117adb883c68b9f2fc97b43dd2dd401611983c81b33c1c5a6cbe85bcff85',
-    sceneCategory: '智能办公',
-    industryTag: '企业',
-    icon: 'PictureRounded'
-  },
-  {
-    id: 12,
-    name: '事假单小助手',
-    description: '支持事假单的智能填写。',
-    url: '/app-detail?type=hj&token=642502acbbbbe5d3d7741082c7c0194936f6c3374eb83f605860fdbcd415b31e4d32a9334098ec1c6d26b9d055919c70e97eaed66fa5514886d2949e51e8a824bd7c0bf23c12e8a31bc896724e25b584cd11d30287ec80cabf95ee64ca2f8da9b60fbcad32c634476b08a48e3c7918a2',
-    sceneCategory: '智能办公',
-    industryTag: '企业',
-    icon: 'PictureRounded'
-  },
-  // {
-  //   id: 13,
-  //   name: 'AI写作',
-  //   description: 'ai写作',
-  //   url: '/app-detail?type=hj&token=b642b7c017ae51168971be4c9c03074d4cfe550d4e059c0d786b0bbaa056940926c82ce12e0ebb25c2d4b0ebc120999a2ad98c27056c796334259cd6b30cb30616939160e514eadbb6bd890843dc70322812acc6fc28f74c458a83113f857625971f8a1a587b17dfe10c6a6cb8e01788',
-  //   sceneCategory: '智能文档',
-  //   industryTag: '企业',
-  //   icon: 'PictureRounded'
-  // },
-  {
-    id: 14,
-    name: '通信知识问答',
-    description: '交通行业相关通信知识问答',
-    url: '/app-detail?type=hj&token=bf78d5e2b1e7634747d8abb84d7a536ab942dc8f9a03237933fa4b046769b4b2249d4d2cd06329560e1b454f363e81183a0bb6782091509a01b6075bcec8dcd8638fe1f60cc2f248cc322bc1b4d8cac5a13667e893aec0d4adeab35eab04b881e9140e536aebfe55795b6e7815c52761',
-    sceneCategory: '智能问答',
-    industryTag: '政府',
-    icon: 'DataAnalysis'
-  },
-  {
-    id: 8,
-    name: '人口库智能问数',
-    description: '人口数据、出生率、结婚率等多场景查询',
-    url: '/app-detail?type=df&chat=true&dfToken=dBPWW81n19PvkZlQ',
-    sceneCategory: '智能问数',
-    industryTag: '政府',
-    icon: 'DataAnalysis'
-  },
-  {
-    id: 9,
-    name: '产品图文问答助手',
-    description: '支持图文双重检索',
-    url: '/app-detail?type=df&chat=true&dfToken=EDWuQZouY06bnKXy',
-    sceneCategory: '智能问答',
-    industryTag: '政府',
-    icon: 'PictureRounded'
-  },
-  {
-    id: 2,
-    name: '会议室预定',
-    description: '线上/线下预定会议室',
-    url: '/app-detail?type=df&chat=true&dfToken=sQCvVCOZgHW5nRdq',
-    sceneCategory: '智能办公',
-    industryTag: '政府',
-    icon: 'OfficeBuilding'
-  },
-  {
-    id: 3,
-    name: '访客申请',
-    description: '外部访客登记',
-    url: '/app-detail?type=df&chat=true&dfToken=BZBrTa6WhgcmRBTI',
-    sceneCategory: '智能办公',
-    industryTag: '政府',
-    icon: 'User'
-  },
-  {
-    id: 4,
-    name: '出差申请',
-    description: '在线出差申请',
-    url: '/app-detail?type=df&chat=true&dfToken=6thJYI8DDsf4uOUN',
-    sceneCategory: '智能办公',
-    industryTag: '政府',
-    icon: 'Suitcase'
-  },
-  {
-    id: 5,
-    name: '文章改写',
-    description: '根据B文章的分格改写A文章',
-    url: '/app-detail?type=df&chat=true&dfToken=C5v2olj9iejVk41O',
-    sceneCategory: '智能文档',
-    industryTag: '政府',
-    icon: 'EditPen'
-  },
-  {
-    id: 6,
-    name: '金融贷款报告评估',
-    description: '智能生成企业贷款资质评估报告',
-    url: '/app-detail?type=df&chat=true&dfToken=2o05S4qNOVvVnQpu',
-    sceneCategory: '智能文档',
-    industryTag: '金融',
-    icon: 'Money'
-  },
-  {
-    id: 7,
-    name: '医疗诊断分析助手',
-    description: '根据病理、检查信息，进行诊断分析',
-    url: '/app-detail?type=df&chat=false&dfToken=TLZwJS8EwAKK4FL2',
-    sceneCategory: '智能文档',
-    industryTag: '医疗',
-    icon: 'FirstAidKit'
-  }
-];
+import { applications } from '@/constants';
 
 // 图标映射
 const iconMap: { [key: string]: React.ReactNode } = {
@@ -418,11 +278,11 @@ export default function AppService() {
           className={styles['apps-card']}
         >
           <Row gutter={[20, 20]}>
-            {filteredApps.map((app) => (
-              <Col xs={24} sm={12} md={8} lg={6} xl={6} key={app.id}>
+            {filteredApps.map((app, index) => (
+              <Col xs={24} sm={12} md={8} lg={6} xl={6} key={index}>
                 <Card
                   hoverable
-                  onClick={() => handleAppClick(app.url)}
+                  onClick={() => handleAppClick(app.route)}
                   className={styles['app-card']}
                 >
                   {/* 主题色竖条 */}

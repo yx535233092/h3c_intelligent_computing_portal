@@ -17,3 +17,8 @@ a.title {
   color: #555;
   cursor: pointer;
 }
+
+iframe {
+  height: 100vh;
+  width: 100%;
+}
