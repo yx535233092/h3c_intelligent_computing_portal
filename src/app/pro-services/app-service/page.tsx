@@ -36,15 +36,7 @@ const applications = [
     industryTag: '企业',
     icon: 'DataAnalysis'
   },
-  {
-    id: 8,
-    name: '人口库智能问数',
-    description: '人口数据、出生率、结婚率等多场景查询',
-    url: '/app-detail?type=df&chat=true&dfToken=dBPWW81n19PvkZlQ',
-    sceneCategory: '智能问数',
-    industryTag: '政府',
-    icon: 'DataAnalysis'
-  },
+
   {
     id: 10,
     name: '消防法律助手',
@@ -76,26 +68,35 @@ const applications = [
     id: 12,
     name: '事假单小助手',
     description: '支持事假单的智能填写。',
-    url: '/app-detail?type=hj&token=642502acbbbbe5d3d7741082c7c0194936f6c3374eb83f605860fdbcd415b31e4d32a9334098ec1c6d26b9d055919c70f143e2bdd69aad1fe4c2567818cccbe9d15556c6e7e8473cf95e5fa233b27c6d5fce8e424909b632e15684f560e89436a28a80f4e9fe7197ce289001116bae5d',
+    url: '/app-detail?type=hj&token=642502acbbbbe5d3d7741082c7c0194936f6c3374eb83f605860fdbcd415b31e4d32a9334098ec1c6d26b9d055919c70e97eaed66fa5514886d2949e51e8a824bd7c0bf23c12e8a31bc896724e25b584cd11d30287ec80cabf95ee64ca2f8da9b60fbcad32c634476b08a48e3c7918a2',
     sceneCategory: '智能办公',
     industryTag: '企业',
     icon: 'PictureRounded'
   },
-  {
-    id: 13,
-    name: 'AI写作',
-    description: 'ai写作',
-    url: '/app-detail?type=hj&token=b642b7c017ae51168971be4c9c03074d4cfe550d4e059c0d786b0bbaa056940926c82ce12e0ebb25c2d4b0ebc120999a2ad98c27056c796334259cd6b30cb30616939160e514eadbb6bd890843dc70322812acc6fc28f74c458a83113f857625971f8a1a587b17dfe10c6a6cb8e01788',
-    sceneCategory: '智能文档',
-    industryTag: '企业',
-    icon: 'PictureRounded'
-  },
+  // {
+  //   id: 13,
+  //   name: 'AI写作',
+  //   description: 'ai写作',
+  //   url: '/app-detail?type=hj&token=b642b7c017ae51168971be4c9c03074d4cfe550d4e059c0d786b0bbaa056940926c82ce12e0ebb25c2d4b0ebc120999a2ad98c27056c796334259cd6b30cb30616939160e514eadbb6bd890843dc70322812acc6fc28f74c458a83113f857625971f8a1a587b17dfe10c6a6cb8e01788',
+  //   sceneCategory: '智能文档',
+  //   industryTag: '企业',
+  //   icon: 'PictureRounded'
+  // },
   {
     id: 14,
     name: '通信知识问答',
     description: '交通行业相关通信知识问答',
     url: '/app-detail?type=hj&token=bf78d5e2b1e7634747d8abb84d7a536ab942dc8f9a03237933fa4b046769b4b2249d4d2cd06329560e1b454f363e81183a0bb6782091509a01b6075bcec8dcd8638fe1f60cc2f248cc322bc1b4d8cac5a13667e893aec0d4adeab35eab04b881e9140e536aebfe55795b6e7815c52761',
     sceneCategory: '智能问答',
+    industryTag: '政府',
+    icon: 'DataAnalysis'
+  },
+  {
+    id: 8,
+    name: '人口库智能问数',
+    description: '人口数据、出生率、结婚率等多场景查询',
+    url: '/app-detail?type=df&chat=true&dfToken=dBPWW81n19PvkZlQ',
+    sceneCategory: '智能问数',
     industryTag: '政府',
     icon: 'DataAnalysis'
   },

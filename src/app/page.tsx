@@ -86,28 +86,28 @@ export default function HomePage() {
   // 行业案例数据
   const industryCases = [
     {
-      id: 'goverment1',
+      id: 'goverment',
       title: '某市公安情报分析以案搜案',
       industry: '政府',
       image: '/某市公安情报分析以案搜案.png',
       desc: '基于AI大模型训练平台，形成辅助合成研判能力'
     },
     {
-      id: 'operator1',
-      title: '某运营商智能营销预案',
+      id: 'operator',
+      title: '某省联通智能受理',
       industry: '运营商',
-      image: '/某运营商智能营销预案.png',
-      desc: '通过大模型分析数据，生成精准营销策略'
+      image: '/运营商1.png',
+      desc: '通过大模型实现智能受理'
     },
     {
-      id: 'enterprise1',
+      id: 'enterprise',
       title: '某集团智能问答系统',
       industry: '企业',
       image: '/某集团智能问答系统.png',
       desc: '面向企业集团构建的统一知识聚合检索系统'
     },
     {
-      id: 'education1',
+      id: 'education',
       title: '某高职校AI+知识服务',
       industry: '教育',
       image: '/某高职校DEEPSEEK-AI+知识服务应用.png',
