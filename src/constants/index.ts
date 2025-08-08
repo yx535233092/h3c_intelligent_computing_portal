@@ -155,7 +155,7 @@ export const applications = [
     name: '医疗诊断分析助手',
     description: '根据病理、检查信息，进行诊断分析',
     route: '/pro-services/app-service/app-detail?appName=医疗诊断分析助手',
-    url: 'http://192.168.10.24/chat/TLZwJS8EwAKK4FL2',
+    url: 'http://192.168.10.24/workflow/TLZwJS8EwAKK4FL2',
     sceneCategory: '智能文档',
     industryTag: '医疗',
     icon: 'FirstAidKit'

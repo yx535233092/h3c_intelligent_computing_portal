@@ -33,6 +33,10 @@ const items: MenuItem[] = [
       {
         label: '技术支撑服务',
         key: '/pro-services/consult-service'
+      },
+      {
+        label: '开源软件服务',
+        key: '/pro-services/open-source-service'
       }
     ]
   },
