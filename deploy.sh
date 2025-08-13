@@ -2,11 +2,22 @@
 
 # 1、项目配置
 # 仓库 URL
-REPO_URL="https://gitee.com/yx0208/yz-intelligent-computing-portal.git"
+REPO_URL_GITEE="https://gitee.com/yx0208/yz-intelligent-computing-portal.git"
+REPO_URL_GITHUB="https://github.com/yx535233092/yz-intelligent-computing-portal.git"
 # 项目部署路径
 DEPLOY_PATH="/workspace/workspace/yx/h3c-portal"
 
 echo "------正在开始部署前端h3c-portal项目------"
+
+read -p "请输入要部署的仓库类型(gitee/github): " REPO_TYPE
+if [ "$REPO_TYPE" == "gitee" ]; then
+  REPO_URL=$REPO_URL_GITEE
+elif [ "$REPO_TYPE" == "github" ]; then
+  REPO_URL=$REPO_URL_GITHUB
+else
+  echo "错误：未指定仓库类型。部署中止。"
+  exit 1
+fi
 
 # 2、让用户输入要部署的版本 (分支或标签)
 # 提示用户输入，并将输入存储到 GIT_VERSION_REF 变量中
