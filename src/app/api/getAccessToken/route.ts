@@ -34,9 +34,9 @@ export async function POST(request: NextRequest) {
       {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(body)
+        body: JSON.stringify(body),
       }
     );
     const resData: LoginResponse = await response.json();
@@ -50,26 +50,26 @@ export async function POST(request: NextRequest) {
     if (error instanceof Error) {
       return new Response(
         JSON.stringify({
-          message: error.message
+          message: error.message,
         }),
         {
           status: 500,
           headers: {
-            'Content-Type': 'application/json'
-          }
+            'Content-Type': 'application/json',
+          },
         }
       );
     }
     // 未知错误处理
     return new Response(
       JSON.stringify({
-        message: 'An unknown error occurred'
+        message: 'An unknown error occurred',
       }),
       {
         status: 500,
         headers: {
-          'Content-Type': 'application/json'
-        }
+          'Content-Type': 'application/json',
+        },
       }
     );
   }

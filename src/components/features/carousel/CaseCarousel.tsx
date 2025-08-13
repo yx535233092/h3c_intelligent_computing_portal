@@ -10,7 +10,7 @@ const contentStyle: React.CSSProperties = {
   display: 'flex',
   height: '540px',
   color: '#000',
-  background: '#fff'
+  background: '#fff',
 };
 
 interface CaseCarouselItem {
@@ -39,9 +39,9 @@ const CaseCarousel: React.FC<CaseCarouselProps> = ({ items }) => {
             dotHeight: 6,
             dotOffset: 10,
             arrowSize: 26,
-            arrowOffset: 40
-          }
-        }
+            arrowOffset: 40,
+          },
+        },
       }}
     >
       <Carousel

@@ -4,8 +4,8 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@gradio/client'],
   devIndicators: {
     // 隐藏性能提示框
-    buildActivity: false
-  }
+    buildActivity: false,
+  },
 };
 
 export default nextConfig;

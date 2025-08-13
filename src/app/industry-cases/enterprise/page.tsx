@@ -11,7 +11,7 @@ import {
   SafetyOutlined,
   TeamOutlined,
   SettingOutlined,
-  SearchOutlined
+  SearchOutlined,
 } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
@@ -24,7 +24,7 @@ export default function UniversityKnowledgePlatformPage() {
     subtitle: '基于通用大模型应用能力的统一知识聚合、检索和问答系统',
     description:
       '面向企业集团及其分子公司构建的统一知识聚合、检索和问答系统，实现超大规模组织、超大规模用户、超大规模知识、超大规模数据安全防护',
-    detailPicName: '某集团智能问答系统.png'
+    detailPicName: '某集团智能问答系统.png',
   };
 
   return (

@@ -8,7 +8,7 @@ export const applications = [
     route: '/hj-platform',
     sceneCategory: '智能问答',
     industryTag: '企业',
-    icon: 'DataAnalysis'
+    icon: 'DataAnalysis',
   },
   {
     type: 'hj',
@@ -18,7 +18,7 @@ export const applications = [
     url: 'https://www.hjlingxi.com/BOTE/#/driver/bot?tenantId=1270197558062084096&botId=1270309229271183360&modeType=single&token=5018310373404f4e8ed2199c9f156b94',
     sceneCategory: '智能问答',
     industryTag: '政府',
-    icon: 'PictureRounded'
+    icon: 'PictureRounded',
   },
   {
     type: 'hj',
@@ -28,7 +28,7 @@ export const applications = [
     url: 'https://www.hjlingxi.com/BOTE/#/driver/bot?tenantId=1270197558062084096&botId=1270328835872387072&modeType=single&token=9785442bc0644b72baa9f04065b0b807',
     sceneCategory: '智能问答',
     industryTag: '企业',
-    icon: 'PictureRounded'
+    icon: 'PictureRounded',
   },
   {
     type: 'hj',
@@ -38,7 +38,7 @@ export const applications = [
     url: 'https://www.hjlingxi.com/BOTE/#/driver/bot?tenantId=1270197558062084096&botId=1270313773443051520&modeType=single&token=bf3cf2ebaef84159af75677d733b701d',
     sceneCategory: '智能办公',
     industryTag: '企业',
-    icon: 'PictureRounded'
+    icon: 'PictureRounded',
   },
   {
     type: 'hj',
@@ -48,7 +48,7 @@ export const applications = [
       '/app-detail?type=hj&token=642502acbbbbe5d3d7741082c7c0194936f6c3374eb83f605860fdbcd415b31e4d32a9334098ec1c6d26b9d055919c70e97eaed66fa5514886d2949e51e8a824bd7c0bf23c12e8a31bc896724e25b584cd11d30287ec80cabf95ee64ca2f8da9b60fbcad32c634476b08a48e3c7918a2',
     sceneCategory: '智能办公',
     industryTag: '企业',
-    icon: 'PictureRounded'
+    icon: 'PictureRounded',
   },
   // {
   //   type:'hj',
@@ -68,7 +68,7 @@ export const applications = [
     url: 'https://www.hjlingxi.com/BOTE/#/driver/bot?tenantId=1270197558062084096&botId=1270329143243567104&modeType=single&token=ca2db1f46bcf47fba3bfe122757365e9',
     sceneCategory: '智能问答',
     industryTag: '政府',
-    icon: 'DataAnalysis'
+    icon: 'DataAnalysis',
   },
   {
     type: 'hj',
@@ -78,7 +78,7 @@ export const applications = [
     url: 'https://www.hjlingxi.com/BOTE/#/driver/bot?tenantId=1270197558062084096&botId=1270206415601659904&modeType=single&token=ad2b4b62d07746e8801967ecbe70459d',
     sceneCategory: '智能问答',
     industryTag: '政府',
-    icon: 'DataAnalysis'
+    icon: 'DataAnalysis',
   },
   {
     type: 'dify',
@@ -88,7 +88,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/VtwxEkpiOIVPOETe',
     sceneCategory: '智能问数',
     industryTag: '政府',
-    icon: 'DataAnalysis'
+    icon: 'DataAnalysis',
   },
   {
     type: 'dify',
@@ -98,7 +98,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/EDWuQZouY06bnKXy',
     sceneCategory: '智能问答',
     industryTag: '政府',
-    icon: 'PictureRounded'
+    icon: 'PictureRounded',
   },
   {
     type: 'dify',
@@ -108,7 +108,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/sQCvVCOZgHW5nRdq',
     sceneCategory: '智能办公',
     industryTag: '政府',
-    icon: 'OfficeBuilding'
+    icon: 'OfficeBuilding',
   },
   {
     type: 'dify',
@@ -118,7 +118,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/BZBrTa6WhgcmRBTI',
     sceneCategory: '智能办公',
     industryTag: '政府',
-    icon: 'User'
+    icon: 'User',
   },
   {
     type: 'dify',
@@ -128,7 +128,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/6thJYI8DDsf4uOUN',
     sceneCategory: '智能办公',
     industryTag: '政府',
-    icon: 'Suitcase'
+    icon: 'Suitcase',
   },
   {
     type: 'dify',
@@ -138,7 +138,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/C5v2olj9iejVk41O',
     sceneCategory: '智能文档',
     industryTag: '政府',
-    icon: 'EditPen'
+    icon: 'EditPen',
   },
   {
     type: 'dify',
@@ -148,7 +148,7 @@ export const applications = [
     url: 'http://192.168.10.24/chat/2o05S4qNOVvVnQpu',
     sceneCategory: '智能文档',
     industryTag: '金融',
-    icon: 'Money'
+    icon: 'Money',
   },
   {
     type: 'dify',
@@ -158,6 +158,6 @@ export const applications = [
     url: 'http://192.168.10.24/workflow/TLZwJS8EwAKK4FL2',
     sceneCategory: '智能文档',
     industryTag: '医疗',
-    icon: 'FirstAidKit'
-  }
+    icon: 'FirstAidKit',
+  },
 ];

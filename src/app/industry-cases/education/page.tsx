@@ -11,7 +11,7 @@ import {
   SafetyOutlined,
   TeamOutlined,
   SettingOutlined,
-  SearchOutlined
+  SearchOutlined,
 } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
@@ -24,7 +24,7 @@ export default function UniversityKnowledgePlatformPage() {
     subtitle: '领先一步的高校AI知识中枢解决方案',
     description:
       '这是一个能融合数据、能智能服务、能任务闭环、还能安全交付的高校知识平台。通过统一门户、知识治理平台、智能体支撑底座，全面服务教研、申报、评估、管理等核心业务场景，并具备支撑智能体构建的持续演进能力。',
-    detailPicName: '教育2.png'
+    detailPicName: '教育2.png',
   };
 
   return (

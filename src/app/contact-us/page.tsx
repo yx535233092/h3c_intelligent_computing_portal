@@ -17,7 +17,7 @@ export default function ContactUs() {
     email: '',
     phone: '',
     service: '',
-    message: ''
+    message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -30,7 +30,7 @@ export default function ContactUs() {
     '模型服务',
     '运维服务',
     '技术咨询',
-    '其他'
+    '其他',
   ];
 
   // 表单处理
@@ -42,7 +42,7 @@ export default function ContactUs() {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -60,7 +60,7 @@ export default function ContactUs() {
         email: '',
         phone: '',
         service: '',
-        message: ''
+        message: '',
       });
 
       // 3秒后清除提示信息

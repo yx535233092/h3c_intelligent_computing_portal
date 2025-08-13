@@ -18,7 +18,7 @@ import {
   MedicineBoxOutlined,
   BarChartOutlined,
   PictureOutlined,
-  RightOutlined
+  RightOutlined,
 } from '@ant-design/icons';
 import { useScrollToTop } from '@/hooks/useScrollToTop';
 import { useInView } from '@/hooks/useInView';
@@ -35,7 +35,7 @@ const iconMap: { [key: string]: React.ReactNode } = {
   Money: <DollarOutlined />,
   FirstAidKit: <MedicineBoxOutlined />,
   DataAnalysis: <BarChartOutlined />,
-  PictureRounded: <PictureOutlined />
+  PictureRounded: <PictureOutlined />,
 };
 
 export default function AppService() {
@@ -63,7 +63,7 @@ export default function AppService() {
     { key: '智能文档', label: '智能文档', icon: <FileTextOutlined /> },
     { key: '智能问数', label: '智能问数', icon: <DatabaseOutlined /> },
     { key: '智能办公', label: '智能办公', icon: <BuildOutlined /> },
-    { key: '智能客服', label: '智能客服', icon: <CustomerServiceOutlined /> }
+    { key: '智能客服', label: '智能客服', icon: <CustomerServiceOutlined /> },
   ];
 
   const handleAppClick = (url: string) => {
@@ -244,7 +244,7 @@ export default function AppService() {
                     ? {
                         backgroundColor: '#d32d26',
                         borderColor: '#d32d26',
-                        color: 'white'
+                        color: 'white',
                       }
                     : undefined
                 }

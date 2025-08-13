@@ -31,7 +31,7 @@ type ExcelUpLoadProps = {
 export default function ExcelUpLoad({
   setCurrentFileArrayBuffer,
   onUploadSuccess,
-  onUploadError
+  onUploadError,
 }: ExcelUpLoadProps) {
   const [fileList, setFileList] = useState<FileItem[]>([]);
   const [selectedFileIndex, setSelectedFileIndex] = useState<number | null>(
@@ -65,12 +65,12 @@ export default function ExcelUpLoad({
             const blob = await response.blob();
             const filename = defaultFilePath.split('/').pop() || 'default.xlsx';
             const file = new File([blob], filename, {
-              type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+              type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
             });
 
             const newFileItem: FileItem = {
               file,
-              uploadTime: new Date()
+              uploadTime: new Date(),
             };
 
             setFileList([newFileItem]);
@@ -112,7 +112,7 @@ export default function ExcelUpLoad({
   const handleFileAdd = (file: File) => {
     const newFileItem: FileItem = {
       file,
-      uploadTime: new Date()
+      uploadTime: new Date(),
     };
 
     const newFileList = [...fileList, newFileItem];
@@ -209,7 +209,7 @@ export default function ExcelUpLoad({
       day: '2-digit',
       hour: '2-digit',
       minute: '2-digit',
-      second: '2-digit'
+      second: '2-digit',
     });
   };
 
@@ -235,7 +235,7 @@ export default function ExcelUpLoad({
         `http://192.168.10.24:48080/v1/parse_xlsx/?type=3`,
         {
           method: 'POST',
-          body: formData
+          body: formData,
           // 不要手动设置 Content-Type，让浏览器自动设置 multipart/form-data 边界
         }
       );
@@ -251,7 +251,7 @@ export default function ExcelUpLoad({
       updatedFileList[selectedFileIndex] = {
         ...selectedFileItem,
         result: result,
-        error: undefined
+        error: undefined,
       };
       setFileList(updatedFileList);
 
@@ -270,7 +270,7 @@ export default function ExcelUpLoad({
       updatedFileList[selectedFileIndex] = {
         ...selectedFileItem,
         result: undefined,
-        error: errorMessage
+        error: errorMessage,
       };
       setFileList(updatedFileList);
 
@@ -308,7 +308,7 @@ export default function ExcelUpLoad({
 
       // 下载文件
       const blob = new Blob([finalContent], {
-        type: 'text/markdown;charset=utf-8'
+        type: 'text/markdown;charset=utf-8',
       });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -354,9 +354,9 @@ export default function ExcelUpLoad({
           filename: selectedFile.result.filename,
           rows: selectedFile.result.rows,
           columns: selectedFile.result.columns,
-          uploadTime: selectedFile.uploadTime
+          uploadTime: selectedFile.uploadTime,
         },
-        data: selectedFile.result.data
+        data: selectedFile.result.data,
       };
 
       const jsonContent = JSON.stringify(exportData, null, 2);
@@ -646,7 +646,7 @@ export default function ExcelUpLoad({
               <div
                 className="absolute bottom-full left-0 right-0 mb-1 bg-white border border-gray-200 rounded-xl shadow-xl z-50 min-w-max"
                 style={{
-                  animation: 'fadeInUp 0.2s ease-out'
+                  animation: 'fadeInUp 0.2s ease-out',
                 }}
                 onMouseEnter={handleMenuMouseEnter}
                 onMouseLeave={handleMenuMouseLeave}

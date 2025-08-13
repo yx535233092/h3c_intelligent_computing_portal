@@ -8,7 +8,7 @@ type ExcelPreviewProps = {
 };
 
 export default function ExcelPreview({
-  currentFileArrayBuffer
+  currentFileArrayBuffer,
 }: ExcelPreviewProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [previewer, setPreviewer] = useState<JsExcelPreview | null>(null);

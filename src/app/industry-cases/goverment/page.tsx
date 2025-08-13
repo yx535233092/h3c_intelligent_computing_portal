@@ -11,7 +11,7 @@ import {
   SafetyOutlined,
   TeamOutlined,
   SettingOutlined,
-  SearchOutlined
+  SearchOutlined,
 } from '@ant-design/icons';
 import { useRouter } from 'next/navigation';
 
@@ -24,7 +24,7 @@ export default function UniversityKnowledgePlatformPage() {
     subtitle: '基于AI大模型训练平台，形成辅助合成研判能力',
     description:
       '基于AI大模型训练平台的数据和计算资源，形成处置过程中辅助合成研判的“语音语义建模”能力，该阶段为AI智能客服的较高级阶段，在初级能力基础上训练AI进行语义识别，达到“以案搜人”、“以案搜案”等效果。',
-    detailPicName: '某市公安情报分析以案搜案.png'
+    detailPicName: '某市公安情报分析以案搜案.png',
   };
 
   return (

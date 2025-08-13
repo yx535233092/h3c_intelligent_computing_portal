@@ -14,7 +14,7 @@ const commonStyles = {
   demoContainer:
     'w-[200px] h-[160px] bg-white rounded-xl flex items-center justify-center shadow-[0_2px_8px_rgba(0,0,0,0.08)]',
   linkStyle:
-    'text-[#4285f4] no-underline font-medium transition-colors duration-200 hover:text-[#3367d6]'
+    'text-[#4285f4] no-underline font-medium transition-colors duration-200 hover:text-[#3367d6]',
 };
 
 // 提取动画样式
@@ -23,21 +23,21 @@ const getAnimationStyle = (isInView: boolean, delay: number = 0) => ({
   transform: isInView
     ? 'translateY(0) scale(1)'
     : 'translateY(40px) scale(0.95)',
-  transition: `opacity 0.8s ease-out ${delay}s, transform 0.8s ease-out ${delay}s`
+  transition: `opacity 0.8s ease-out ${delay}s, transform 0.8s ease-out ${delay}s`,
 });
 
 // 提取文本动画样式
 const getTextAnimationStyle = (isInView: boolean, delay: number = 0) => ({
   opacity: isInView ? 1 : 0,
   transform: isInView ? 'translateY(0)' : 'translateY(30px)',
-  transition: `opacity 0.8s ease-out ${delay}s, transform 0.8s ease-out ${delay}s`
+  transition: `opacity 0.8s ease-out ${delay}s, transform 0.8s ease-out ${delay}s`,
 });
 
 // 提取选项卡动画样式
 const getTabAnimationStyle = (isInView: boolean, delay: number = 0) => ({
   opacity: isInView ? 1 : 0,
   transform: isInView ? 'translateX(0)' : 'translateX(-30px)',
-  transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`
+  transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`,
 });
 
 // 产品卡片组件
@@ -47,7 +47,7 @@ const ProductCard = ({
   demoContent,
   link,
   isInView,
-  delay = 0
+  delay = 0,
 }: {
   title: string;
   description: string[];
@@ -61,7 +61,7 @@ const ProductCard = ({
     style={{
       background: commonStyles.cardGradient,
       ...getAnimationStyle(isInView, delay),
-      transition: 'all 0.3s ease'
+      transition: 'all 0.3s ease',
     }}
   >
     <div className="flex items-center gap-8">
@@ -96,7 +96,7 @@ const ProductCard = ({
             display: 'inline-block',
             transform: 'translateY(0)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-2px) scale(1.05)';
@@ -126,7 +126,7 @@ const TabButton = ({
   children,
   onClick,
   isInView,
-  delay = 0
+  delay = 0,
 }: {
   active: boolean;
   children: React.ReactNode;
@@ -148,7 +148,7 @@ const TabButton = ({
 // 优势卡片组件
 const FeatureCard = ({
   title,
-  description
+  description,
 }: {
   title: string;
   description: string;
@@ -164,7 +164,7 @@ const FormatCard = ({
   icon,
   label,
   isInView,
-  delay = 0
+  delay = 0,
 }: {
   icon: React.ReactNode;
   label: string;
@@ -190,7 +190,7 @@ export default function DataService() {
   const [featuresRef, isFeaturesInView] = useInView({ threshold: 0.2 });
   const [multiNeedsRef, isMultiNeedsInView] = useInView({ threshold: 0.2 });
   const [intelligentProcessRef, isIntelligentProcessInView] = useInView({
-    threshold: 0.1
+    threshold: 0.1,
   });
 
   // 选项卡配置
@@ -198,34 +198,34 @@ export default function DataService() {
     {
       key: 'text',
       label: '文本解析',
-      title: '智能文本解析'
+      title: '智能文本解析',
     },
     {
       key: 'table',
       label: '表格解析',
-      title: '智能表格解析'
+      title: '智能表格解析',
     },
     {
       key: 'image',
       label: '图片解析',
-      title: '智能图片解析'
-    }
+      title: '智能图片解析',
+    },
   ];
 
   // 优势数据
   const features = [
     {
       title: '表格识别准确',
-      description: '支持常见表格格式识别，包括合并单元格和跨页表格处理。'
+      description: '支持常见表格格式识别，包括合并单元格和跨页表格处理。',
     },
     {
       title: '支持多种文件格式',
-      description: '可以解析PDF、Word、Excel、图片等多种类型文件。'
+      description: '可以解析PDF、Word、Excel、图片等多种类型文件。',
     },
     {
       title: '服务稳定可靠',
-      description: '基于成熟技术架构，提供稳定的文档解析服务。'
-    }
+      description: '基于成熟技术架构，提供稳定的文档解析服务。',
+    },
   ];
 
   // 文件格式数据
@@ -239,7 +239,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #dc2626 0%, #ef4444 50%, #f87171 100%)',
             boxShadow:
-              '0 4px 12px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(220, 38, 38, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -247,14 +247,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(220, 38, 38, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(220, 38, 38, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #dc2626',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -268,7 +268,7 @@ export default function DataService() {
           <div className="absolute left-2 top-[34px] w-6 h-[1.5px] bg-white/60 rounded-full"></div>
           <div className="absolute left-2 top-[38px] w-7 h-[1.5px] bg-white/60 rounded-full"></div>
         </div>
-      )
+      ),
     },
     {
       label: 'Word',
@@ -279,7 +279,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%)',
             boxShadow:
-              '0 4px 12px rgba(30, 64, 175, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(30, 64, 175, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -287,14 +287,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(30, 64, 175, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(30, 64, 175, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #1e40af',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -307,7 +307,7 @@ export default function DataService() {
           <div className="absolute left-2 bottom-3 w-8 h-[1px] bg-white/70 rounded-full"></div>
           <div className="absolute left-2 bottom-1.5 w-6 h-[1px] bg-white/50 rounded-full"></div>
         </div>
-      )
+      ),
     },
     {
       label: 'Excel',
@@ -318,7 +318,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #15803d 0%, #22c55e 50%, #4ade80 100%)',
             boxShadow:
-              '0 4px 12px rgba(21, 128, 61, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(21, 128, 61, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -326,14 +326,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(21, 128, 61, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(21, 128, 61, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #15803d',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -345,7 +345,7 @@ export default function DataService() {
                   key={i}
                   className="bg-white"
                   style={{
-                    background: i === 0 ? '#22c55e' : 'white'
+                    background: i === 0 ? '#22c55e' : 'white',
                   }}
                 ></div>
               ))}
@@ -357,7 +357,7 @@ export default function DataService() {
             X
           </div>
         </div>
-      )
+      ),
     },
     {
       label: 'JPEG',
@@ -368,7 +368,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #ea580c 0%, #f97316 50%, #fb923c 100%)',
             boxShadow:
-              '0 4px 12px rgba(234, 88, 12, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(234, 88, 12, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -376,14 +376,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(234, 88, 12, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(234, 88, 12, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #ea580c',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -394,7 +394,7 @@ export default function DataService() {
               style={{
                 background:
                   'linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%)',
-                position: 'relative'
+                position: 'relative',
               }}
             >
               {/* 山峰图案 */}
@@ -402,14 +402,14 @@ export default function DataService() {
                 className="absolute bottom-0 left-0 w-0 h-0"
                 style={{
                   borderBottom: '8px solid #92400e',
-                  borderRight: '12px solid transparent'
+                  borderRight: '12px solid transparent',
                 }}
               ></div>
               <div
                 className="absolute bottom-0 right-0 w-0 h-0"
                 style={{
                   borderBottom: '6px solid #78350f',
-                  borderLeft: '8px solid transparent'
+                  borderLeft: '8px solid transparent',
                 }}
               ></div>
               {/* 太阳 */}
@@ -422,7 +422,7 @@ export default function DataService() {
             JPEG
           </div>
         </div>
-      )
+      ),
     },
     {
       label: 'PNG',
@@ -433,7 +433,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%)',
             boxShadow:
-              '0 4px 12px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(124, 58, 237, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -441,14 +441,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(124, 58, 237, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(124, 58, 237, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #7c3aed',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -458,7 +458,7 @@ export default function DataService() {
               className="w-full h-full relative"
               style={{
                 background:
-                  'linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #9333ea 100%)'
+                  'linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #9333ea 100%)',
               }}
             >
               {/* 透明度网格背景 */}
@@ -472,7 +472,7 @@ export default function DataService() {
                     linear-gradient(-45deg, transparent 75%, #ffffff 75%)
                   `,
                   backgroundSize: '4px 4px',
-                  backgroundPosition: '0 0, 0 2px, 2px -2px, -2px 0px'
+                  backgroundPosition: '0 0, 0 2px, 2px -2px, -2px 0px',
                 }}
               ></div>
               {/* 几何图案 */}
@@ -486,7 +486,7 @@ export default function DataService() {
             PNG
           </div>
         </div>
-      )
+      ),
     },
     {
       label: 'WebP',
@@ -497,7 +497,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #0891b2 0%, #06b6d4 50%, #22d3ee 100%)',
             boxShadow:
-              '0 4px 12px rgba(8, 145, 178, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(8, 145, 178, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -505,14 +505,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(8, 145, 178, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(8, 145, 178, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #0891b2',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -522,7 +522,7 @@ export default function DataService() {
               className="w-full h-full relative"
               style={{
                 background:
-                  'linear-gradient(135deg, #ecfeff 0%, #cffafe 50%, #a5f3fc 100%)'
+                  'linear-gradient(135deg, #ecfeff 0%, #cffafe 50%, #a5f3fc 100%)',
               }}
             >
               {/* 现代几何图案 */}
@@ -538,7 +538,7 @@ export default function DataService() {
                     background:
                       'linear-gradient(90deg, transparent 0%, #22d3ee 20%, #06b6d4 50%, #0891b2 80%, transparent 100%)',
                     clipPath:
-                      'polygon(0% 100%, 10% 80%, 30% 90%, 50% 70%, 70% 85%, 90% 75%, 100% 100%)'
+                      'polygon(0% 100%, 10% 80%, 30% 90%, 50% 70%, 70% 85%, 90% 75%, 100% 100%)',
                   }}
                 ></div>
 
@@ -559,7 +559,7 @@ export default function DataService() {
             WebP
           </div>
         </div>
-      )
+      ),
     },
     {
       label: 'HTML',
@@ -570,7 +570,7 @@ export default function DataService() {
             background:
               'linear-gradient(145deg, #059669 0%, #10b981 50%, #34d399 100%)',
             boxShadow:
-              '0 4px 12px rgba(5, 150, 105, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)'
+              '0 4px 12px rgba(5, 150, 105, 0.3), inset 0 1px 0 rgba(255,255,255,0.2)',
           }}
         >
           {/* 文件折角 */}
@@ -578,14 +578,14 @@ export default function DataService() {
             className="absolute right-0 top-0 w-[20px] h-[20px] rounded-tr-[10px]"
             style={{
               background: 'linear-gradient(225deg, #ffffff 0%, #f8fafc 100%)',
-              boxShadow: 'inset -2px -2px 4px rgba(5, 150, 105, 0.2)'
+              boxShadow: 'inset -2px -2px 4px rgba(5, 150, 105, 0.2)',
             }}
           ></div>
           <div
             className="absolute right-0 top-0 w-0 h-0"
             style={{
               borderLeft: '8px solid #059669',
-              borderTop: '8px solid transparent'
+              borderTop: '8px solid transparent',
             }}
           ></div>
 
@@ -604,8 +604,8 @@ export default function DataService() {
             HTML
           </div>
         </div>
-      )
-    }
+      ),
+    },
   ];
 
   // 产品数据
@@ -616,7 +616,7 @@ export default function DataService() {
         description: [
           '支持PDF、Word、图片等常见格式',
           '识别文档基本结构和文本内容',
-          '尽可能保持原有格式信息'
+          '尽可能保持原有格式信息',
         ],
         link: '/document-process?title=常规文档解析',
         demoContent: (
@@ -629,7 +629,7 @@ export default function DataService() {
                   className="w-8 h-10 rounded-md shadow-md flex items-center justify-center text-white text-[0.5rem] font-bold"
                   style={{
                     background:
-                      'linear-gradient(145deg, #dc2626 0%, #f87171 100%)'
+                      'linear-gradient(145deg, #dc2626 0%, #f87171 100%)',
                   }}
                 >
                   PDF
@@ -638,7 +638,7 @@ export default function DataService() {
                   className="w-8 h-8 rounded-md shadow-md flex items-center justify-center text-white text-[0.5rem] font-bold"
                   style={{
                     background:
-                      'linear-gradient(145deg, #3b82f6 0%, #60a5fa 100%)'
+                      'linear-gradient(145deg, #3b82f6 0%, #60a5fa 100%)',
                   }}
                 >
                   DOC
@@ -665,7 +665,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '表格文档解析',
@@ -680,7 +680,7 @@ export default function DataService() {
                 className="w-10 h-12 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #059669 0%, #10b981 100%)'
+                    'linear-gradient(145deg, #059669 0%, #10b981 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -721,7 +721,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '公式类文档解析',
@@ -736,7 +736,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #ea580c 0%, #f97316 100%)'
+                    'linear-gradient(145deg, #ea580c 0%, #f97316 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -771,7 +771,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '媒体报刊类文档解析',
@@ -786,7 +786,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #1976d2 0%, #42a5f5 100%)'
+                    'linear-gradient(145deg, #1976d2 0%, #42a5f5 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -825,7 +825,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '论文解析',
@@ -841,7 +841,7 @@ export default function DataService() {
                   className="w-8 h-10 rounded-md shadow-md flex flex-col items-center justify-center"
                   style={{
                     background:
-                      'linear-gradient(145deg, #1e40af 0%, #3b82f6 100%)'
+                      'linear-gradient(145deg, #1e40af 0%, #3b82f6 100%)',
                   }}
                 >
                   <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -857,7 +857,7 @@ export default function DataService() {
                   className="w-8 h-8 rounded-md shadow-md flex flex-col items-center justify-center"
                   style={{
                     background:
-                      'linear-gradient(145deg, #ea580c 0%, #f97316 100%)'
+                      'linear-gradient(145deg, #ea580c 0%, #f97316 100%)',
                   }}
                 >
                   <div className="text-white text-[0.4rem] font-bold mb-0.5">
@@ -894,7 +894,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '试卷解析',
@@ -909,7 +909,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #7c3aed 0%, #8b5cf6 100%)'
+                    'linear-gradient(145deg, #7c3aed 0%, #8b5cf6 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -958,8 +958,8 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
-      }
+        ),
+      },
     ],
     table: [
       {
@@ -975,7 +975,7 @@ export default function DataService() {
                 className="w-10 h-12 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #f59e0b 0%, #f97316 100%)'
+                    'linear-gradient(145deg, #f59e0b 0%, #f97316 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -1034,7 +1034,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '复杂表头解析(合并场景)',
@@ -1049,7 +1049,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #22c55e 0%, #16a34a 100%)'
+                    'linear-gradient(145deg, #22c55e 0%, #16a34a 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -1113,8 +1113,8 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
-      }
+        ),
+      },
     ],
     image: [
       {
@@ -1130,7 +1130,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #8b4513 0%, #d2691e 100%)'
+                    'linear-gradient(145deg, #8b4513 0%, #d2691e 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -1166,7 +1166,7 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
+        ),
       },
       {
         title: '手写识别',
@@ -1181,7 +1181,7 @@ export default function DataService() {
                 className="w-9 h-11 rounded-md shadow-md flex flex-col items-center justify-center"
                 style={{
                   background:
-                    'linear-gradient(145deg, #64748b 0%, #94a3b8 100%)'
+                    'linear-gradient(145deg, #64748b 0%, #94a3b8 100%)',
                 }}
               >
                 <div className="text-white text-[0.4rem] font-bold mb-1">
@@ -1217,9 +1217,9 @@ export default function DataService() {
               </div>
             </div>
           </div>
-        )
-      }
-    ]
+        ),
+      },
+    ],
   };
 
   return (
@@ -1311,7 +1311,7 @@ export default function DataService() {
             transform: isIntelligentProcessInView
               ? 'translateY(0)'
               : 'translateY(-30px)',
-            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
+            transition: 'opacity 0.8s ease-out, transform 0.8s ease-out',
           }}
         >
           {productTitle}

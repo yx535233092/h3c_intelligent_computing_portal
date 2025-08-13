@@ -1,7 +1,7 @@
 import axios, {
   type AxiosInstance,
   type AxiosResponse,
-  type AxiosError
+  type AxiosError,
 } from 'axios';
 
 // 1.定义请求地址
@@ -12,10 +12,9 @@ const api: AxiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
   headers: {
-    'Content-Type': 'application/json'
-  }
+    'Content-Type': 'application/json',
+  },
 });
-
 // 3.请求拦截
 api.interceptors.request.use(
   (config) => {

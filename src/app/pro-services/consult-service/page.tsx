@@ -9,7 +9,7 @@ import {
   ReadOutlined,
   CodeOutlined,
   StarOutlined,
-  CustomerServiceOutlined
+  CustomerServiceOutlined,
 } from '@ant-design/icons';
 
 export default function ConsultServicePage() {
@@ -60,26 +60,26 @@ export default function ConsultServicePage() {
                 title: '基础架构集成设计服务',
                 description:
                   '为企业AI战略提供基础设施架构设计，涵盖GPU/CPU集群、分布式存储、网络架构等核心组件配置，确保高扩展性、高稳定性与高效能特性，为AI模型训练与应用部署提供坚实硬件支撑。',
-                icon: <BuildOutlined />
+                icon: <BuildOutlined />,
               },
               {
                 title: '训推技术指导服务​',
                 description:
                   '覆盖AI模型全生命周期，从数据预处理、算法选型、超参数调优到推理部署优化，提供轻量化改造、量化压缩等技术指导，实现模型在生产环境中的低延迟、高并发运行，最大化商业价值。',
-                icon: <RobotOutlined />
+                icon: <RobotOutlined />,
               },
               {
                 title: 'AI 应用支撑服务​',
                 description:
                   '深度融合行业特性与业务场景，提供技术栈选型、功能模块设计、用户体验优化等定制化服务，通过自然语言交互、可视化呈现等方式，确保AI应用实现降本增效与体验升级。',
-                icon: <BulbOutlined />
+                icon: <BulbOutlined />,
               },
               {
                 title: '专项培训服务',
                 description:
                   '系统化培训涵盖向量数据库、RAG架构、智能体开发等应用实践，以及傲飞算力平台操作、大模型理论等核心技能，助力团队快速掌握AI技术并实现落地应用。',
-                icon: <AimOutlined />
-              }
+                icon: <AimOutlined />,
+              },
             ].map((item, index) => (
               <div
                 key={index}
@@ -137,29 +137,29 @@ export default function ConsultServicePage() {
                   description:
                     '课程遵循从基础到前沿的逻辑、模块化设计，目标清晰，内容实时更新，适配不同水平学员进阶。',
                   icon: <ReadOutlined />,
-                  iconColor: 'text-blue-500'
+                  iconColor: 'text-blue-500',
                 },
                 {
                   title: '实验与理论结合',
                   description:
                     '50%实操课时，依托演示环境、客户环境进行实操结合行业案例，强化知识应用与项目实战能力。',
                   icon: <CodeOutlined />,
-                  iconColor: 'text-green-500'
+                  iconColor: 'text-green-500',
                 },
                 {
                   title: '专家团队护航',
                   description:
                     '汇聚云智专家团队，拥有丰富项目经验和授课经验深度指导技术学习。',
                   icon: <StarOutlined />,
-                  iconColor: 'text-purple-500'
+                  iconColor: 'text-purple-500',
                 },
                 {
                   title: '服务私人定制',
                   description:
                     '可结合客户需求，定制化培训课程，教学方式与学习周期，满足客户业务需求。',
                   icon: <CustomerServiceOutlined />,
-                  iconColor: 'text-orange-500'
-                }
+                  iconColor: 'text-orange-500',
+                },
               ].map((item, index) => (
                 <div
                   key={index}

@@ -7,7 +7,7 @@ import HeroSection from '@/components/layout/HeroSection';
 
 export const metadata: Metadata = {
   title: '新华三 - 智算门户',
-  description: '新华三 - 智算门户'
+  description: '新华三 - 智算门户',
 };
 
 export const viewport: Viewport = {
@@ -15,11 +15,11 @@ export const viewport: Viewport = {
   initialScale: 1.0,
   maximumScale: 1.0,
   userScalable: false,
-  viewportFit: 'cover'
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {

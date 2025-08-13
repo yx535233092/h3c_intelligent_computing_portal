@@ -22,12 +22,12 @@ export default function HjPlatform() {
         const response = await fetch(`${apiBaseUrl}/api/getAccessToken`, {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify({
             username: 'h3c_yanshi',
-            password: 'H3c@12345!'
-          })
+            password: 'H3c@12345!',
+          }),
         });
 
         const resData = await response.json();
@@ -52,7 +52,7 @@ export default function HjPlatform() {
           justifyContent: 'center',
           alignItems: 'center',
           height: '100vh',
-          fontSize: '18px'
+          fontSize: '18px',
         }}
       >
         正在加载中...
@@ -69,7 +69,7 @@ export default function HjPlatform() {
           alignItems: 'center',
           height: '100vh',
           fontSize: '18px',
-          color: 'red'
+          color: 'red',
         }}
       >
         获取访问令牌失败，请刷新页面重试
@@ -85,7 +85,7 @@ export default function HjPlatform() {
           height: '100vh',
           width: '100%',
           border: 'none',
-          margin: '0 0 20px 0'
+          margin: '0 0 20px 0',
         }}
       ></iframe>
     </div>

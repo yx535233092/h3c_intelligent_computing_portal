@@ -18,14 +18,14 @@ const pageConfigs: Record<string, PageConfig> = {
     title: '联系我们',
     subtitle: 'Contact Us',
     backgroundImage: '/11.jpg',
-    breadcrumb: [{ title: '首页' }, { title: '联系我们' }]
+    breadcrumb: [{ title: '首页' }, { title: '联系我们' }],
   },
   '/industry-cases': {
     title: '行业案例',
     subtitle: 'Industry Case',
     backgroundImage: '/10.jpg',
-    breadcrumb: [{ title: '首页' }, { title: '行业案例' }]
-  }
+    breadcrumb: [{ title: '首页' }, { title: '行业案例' }],
+  },
 };
 
 export default function HeroSection() {
@@ -40,7 +40,7 @@ export default function HeroSection() {
     title: '智算门户',
     subtitle: 'Intelligent Computing Portal',
     backgroundImage: '/10.jpg',
-    breadcrumb: [{ title: '首页' }]
+    breadcrumb: [{ title: '首页' }],
   };
 
   // 获取当前页面的配置
@@ -70,7 +70,7 @@ export default function HeroSection() {
         <div
           className="w-full h-100 flex flex-col justify-center pl-60 gap-6"
           style={{
-            background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${currentConfig.backgroundImage}') no-repeat center/cover`
+            background: `linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.1)), url('${currentConfig.backgroundImage}') no-repeat center/cover`,
           }}
         >
           <h1 className="text-white text-7xl font-medium tracking-wider">
@@ -88,15 +88,15 @@ export default function HeroSection() {
               Breadcrumb: {
                 lastItemColor: '#d32d26',
                 lineHeight: 4,
-                fontSize: 18
-              }
-            }
+                fontSize: 18,
+              },
+            },
           }}
         >
           <Breadcrumb
             className="border-b border-gray-200"
             style={{
-              paddingLeft: '15rem'
+              paddingLeft: '15rem',
             }}
             items={currentConfig.breadcrumb}
           />

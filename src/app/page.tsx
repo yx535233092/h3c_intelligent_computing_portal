@@ -18,19 +18,31 @@ import {
   BookOutlined,
   ReadOutlined,
   MessageOutlined,
-  DatabaseOutlined
+  DatabaseOutlined,
 } from '@ant-design/icons';
 
 export default function HomePage() {
   const router = useRouter();
 
   // 动画相关的hooks
-  const [heroRef, isHeroInView] = useInView({ threshold: 0.3 });
-  const [servicesRef, isServicesInView] = useInView({ threshold: 0.2 });
-  const [dataRef, isDataInView] = useInView({ threshold: 0.2 });
-  const [casesRef, isCasesInView] = useInView({ threshold: 0.2 });
-  const [modelRef, isModelInView] = useInView({ threshold: 0.2 });
-  const [trainingRef, isTrainingInView] = useInView({ threshold: 0.2 });
+  const [heroRef, isHeroInView] = useInView({
+    threshold: 0.3,
+  });
+  const [servicesRef, isServicesInView] = useInView({
+    threshold: 0.2,
+  });
+  const [dataRef, isDataInView] = useInView({
+    threshold: 0.2,
+  });
+  const [casesRef, isCasesInView] = useInView({
+    threshold: 0.2,
+  });
+  const [modelRef, isModelInView] = useInView({
+    threshold: 0.2,
+  });
+  const [trainingRef, isTrainingInView] = useInView({
+    threshold: 0.2,
+  });
 
   // 应用服务数据 - 四个核心场景
   const appServices = [
@@ -39,29 +51,29 @@ export default function HomePage() {
       title: '智能问答场景',
       desc: '知识查询智能化，问答交互人性化',
       category: '智能问答',
-      examples: ['图文问答助手', '消防法律助手', '康养知识问答']
+      examples: ['图文问答助手', '消防法律助手', '康养知识问答'],
     },
     {
       icon: FileTextOutlined,
       title: '智能文档场景',
       desc: '文档处理智能化，内容创作高效化',
       category: '智能文档',
-      examples: ['合同风险审核', '医疗诊断分析', '智能标书']
+      examples: ['合同风险审核', '医疗诊断分析', '智能标书'],
     },
     {
       icon: DatabaseOutlined,
       title: '智能问数场景',
       desc: '数据洞察智能化，决策支持精准化',
       category: '智能问数',
-      examples: ['智能问数', 'ChatBI智能报表', 'ChatBI智能问数']
+      examples: ['智能问数', 'ChatBI智能报表', 'ChatBI智能问数'],
     },
     {
       icon: BuildOutlined,
       title: '智能办公场景',
       desc: '提升行政效率，优化内部管理',
       category: '智能办公',
-      examples: ['事假单助手', '智慧政务大厅', '访客申请']
-    }
+      examples: ['事假单助手', '智慧政务大厅', '访客申请'],
+    },
   ];
 
   // 数据服务特性
@@ -69,18 +81,18 @@ export default function HomePage() {
     {
       icon: FileTextOutlined,
       title: '文档解析',
-      desc: '支持PDF、Word、图片等多格式解析'
+      desc: '支持PDF、Word、图片等多格式解析',
     },
     {
       icon: TableOutlined,
       title: '表格识别',
-      desc: '复杂表格、跨页表格精准识别'
+      desc: '复杂表格、跨页表格精准识别',
     },
     {
       icon: StarOutlined,
       title: '智能提取',
-      desc: '文字、图片、公式信息智能提取'
-    }
+      desc: '文字、图片、公式信息智能提取',
+    },
   ];
 
   // 行业案例数据
@@ -90,29 +102,29 @@ export default function HomePage() {
       title: '某市公安情报分析以案搜案',
       industry: '政府',
       image: '/某市公安情报分析以案搜案.png',
-      desc: '基于AI大模型训练平台，形成辅助合成研判能力'
+      desc: '基于AI大模型训练平台，形成辅助合成研判能力',
     },
     {
       id: 'operator',
       title: '某省联通智能受理',
       industry: '运营商',
       image: '/运营商1.png',
-      desc: '通过大模型实现智能受理'
+      desc: '通过大模型实现智能受理',
     },
     {
       id: 'enterprise',
       title: '某集团智能问答系统',
       industry: '企业',
       image: '/某集团智能问答系统.png',
-      desc: '面向企业集团构建的统一知识聚合检索系统'
+      desc: '面向企业集团构建的统一知识聚合检索系统',
     },
     {
       id: 'education',
       title: '某高职校AI+知识服务',
       industry: '教育',
       image: '/某高职校DEEPSEEK-AI+知识服务应用.png',
-      desc: 'AI智能助手提升高校管理效率和决策支持'
-    }
+      desc: 'AI智能助手提升高校管理效率和决策支持',
+    },
   ];
 
   // 模型工程服务数据
@@ -121,20 +133,20 @@ export default function HomePage() {
       icon: RobotOutlined,
       title: '智能微调',
       desc: '基于LLaMA-Factory等先进框架，支持多种微调策略，快速适配业务场景',
-      features: ['多策略微调', '快速训练', '可视化调试']
+      features: ['多策略微调', '快速训练', '可视化调试'],
     },
     {
       icon: ApiOutlined,
       title: '灵活部署',
       desc: '支持NVIDIA GPU、国产芯片等多种硬件平台，提供多样化部署方案',
-      features: ['多硬件支持', '多种部署方式', '高可用集群']
+      features: ['多硬件支持', '多种部署方式', '高可用集群'],
     },
     {
       icon: BarChartOutlined,
       title: '专业测评',
       desc: '全面的性能测试体系，包含压力测试、精度评估，确保模型质量',
-      features: ['压力测试', '精度评估', '多维度验证']
-    }
+      features: ['压力测试', '精度评估', '多维度验证'],
+    },
   ];
 
   // 咨询培训服务数据
@@ -143,26 +155,26 @@ export default function HomePage() {
       icon: BuildOutlined,
       title: '基础架构集成设计服务',
       desc: '提供GPU/CPU集群、分布式存储等基础设施架构设计，确保高扩展性与稳定性。',
-      category: '基础设施'
+      category: '基础设施',
     },
     {
       icon: BookOutlined,
       title: '训推技术指导服务​',
       desc: '覆盖模型全生命周期，从数据预处理到推理部署优化，提供轻量化改造技术指导。',
-      category: '技术指导'
+      category: '技术指导',
     },
     {
       icon: UserOutlined,
       title: 'AI 应用支撑服务​',
       desc: '深度融合行业特性，提供技术栈选型、功能设计等定制化服务，实现降本增效。',
-      category: '应用定制'
+      category: '应用定制',
     },
     {
       icon: ReadOutlined,
       title: '专项培训服务',
       desc: '系统化培训向量数据库、RAG架构、智能体开发等核心技能，助力技术落地。',
-      category: '技能培训'
-    }
+      category: '技能培训',
+    },
   ];
 
   return (
@@ -239,7 +251,7 @@ export default function HomePage() {
               key={index}
               className="group bg-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100"
               style={{
-                animationDelay: `${index * 0.1}s`
+                animationDelay: `${index * 0.1}s`,
               }}
             >
               <div className="text-white w-16 h-16 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -386,7 +398,7 @@ export default function HomePage() {
               onClick={() => {}}
               className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 "
               style={{
-                animationDelay: `${index * 0.1}s`
+                animationDelay: `${index * 0.1}s`,
               }}
             >
               <div className="text-white w-16 h-16 bg-gradient-to-br from-brand to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
@@ -460,7 +472,7 @@ export default function HomePage() {
                 key={index}
                 className="group bg-gradient-to-br from-white to-gray-50/50 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-3 border border-gray-100/50 backdrop-blur-sm relative overflow-hidden"
                 style={{
-                  animationDelay: `${index * 0.1}s`
+                  animationDelay: `${index * 0.1}s`,
                 }}
               >
                 {/* 卡片内装饰 */}
@@ -521,7 +533,7 @@ export default function HomePage() {
               onClick={() => router.push(`/industry-cases/${caseItem.id}`)}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer"
               style={{
-                animationDelay: `${index * 0.2}s`
+                animationDelay: `${index * 0.2}s`,
               }}
             >
               <div className="relative h-48 overflow-hidden">
