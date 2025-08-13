@@ -27,6 +27,7 @@ npm run dev
 - axios 封装
 - antd css-in-js 解决
 - shell 脚本自动化部署
+- 多仓库关联(gitee,github)
 
 ## 代码规范
 
@@ -47,6 +48,6 @@ npm run dev
 1. 完整的开发工作流：
 2. 编写代码 → ESLint 实时检查
 3. 保存文件 → Prettier 自动格式化
-4. Git 提交 → Husky + lint-staged 自动检查
+4. Git 提交 → Husky + lint-staged + commitlint 自动检查
 5. 构建前 → 完整的代码质量检查
 6. 部署前 → 类型检查和测试

@@ -14,6 +14,7 @@ module.exports = {
         'chore',
         'ci',
         'perf',
+        'rm',
       ],
     ],
     // 强制主题（subject）不能是空的
