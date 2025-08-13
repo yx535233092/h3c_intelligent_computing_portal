@@ -86,11 +86,11 @@ cd "$DEPLOY_PATH" || { echo "再次确认：无法进入部署目录 '$DEPLOY_PA
 # 4、安装依赖和构建项目
 echo "------正在安装依赖------"
 if [ -f "package-lock.json" ]; then
-  npm install --omit=dev
+  npm install
 elif [ -f "yarn.lock" ]; then
   yarn install --production
 else
-  npm install --omit=dev
+  npm install
 fi
 
 echo "------正在构建项目------"
